@@ -83,5 +83,5 @@
      (expand-file-name "~/.emacs.d/elpa/package.el"))
   (package-initialize))
 
-setq custom-file "~/.emacs.d/custom.el")
+(setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)

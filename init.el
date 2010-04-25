@@ -73,6 +73,8 @@
 (global-font-lock-mode t t)
 (setq font-lock-maximum-decoration t)
 
+(yas/load-directory "~/.emacs.d/snippets")
+
 ;;; This was installed by package-install.el.
 ;;; This provides support for the package system and
 ;;; interfacing with ELPA, the package archive.

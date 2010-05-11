@@ -21,10 +21,6 @@
 (ido-mode t)
 (setq ido-enable-flex-matching t) ;; enable fuzzy matching
 
-;;Go to Heaven for the climate, Hell for the company. - twain
-(add-to-list 'load-path "~/.emacs.d/company")
-(autoload 'company-mode "company" nil t)
-
 (load "~/.emacs.d/nxhtml/autostart.el")
 
 ;;A mouse does not rely on just one hole. - Plautus
@@ -32,7 +28,6 @@
 
 ;; there is no color in this world that is not intended to make us rejoice. - John Calvin
 (require 'color-theme)
-(color-theme-initialize)
 (color-theme-euphoria)
 
 (require 'elscreen)
@@ -40,6 +35,9 @@
 (global-set-key (kbd "<C-S-iso-lefttab>") 'elscreen-previous)
 (global-set-key (kbd "<C-return>") 'execute-extended-command)
 (global-set-key (kbd "<C-\\>") 'previous-multiframe-window)
+
+(global-set-key (kbd "<C-\#>") 'comment-region)
+
 ;; (global-set-key (kbd "<C-;") 'previous-multiframe-window)
 ;; (global-set-key (kbd "<C-'") 'next-multiframe-window)
 
@@ -49,14 +47,6 @@
 
 ;; go to hell trailing whitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-;; shell pop
-(require 'shell-pop)
-(shell-pop-set-internal-mode "ansi-term")
-(shell-pop-set-internal-mode-shell "/bin/bash")
-(shell-pop-set-window-height 50) ;the number for the percentage of the selected window. if 100, shell-pop use the whole of selected window, not spliting.
-(shell-pop-set-window-position "top") ;shell-pop-up position. You can choose "top" or "bottom".
-(global-set-key (kbd "<C-menu>") 'shell-pop)
 
 ;; Just because you like my stuff doesn't mean I owe you anything. - Bob Dylan
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
@@ -73,8 +63,6 @@
 (global-font-lock-mode t t)
 (setq font-lock-maximum-decoration t)
 
-(yas/load-directory "~/.emacs.d/snippets")
-
 ;;; This was installed by package-install.el.
 ;;; This provides support for the package system and
 ;;; interfacing with ELPA, the package archive.
@@ -85,5 +73,11 @@
      (expand-file-name "~/.emacs.d/elpa/package.el"))
   (package-initialize))
 
+(require 'yasnippet)
+(yas/initialize)
+(yas/load-directory "~/.emacs.d/snippets")
+
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
+
+(server-start)

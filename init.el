@@ -94,6 +94,10 @@
 (global-font-lock-mode t t)
 (setq font-lock-maximum-decoration t)
 
+; Lets emacs uncompress .gz files before opening them
+(auto-compression-mode 1)
+
+
 ;; http://sachachua.com/wp/2008/07/emacs-and-php-tutorial-php-mode/
 (add-hook 'php-mode-hook
 	  (lambda ()

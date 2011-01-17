@@ -74,5 +74,3 @@ instead."
             word)
         (error "No symbol found")))))
 
-(global-set-key (kbd "M-n") 'smart-symbol-go-forward)
-(global-set-key (kbd "M-p") 'smart-symbol-go-backward)

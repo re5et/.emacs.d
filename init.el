@@ -64,6 +64,7 @@
 (global-set-key (kbd "C-c t") 'multi-term-next)
 (global-set-key (kbd "C-c T") 'multi-term) ;; create a new one
 
+(global-set-key (kbd "C-M-g") 'magit-status)
 
 ;; It is necessary for me to establish a winner image. Therefore, I have to beat somebody. - Nixon
 (when (fboundp 'winner-mode)

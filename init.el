@@ -24,6 +24,8 @@
 
 (load "~/.emacs.d/nxhtml/autostart.el")
 (load "~/.emacs.d/site-lisp/smartscan.el")
+(load "~/.emacs.d/site-lisp/rename-file-and-buffer.el")
+
 
 ;; there is no color in this world that is not intended to make us rejoice. - John Calvin
 (require 'color-theme)

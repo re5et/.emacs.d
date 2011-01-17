@@ -1,17 +1,13 @@
 ;;; DOT EMACS
 
-;;; This was installed by package-install.el.
-;;; This provides support for the package system and
-;;; interfacing with ELPA, the package archive.
-;;; Move this code earlier if you want to reference
-;;; packages in your .emacs.
+;;; ELPA
 (when
     (load
      (expand-file-name "~/.emacs.d/elpa/package.el"))
   (package-initialize))
 
-;; why would i close it?
-(defun dont-kill-emacs ()
+;;; SOME FUNCTIONS
+(defun dont-kill-emacs () ;; why would i close it?
   (interactive)
   (error (substitute-command-keys "i can never die.")))
 
@@ -21,21 +17,22 @@
   (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1)))
 
 ;;; SETQ
-(setq custom-file "~/.emacs.d/custom.el")
-(setq frame-title-format (concat "%b %+%+ %f (>^(>O_o)>")) ;;'Musician' is not a very respected title. I'm not a musician. - Lydia Lunch
-(setq tramp-default-method "ssh") ;;I modelled my looks on the town tramp. - dolly parton
-(setq ido-enable-flex-matching t) ;; enable fuzzy matching
-(setq org-agenda-files (list "~/org/todo.org"))
-(setq org-log-done t)
-(setq multi-term-program "/bin/zsh") ;; or use zsh...
-(setq require-trailing-newline t)
-(setq x-select-enable-clipboard t)
-(setq inhibit-startup-message t)
-(setq backup-directory-alist '(("." . "~/.emacs-backups")))
-(setq echo-keystrokes 0.1)
-(setq next-line-add-newlines nil)
-(setq autopair-autowrap t)
-(setq font-lock-maximum-decoration t)
+(setq custom-file "~/.emacs.d/custom.el"
+      frame-title-format (concat "%b %+%+ %f (>^(>O_o)>") ;;'Musician' is not a very respected title. I'm not a musician. - Lydia Lunch
+      tramp-default-method "ssh" ;;I modelled my looks on the town tramp. - dolly parton
+      ido-enable-flex-matching t ;; enable fuzzy matching
+      org-agenda-files (list "~/org/todo.org")
+      org-log-done t
+      multi-term-program "/bin/zsh" ;; or use zsh...
+      require-trailing-newline t
+      x-select-enable-clipboard t
+      inhibit-startup-message t
+      backup-directory-alist '(("." . "~/.emacs-backups"))
+      echo-keystrokes 0.1
+      next-line-add-newlines nil
+      autopair-autowrap t
+      font-lock-maximum-decoration t)
+
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;;; LOAD PATH

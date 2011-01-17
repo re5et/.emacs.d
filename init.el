@@ -29,6 +29,7 @@
 
 ;; there is no color in this world that is not intended to make us rejoice. - John Calvin
 (require 'color-theme)
+(color-theme-select)
 (color-theme-euphoria)
 
 (require 'elscreen)

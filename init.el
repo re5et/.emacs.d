@@ -116,6 +116,13 @@
 (autopair-global-mode) ;; enable autopair in all buffers
 (setq autopair-autowrap t)
 
+;; ;; rinari
+;; (add-to-list 'load-path "~/.emacs.d/rinari")
+;; (require 'rinari)
+
+;; haml-mode isn't autoing for some reason.
+(add-to-list 'auto-mode-alist '("\\.haml\\'" . haml-mode))
+
 ;;; This was installed by package-install.el.
 ;;; This provides support for the package system and
 ;;; interfacing with ELPA, the package archive.

@@ -3,7 +3,7 @@
 ;; never accidentally close emacs.
 (defun dont-kill-emacs ()
   (interactive)
-  (error (substitute-command-keys "To exit emacs: \\[kill-emacs]")))
+  (error (substitute-command-keys "i can never die.")))
 
 (global-set-key "\C-x\C-c" 'dont-kill-emacs)
 

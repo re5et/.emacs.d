@@ -23,6 +23,7 @@
 (global-set-key (kbd "M-i") 'idomenu)
 
 (load "~/.emacs.d/nxhtml/autostart.el")
+(load "~/.emacs.d/site-lisp/smartscan.el")
 
 ;; there is no color in this world that is not intended to make us rejoice. - John Calvin
 (require 'color-theme)

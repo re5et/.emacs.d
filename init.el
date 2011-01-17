@@ -109,6 +109,8 @@
 
 (require 'paren) (show-paren-mode t)
 
+(require 'smarttabs)
+
 ;;; autopair stuff
 (require 'autopair)
 (autopair-global-mode) ;; enable autopair in all buffers

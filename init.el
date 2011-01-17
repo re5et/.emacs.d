@@ -66,6 +66,9 @@
 
 (global-set-key (kbd "C-M-g") 'magit-status)
 
+;; cucumber feature mode
+(add-to-list 'load-path "~/.emacs.d/elisp/feature-mode")
+
 ;; It is necessary for me to establish a winner image. Therefore, I have to beat somebody. - Nixon
 (when (fboundp 'winner-mode)
   (winner-mode 1))

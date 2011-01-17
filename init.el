@@ -76,6 +76,9 @@
 ;; go to hell trailing whitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; make it executable if it should be (starts with #!)
+(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
+
 ;; Just because you like my stuff doesn't mean I owe you anything. - Bob Dylan
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))

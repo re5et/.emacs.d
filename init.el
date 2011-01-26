@@ -27,7 +27,7 @@
       require-trailing-newline t
       x-select-enable-clipboard t
       inhibit-startup-message t
-      backup-directory-alist '(("." . "~/.emacs-backups"))
+      backup-directory-alist '(("." . "~/.emacs.d/.backups"))
       echo-keystrokes 0.1
       next-line-add-newlines nil
       autopair-autowrap t

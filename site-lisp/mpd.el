@@ -3,7 +3,7 @@
 ;;;; goes great with ido
 ;;;; requires mpd and mpc setup correctly.
 
-(defvar mpd-default-music-dir "/home/atom/music/") ; mpd music dir FULL PATH (no ~/ crap)
+(defvar mpd-default-music-dir "/home/atom/music/" "mpd music dir, full path, none of that ~/ junk.")
 
 (defun mpc-find-dir (dir)
   "Finds a directory for mpd playing or queueing"

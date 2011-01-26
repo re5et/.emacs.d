@@ -41,10 +41,11 @@
 (add-to-list 'load-path "~/.emacs.d/elisp/feature-mode")
 
 ;;; LOAD
-(load "~/.emacs.d/nxhtml/autostart.el")
-(load "~/.emacs.d/site-lisp/smartscan.el")
-(load "~/.emacs.d/site-lisp/rename-file-and-buffer.el")
-(load "~/.emacs.d/site-lisp/php-mode.el")
+; (load "~/.emacs.d/nxhtml/autostart.el")
+(load "smartscan.el")
+(load "rename-file-and-buffer.el")
+(load "php-mode.el")
+(load "mpd.el")
 (load custom-file 'noerror)
 (autoload 'multi-term "multi-term" nil t)
 (autoload 'multi-term-next "multi-term" nil t)
@@ -99,3 +100,6 @@
 (global-set-key (kbd "C-M-g") 'magit-status)
 (global-set-key (kbd "M-n") 'smart-symbol-go-forward)
 (global-set-key (kbd "M-p") 'smart-symbol-go-backward)
+(global-set-key (kbd "C-c m p") 'mpc-play-dir)
+(global-set-key (kbd "C-c m q") 'mpc-queue-dir)
+(global-set-key (kbd "C-c m c") 'mpc-clear-playlist)

@@ -3,8 +3,9 @@
 ;;; Code:
 
 
-;;;### (autoloads nil nil ("findr-pkg.el" "findr.el") (19369 26151
-;;;;;;  422934))
+;;;### (autoloads nil nil ("../../../../.emacs.d/elpa/findr-0.7/findr-pkg.el"
+;;;;;;  "../../../../.emacs.d/elpa/findr-0.7/findr.el") (19800 30289
+;;;;;;  888300))
 
 ;;;***
 

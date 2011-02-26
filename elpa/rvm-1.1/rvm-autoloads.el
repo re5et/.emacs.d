@@ -4,8 +4,8 @@
 
 
 ;;;### (autoloads (rvm-use rvm-activate-corresponding-ruby rvm-use-default)
-;;;;;;  "rvm" "rvm.el" (19641 12764))
-;;; Generated autoloads from rvm.el
+;;;;;;  "rvm" "../../../../.emacs.d/elpa/rvm-1.1/rvm.el" (19800 19394))
+;;; Generated autoloads from ../../../../.emacs.d/elpa/rvm-1.1/rvm.el
 
 (autoload 'rvm-use-default "rvm" "\
 use the rvm-default ruby as the current ruby version
@@ -26,7 +26,9 @@ switch the current ruby version to any ruby, which is installed with rvm
 
 ;;;***
 
-;;;### (autoloads nil nil ("rvm-pkg.el") (19641 12765 95803))
+;;;### (autoloads nil nil ("../../../../.emacs.d/elpa/rvm-1.1/rvm-pkg.el"
+;;;;;;  "../../../../.emacs.d/elpa/rvm-1.1/rvm.el") (19800 19394
+;;;;;;  786879))
 
 ;;;***
 

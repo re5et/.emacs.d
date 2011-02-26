@@ -3,9 +3,9 @@
 ;;; Code:
 
 
-;;;### (autoloads (ruby-test-mode) "ruby-test-mode" "ruby-test-mode.el"
-;;;;;;  (19600 11681))
-;;; Generated autoloads from ruby-test-mode.el
+;;;### (autoloads (ruby-test-mode) "ruby-test-mode" "../../../../.emacs.d/elpa/ruby-test-mode-1.0/ruby-test-mode.el"
+;;;;;;  (19800 19395))
+;;; Generated autoloads from ../../../../.emacs.d/elpa/ruby-test-mode-1.0/ruby-test-mode.el
 
 (autoload 'ruby-test-mode "ruby-test-mode" "\
 Toggle Ruby-Test minor mode.
@@ -17,8 +17,9 @@ mode.
 
 ;;;***
 
-;;;### (autoloads nil nil ("ruby-test-mode-pkg.el") (19600 11681
-;;;;;;  541170))
+;;;### (autoloads nil nil ("../../../../.emacs.d/elpa/ruby-test-mode-1.0/ruby-test-mode-pkg.el"
+;;;;;;  "../../../../.emacs.d/elpa/ruby-test-mode-1.0/ruby-test-mode.el")
+;;;;;;  (19800 19396 80611))
 
 ;;;***
 

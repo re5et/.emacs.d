@@ -6,8 +6,9 @@
 ;;;### (autoloads (highline-view-off highline-view-on highline-view-mode
 ;;;;;;  highline-off highline-on highline-local-mode highline-mode-off
 ;;;;;;  highline-mode-on highline-mode highline-customize) "highline"
-;;;;;;  "highline.el" (19369 26068))
-;;; Generated autoloads from highline.el
+;;;;;;  "../../../../.emacs.d/elpa/highline-4.2/highline.el" (19800
+;;;;;;  30409))
+;;; Generated autoloads from ../../../../.emacs.d/elpa/highline-4.2/highline.el
 
 (autoload 'highline-customize "highline" "\
 Customize highline group.
@@ -106,7 +107,9 @@ See also `highline-selected-window'.
 
 ;;;***
 
-;;;### (autoloads nil nil ("highline-pkg.el") (19369 26068 50720))
+;;;### (autoloads nil nil ("../../../../.emacs.d/elpa/highline-4.2/highline-pkg.el"
+;;;;;;  "../../../../.emacs.d/elpa/highline-4.2/highline.el") (19800
+;;;;;;  30409 705248))
 
 ;;;***
 

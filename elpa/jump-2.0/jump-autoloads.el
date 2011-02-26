@@ -3,8 +3,9 @@
 ;;; Code:
 
 
-;;;### (autoloads (defjump) "jump" "jump.el" (19369 26153))
-;;; Generated autoloads from jump.el
+;;;### (autoloads (defjump) "jump" "../../../../.emacs.d/elpa/jump-2.0/jump.el"
+;;;;;;  (19800 30291))
+;;; Generated autoloads from ../../../../.emacs.d/elpa/jump-2.0/jump.el
 
 (autoload 'defjump "jump" "\
 Define NAME as a function with behavior determined by SPECS.
@@ -37,7 +38,9 @@ find the current method which defaults to `which-function'.
 
 ;;;***
 
-;;;### (autoloads nil nil ("jump-pkg.el") (19369 26153 28748))
+;;;### (autoloads nil nil ("../../../../.emacs.d/elpa/jump-2.0/jump-pkg.el"
+;;;;;;  "../../../../.emacs.d/elpa/jump-2.0/jump.el") (19800 30291
+;;;;;;  793799))
 
 ;;;***
 

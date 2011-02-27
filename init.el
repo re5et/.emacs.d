@@ -42,6 +42,7 @@
 (load "rinari/rinari.el")
 (load custom-file 'noerror)
 (autoload 'idomenu "idomenu" nil t)
+(autoload 'comint-dynamic-complete-filename "comint" nil t)
 
 ;;; REQUIRE
 (require 'ido)
@@ -110,5 +111,5 @@
 (global-set-key (kbd "C-x C-r") 'ido-recentf-open)
 (global-set-key (kbd "C-c i f") 'insert-file-name)
 (global-set-key (kbd "C-c i d") 'insert-dir-name)
-
-(put 'narrow-to-region 'disabled nil)
+(global-set-key (kbd "M-/") 'hippie-expand)
+(global-set-key (kbd "M-?") 'comint-dynamic-complete-filename)

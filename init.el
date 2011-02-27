@@ -21,6 +21,7 @@
       next-line-add-newlines nil
       recentf-max-saved-items 50
       column-number-mode t
+			ido-max-directory-size 100000
       font-lock-maximum-decoration t)
 
 (setq-default kill-read-only-ok t)
@@ -38,7 +39,6 @@
 (load "mpd.el")
 (load "feature-mode/feature-mode.el")
 (load "my-functions.el")
-(load "insert-file-dir-name.el")
 (load "ido-everything.el")
 (load "rinari/rinari.el")
 (load custom-file 'noerror)

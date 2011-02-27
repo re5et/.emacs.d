@@ -39,6 +39,7 @@
 (load "feature-mode/feature-mode.el")
 (load "my-functions.el")
 (load "insert-file-dir-name.el")
+(load "ido-everything.el")
 (load "rinari/rinari.el")
 (load custom-file 'noerror)
 (autoload 'idomenu "idomenu" nil t)

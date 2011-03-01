@@ -32,10 +32,8 @@
 (let ((default-directory "~/.emacs.d/"))
   (normal-top-level-add-subdirs-to-load-path))
 
-;; ;;; LOAD
-;; (load "smartscan.el")
-;; (load "rename-file-and-buffer.el")
-;; (load "php-mode.el")
+;; LOAD
+(load "smartscan.el")
 (load "mpd.el")
 (load "feature-mode/feature-mode.el")
 (load "my-functions.el")

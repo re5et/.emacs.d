@@ -21,10 +21,11 @@
       next-line-add-newlines nil
       recentf-max-saved-items 50
       column-number-mode t
-			ido-max-directory-size 100000
+      ido-max-directory-size 100000
       font-lock-maximum-decoration t)
 
 (setq-default kill-read-only-ok t)
+(setq-default indent-tabs-mode nil)
 
 (fset 'yes-or-no-p 'y-or-n-p)
 

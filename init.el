@@ -6,7 +6,7 @@
                "http://marmalade-repo.org/packages/") t)
 (add-to-list 'package-archives
              '("elpa" . "http://tromey.com/elpa/"))
-;;; SETQ
+;;; SET STUFF
 (setq custom-file "~/.emacs.d/custom.el"
       tramp-default-method "ssh"
       ido-enable-flex-matching t

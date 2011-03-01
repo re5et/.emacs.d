@@ -113,3 +113,8 @@
 (global-set-key (kbd "C-c i d") 'insert-dir-name)
 (global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "M-?") 'comint-dynamic-complete-filename)
+(global-set-key (kbd "C-x :") 'execute-extended-command)
+;; wtf am i doing
+(define-key key-translation-map "\C-j" "\C-x")
+
+;;(setq auto-window-vscroll nil)

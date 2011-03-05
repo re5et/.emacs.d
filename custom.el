@@ -36,6 +36,7 @@
  '(tab-width 2)
  '(text-mode-hook (quote (turn-on-auto-fill text-mode-hook-identify)))
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))
+ '(whitespace-global-modes t)
  '(whitespace-line-column 800)
  '(yank-pop-change-selection t))
 

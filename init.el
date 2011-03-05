@@ -71,11 +71,16 @@
 
 ;; ;;; HOOKS
 (add-hook 'before-save-hook 'delete-trailing-whitespace) ;; go to hell trailing whitespace
+(add-hook 'find-file-hook 'delete-trailing-whitespace) ;; "
+(add-hook 'find-file-hook 'untabify-all)
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p) ;; make it executable if it should be (starts with #!)
+(add-hook 'after-save-hook 'untabify-all)
 (add-hook 'find-file-hooks 'goto-address-prog-mode)
+
 
 ;;; AUTO-MODE
 ;;(add-to-list 'auto-mode-alist '("\\.haml\\'" . haml-mode)) ;; haml-mode isn't autoing for some reason.
+(add-to-list 'auto-mode-alist '("\\.scss\\'" . css-mode)) ;; turn on css-mode for sass
 
 ;;; KEYBINDINGS
 (global-set-key (kbd "C-x C-c") 'dont-kill-emacs)

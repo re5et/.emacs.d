@@ -91,3 +91,7 @@ stuff up"
   (interactive)
   (yank)
   (indent-according-to-mode))
+
+(defun untabify-all ()
+  (interactive)
+  (untabify (point-min) (point-max)))

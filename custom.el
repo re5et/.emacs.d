@@ -94,6 +94,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:stipple nil :background "#050505" :foreground "#BBB" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))
+ '(erc-prompt-face ((t (:background "lightBlue2" :foreground "green" :weight bold))))
  '(font-lock-comment-delimiter-face ((t (:inherit font-lock-comment-face :foreground "#f90"))))
  '(font-lock-comment-face ((t (:foreground "#444"))))
  '(font-lock-function-name-face ((t (:foreground "#F90" :weight bold))))

@@ -1,6 +1,6 @@
 (defun dont-kill-emacs () ;; why would i close it?
   (interactive)
-  (error (substitute-command-keys "i can never die.")))
+  (error (substitute-command-keys "i can never be killed.")))
 
 (defun go-to-hell-bars ()
   (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
@@ -64,10 +64,8 @@ buffer read-only, so I suggest setting kill-read-only-ok to t."
   "indent all the gosh darned time."
   (indent-according-to-mode))
 
-;;(add-hook 'pre-command-hook 'my-auto-indent)
-;;(add-hook 'post-command-hook 'my-auto-indent)
-;; (remove-hook 'pre-command-hook 'my-auto-indent)
-;; (remove-hook 'post-command-hook 'my-auto-indent)
+(add-hook 'pre-command-hook 'my-auto-indent)
+(add-hook 'post-command-hook 'my-auto-indent)
 
 (defun disable-auto-indent ()
   "disable my-auto-indent in cases where it screws
@@ -95,3 +93,47 @@ stuff up"
 (defun untabify-all ()
   (interactive)
   (untabify (point-min) (point-max)))
+
+(defun flymake-goto-next-error-and-show ()
+  (interactive)
+  (flymake-goto-next-error)
+  (flymake-display-err-menu-for-current-line))
+
+(defun clone-line (dir)
+  "Copies current line up or down based on DIR, leaves cursor where it is"
+  (let ((line (buffer-substring (line-beginning-position) (line-end-position))))
+    (save-excursion
+      (if (equal dir "up")
+          (progn
+            (previous-line)))
+      (end-of-line)
+      (open-line 1)
+      (next-line)
+      (insert line))))
+
+(defun clone-line-up ()
+  (interactive)
+  (clone-line "up"))
+
+(defun clone-line-down ()
+  (interactive)
+  (clone-line "down"))
+
+(defun quick-rgrep-path-depth (shallowness)
+  (interactive)
+  (rgrep
+   (thing-at-point 'symbol)
+   "*"
+   (mapconcat 'identity
+              (reverse (last (reverse (split-string (buffer-file-name) "/")) shallowness)) "/")))
+
+(defun quick-rgrep ()
+  (interactive)
+  (quick-rgrep-path-depth 5))
+
+(defun quick-rgrep-path (dir)
+  (interactive "D")
+  (rgrep
+   (thing-at-point 'symbol)
+   (concat "*" (file-name-extension (buffer-file-name)))
+   dir))

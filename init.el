@@ -70,12 +70,16 @@
 (server-start)
 
 ;; ;;; HOOKS
-(add-hook 'before-save-hook 'delete-trailing-whitespace) ;; go to hell trailing whitespace
 (add-hook 'find-file-hook 'delete-trailing-whitespace) ;; "
 (add-hook 'find-file-hook 'untabify-all)
+(add-hook 'before-save-hook 'delete-trailing-whitespace) ;; go to hell trailing whitespace
+(add-hook 'before-save-hook 'untabify-all)
+
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p) ;; make it executable if it should be (starts with #!)
-(add-hook 'after-save-hook 'untabify-all)
-(add-hook 'find-file-hooks 'goto-address-prog-mode)
+
+(add-hook 'ruby-mode-hook (lambda ()
+                            (rvm-use-default)
+                            (flymake-ruby-load)))
 
 
 ;;; AUTO-MODE
@@ -105,8 +109,8 @@
 (global-set-key (kbd "C-k") 'could-eat-a-horse-kill)
 (global-set-key (kbd "C-c C-k") 'could-eat-a-horse-kill-whole-line)
 (global-set-key (kbd "C-y") 'yank-and-indent)
-;;(global-set-key (kbd "C-c C-k") 'copy-line)
-;;(global-set-key (kbd "C-c C-K") 'copy-whole-line)
+(global-set-key (kbd "C-S-p") 'clone-line-up)
+(global-set-key (kbd "C-S-n") 'clone-line-down)
 (global-set-key (kbd "C-,") 'indent-buffer)
 (global-set-key (kbd "C-c C-s") 'replace-string)
 (global-set-key (kbd "C-c C-S-s") 'replace-regexp)
@@ -118,8 +122,9 @@
 (global-set-key (kbd "C-c i d") 'insert-dir-name)
 (global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "M-?") 'comint-dynamic-complete-filename)
+(global-set-key (kbd "C-c e") 'flymake-goto-next-error-and-show)
 (global-set-key (kbd "C-x :") 'execute-extended-command)
+
 ;; wtf am i doing
 (define-key key-translation-map "\C-j" "\C-x")
-
-;;(setq auto-window-vscroll nil)
+(put 'narrow-to-region 'disabled nil)

@@ -1,4 +1,4 @@
-(defvar ido-enable-replace-completing-read nil
+(defvar ido-enable-replace-completing-read t
   "If t, use ido-completing-read instead of completing-read if possible.
 
     Set it to nil using let in around-advice for functions where the

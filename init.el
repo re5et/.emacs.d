@@ -26,9 +26,7 @@
 
 (setq-default kill-read-only-ok t)
 (setq-default indent-tabs-mode nil)
-
 (fset 'yes-or-no-p 'y-or-n-p)
-
 ;;; LOAD PATH
 (let ((default-directory "~/.emacs.d/"))
   (normal-top-level-add-subdirs-to-load-path))
@@ -40,6 +38,7 @@
 (load "my-functions.el")
 (load "ido-everything.el")
 (load "rinari/rinari.el")
+(load "regex-tool.el")
 (load custom-file 'noerror)
 (autoload 'idomenu "idomenu" nil t)
 (autoload 'comint-dynamic-complete-filename "comint" nil t)
@@ -50,11 +49,23 @@
 (require 'recentf)
 (require 'highline)
 (require 'rinari)
+(require 'regex-tool)
+;; (require 'auto-complete)
+;; (setq ac-sources '(ac-source-symbols
+;;                     ac-source-abbrev
+;;                     ac-source-filename
+;;                     ac-source-imenu
+;;                     ac-source-words-in-all-buffer
+;;                     ac-source-words-in-same-mode-buffers))
 ;;(require 'moccur-edit)
 ;;(require 'elscreen)
 ;;(require 'paren)
 ;;(require 'smarttabs)
 ;;(require 'yasnippet)
+
+(setq rsense-home "/usr/bin/rsense-0.3")
+(add-to-list 'load-path (concat rsense-home "/etc"))
+(require 'rsense)
 
 ;;; CALL STUFF
 (ido-mode t)
@@ -97,7 +108,7 @@
 (global-set-key (kbd "C-c d") 'make-directory)
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
-(global-set-key (kbd "C-c C-g") 'magit-status)
+(global-set-key (kbd "C-x C-g") 'magit-status)
 (global-set-key (kbd "M-n") 'smart-symbol-go-forward)
 (global-set-key (kbd "M-p") 'smart-symbol-go-backward)
 (global-set-key (kbd "C-c b") 'moccur)
@@ -112,8 +123,8 @@
 (global-set-key (kbd "C-S-p") 'clone-line-up)
 (global-set-key (kbd "C-S-n") 'clone-line-down)
 (global-set-key (kbd "C-,") 'indent-buffer)
-(global-set-key (kbd "C-c C-s") 'replace-string)
-(global-set-key (kbd "C-c C-S-s") 'replace-regexp)
+(global-set-key (kbd "M-s s") 'replace-string)
+(global-set-key (kbd "M-s S") 'replace-regexp)l
 (global-set-key (kbd "C-c C-e") 'eshell)
 (global-set-key (kbd "C-c C-d") 'c-hungry-delete-forward)
 (global-set-key (kbd "C-c <backspace>") 'c-hungry-delete-backwards)
@@ -124,7 +135,11 @@
 (global-set-key (kbd "M-?") 'comint-dynamic-complete-filename)
 (global-set-key (kbd "C-c e") 'flymake-goto-next-error-and-show)
 (global-set-key (kbd "C-x :") 'execute-extended-command)
+(global-set-key (kbd "C-c M-v") 'scroll-other-window-down)
+(global-set-key (kbd "C-c C-v") 'scroll-other-window)
+(global-set-key (kbd "C-o") 'loccur-current)
 
 ;; wtf am i doing
 (define-key key-translation-map "\C-j" "\C-x")
+
 (put 'narrow-to-region 'disabled nil)

@@ -37,7 +37,6 @@
 (load "feature-mode/feature-mode.el")
 (load "my-functions.el")
 (load "rinari/rinari.el")
-(load "loccur.el")
 (load custom-file 'noerror)
 (autoload 'mo-git-blame-file "mo-git-blame" nil t)
 (autoload 'mo-git-blame-current "mo-git-blame" nil t)
@@ -52,6 +51,7 @@
 (require 'rinari)
 (require 'regex-tool)
 (require 'find-file-in-git-repo)
+(require 'all)
 ;; (require 'auto-complete)
 ;; (setq ac-sources '(ac-source-symbols
 ;;                     ac-source-abbrev

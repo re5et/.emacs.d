@@ -36,10 +36,11 @@
 (load "mpd.el")
 (load "feature-mode/feature-mode.el")
 (load "my-functions.el")
-(load "ido-everything.el")
 (load "rinari/rinari.el")
-(load "regex-tool.el")
+(load "loccur.el")
 (load custom-file 'noerror)
+(autoload 'mo-git-blame-file "mo-git-blame" nil t)
+(autoload 'mo-git-blame-current "mo-git-blame" nil t)
 (autoload 'idomenu "idomenu" nil t)
 (autoload 'comint-dynamic-complete-filename "comint" nil t)
 
@@ -50,6 +51,7 @@
 (require 'highline)
 (require 'rinari)
 (require 'regex-tool)
+(require 'find-file-in-git-repo)
 ;; (require 'auto-complete)
 ;; (setq ac-sources '(ac-source-symbols
 ;;                     ac-source-abbrev
@@ -57,6 +59,7 @@
 ;;                     ac-source-imenu
 ;;                     ac-source-words-in-all-buffer
 ;;                     ac-source-words-in-same-mode-buffers))
+;;(require 'moccur-color)
 ;;(require 'moccur-edit)
 ;;(require 'elscreen)
 ;;(require 'paren)
@@ -80,7 +83,7 @@
 ;;(yas/load-directory "~/.emacs.d/snippets")
 (server-start)
 
-;; ;;; HOOKS
+;; ;;; HOKS
 (add-hook 'find-file-hook 'delete-trailing-whitespace) ;; "
 (add-hook 'find-file-hook 'untabify-all)
 (add-hook 'before-save-hook 'delete-trailing-whitespace) ;; go to hell trailing whitespace
@@ -96,6 +99,7 @@
 ;;; AUTO-MODE
 ;;(add-to-list 'auto-mode-alist '("\\.haml\\'" . haml-mode)) ;; haml-mode isn't autoing for some reason.
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . css-mode)) ;; turn on css-mode for sass
+(add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode)) ;; turn on ruby-mode for rakefiles
 
 ;;; KEYBINDINGS
 (global-set-key (kbd "C-x C-c") 'dont-kill-emacs)
@@ -108,7 +112,7 @@
 (global-set-key (kbd "C-c d") 'make-directory)
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
-(global-set-key (kbd "C-x C-g") 'magit-status)
+(global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "M-n") 'smart-symbol-go-forward)
 (global-set-key (kbd "M-p") 'smart-symbol-go-backward)
 (global-set-key (kbd "C-c b") 'moccur)
@@ -124,11 +128,12 @@
 (global-set-key (kbd "C-S-n") 'clone-line-down)
 (global-set-key (kbd "C-,") 'indent-buffer)
 (global-set-key (kbd "M-s s") 'replace-string)
-(global-set-key (kbd "M-s S") 'replace-regexp)l
+(global-set-key (kbd "M-s S") 'replace-regexp)
 (global-set-key (kbd "C-c C-e") 'eshell)
 (global-set-key (kbd "C-c C-d") 'c-hungry-delete-forward)
 (global-set-key (kbd "C-c <backspace>") 'c-hungry-delete-backwards)
 (global-set-key (kbd "C-x C-r") 'ido-recentf-open)
+(global-set-key (kbd "C-x M-f") 'find-file-in-git-repo)
 (global-set-key (kbd "C-c i f") 'insert-file-name)
 (global-set-key (kbd "C-c i d") 'insert-dir-name)
 (global-set-key (kbd "M-/") 'hippie-expand)
@@ -143,3 +148,24 @@
 (define-key key-translation-map "\C-j" "\C-x")
 
 (put 'narrow-to-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+
+
+(defun jslint-thisfile ()
+  (interactive)
+  (compile (format "jsl -process %s" (buffer-file-name))))
+
+(add-hook 'javascript-mode-hook
+          '(lambda ()
+             (local-set-key [f8] 'jslint-thisfile)))
+
+(require 'smex)
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(global-set-key (kbd "C-x M-f") 'find-file-in-git-repo)
+(global-set-key (kbd "C-x K") 'kill-focused-buffer)
+
+(defun kill-focused-buffer ()
+  (interactive)
+  (kill-buffer (current-buffer)))

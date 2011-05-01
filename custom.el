@@ -103,6 +103,7 @@
  '(font-lock-function-name-face ((t (:foreground "#F90" :weight bold))))
  '(font-lock-string-face ((t (:foreground "#c00"))))
  '(font-lock-variable-name-face ((t (:foreground "#FF0" :weight bold))))
+ '(highlight ((t (:background "#330"))))
  '(highline-face ((t (:background "#000"))))
  '(highline-vertical-face ((t (:background "#030303"))))
  '(isearch ((t (:background "#220022" :foreground "#FF00FF"))))

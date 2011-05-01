@@ -1,5 +1,4 @@
 ;;; DOT EMACS
-
 (require 'package)
 (add-to-list 'package-archives
              '("marmalade" .
@@ -169,3 +168,5 @@
 (defun kill-focused-buffer ()
   (interactive)
   (kill-buffer (current-buffer)))
+
+(setq magit-completing-read 'ido-completing-read)

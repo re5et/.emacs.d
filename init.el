@@ -71,7 +71,7 @@
 
 ;;; CALL STUFF
 (ido-mode t)
-(transient-mark-mode 0)
+(transient-mark-mode t)
 (go-to-hell-bars)
 (recentf-mode t)
 (autopair-global-mode t)

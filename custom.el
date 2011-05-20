@@ -113,6 +113,7 @@
  '(magit-item-highlight ((t (:background "#001"))))
  '(mode-line ((t (:background "#111" :foreground "#991"))))
  '(regex-tool-matched-face ((t (:background "#020" :foreground "Orange" :weight bold))))
+ '(region ((t (:background "#110011"))))
  '(show-paren-match ((t (:background "#06F" :foreground "#000" :weight ultra-bold))))
  '(show-paren-mismatch ((t (:background "#F00" :foreground "white" :weight ultra-bold))))
  '(whitespace-hspace ((t (:foreground "#222"))))

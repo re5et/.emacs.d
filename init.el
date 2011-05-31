@@ -164,9 +164,7 @@
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-x M-f") 'find-file-in-git-repo)
 (global-set-key (kbd "C-x K") 'kill-focused-buffer)
+(global-set-key (kbd "C-x f") 'toggle-full-window)
 
-(defun kill-focused-buffer ()
-  (interactive)
-  (kill-buffer (current-buffer)))
 
 (setq magit-completing-read 'ido-completing-read)

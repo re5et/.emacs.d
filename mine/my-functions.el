@@ -191,3 +191,15 @@ stuff up"
 ;;      (replace-perl-regexp (region-beginning) (region-end) pattern replace)
 ;;      (set-buffer current-buffer)))
 
+
+(defun toggle-full-window ()
+  (interactive)
+  (if (one-window-p)
+      (set-window-configuration toggle-full-window)
+    (progn
+      (setq toggle-full-window (current-window-configuration))
+      (delete-other-windows))))3
+
+(defun kill-focused-buffer ()
+  (interactive)
+  (kill-buffer (current-buffer)))

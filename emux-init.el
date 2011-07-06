@@ -34,18 +34,52 @@
 (go-to-hell-bars)
 (auto-compression-mode 1) ; Lets emacs uncompress .gz files before opening them
 (define-key key-translation-map "\C-j" "\C-x")
-(require 'smex)
-(smex-initialize)
-
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-(global-set-key (kbd "C-x K") 'kill-focused-buffer)
 
 (setq frame-title-format "emux")
 (setq ansi-term-color-vector [unspecified "black" "red" "green" "yellow" "royal blue" "magenta" "cyan" "white"])
 
+(require 'ido)
+(ido-mode t)
+
+(require 'smex)
+(smex-initialize)
+
 (require 'highline)
 (highline-mode)
 
+(require 'winner)
+(winner-mode t)
 
 (require 'emux)
+
+;(emux-create-terminal)
+
+(global-set-key (kbd "M-x")     'smex)
+(global-set-key (kbd "M-X")     'smex-major-mode-commands)
+(global-set-key (kbd "C-x K")   'kill-focused-buffer)
+(global-set-key (kbd "C-?")     'winner-undo)
+(global-set-key (kbd "M-?")     'winner-redo)
+(global-set-key (kbd "C-x c")   'emux-create-terminal)
+(global-set-key (kbd "C-x -")   'emux-vsplit)
+(global-set-key (kbd "C-x |")   'emux-hsplit)
+(global-set-key (kbd "C-x C")   'emux-create-screen)
+(global-set-key (kbd "C-x r")   'emux-rename-terminal)
+(global-set-key (kbd "C-x R")   'emux-rename-screen)
+(global-set-key (kbd "M-l")     'next-multiframe-window)
+(global-set-key (kbd "M-h")     'previous-multiframe-window)
+(global-set-key (kbd "M-L")     'elscreen-next)
+(global-set-key (kbd "M-H")     'elscreen-previous)
+(global-set-key (kbd "C-x n")   'elscreen-next)
+(global-set-key (kbd "C-x p")   'elscreen-previous)
+(global-set-key (kbd "C-x s")   'emux-switch-screen)
+(global-set-key (kbd "C-x M-s")   'emux-jump-to-screen)
+(global-set-key (kbd "C-x S")   'emux-switch-session)
+(global-set-key (kbd "C-x b") 'emux-jump-to-buffer)
+(global-set-key (kbd "C-x M-b") 'ido-switch-buffer)
+(global-set-key (kbd "C-x K")   'emux-kill-remove-split)
+(global-set-key (kbd "C-x f")   'emux-toggle-full-window)
+(global-set-key (kbd "C-x P")   'emux-load-session-template)
+(global-set-key (kbd "C-S-y")   'emux-yank)
+(global-set-key (kbd "C-x C-S-k") 'emux-destroy-session)
+
+(emux-initialize)

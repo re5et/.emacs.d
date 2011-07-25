@@ -1710,86 +1710,86 @@ function can be enriched by magit extension like magit-topgit and magit-svn"
       (view-mode 1)
       (set (make-local-variable 'view-no-disable-on-exit) t)
       (setq view-exit-action
-	    (lambda (buffer)
-	      (with-current-buffer buffer
-		(bury-buffer))))
+      (lambda (buffer)
+        (with-current-buffer buffer
+    (bury-buffer))))
       (setq buffer-read-only t)
       (let ((inhibit-read-only t))
-	(setq default-directory dir)
-	(if noerase
-	    (goto-char (point-max))
-	  (erase-buffer))
-	(insert "$ " (or logline
-			 (magit-concat-with-delim " " cmd-and-args))
-		"\n")
-	(cond (nowait
-	       (setq magit-process
-		     (let ((process-connection-type magit-process-connection-type))
-		       (apply 'magit-start-process cmd buf cmd args)))
-	       (set-process-sentinel magit-process 'magit-process-sentinel)
-	       (set-process-filter magit-process 'magit-process-filter)
-	       (when input
-		 (with-current-buffer input
-		   (process-send-region magit-process
-					(point-min) (point-max)))
-		 (process-send-eof magit-process)
-		 (sit-for 0.1 t))
-	       (cond ((= magit-process-popup-time 0)
-		      (pop-to-buffer (process-buffer magit-process)))
-		     ((> magit-process-popup-time 0)
-		      (run-with-timer
-		       magit-process-popup-time nil
-		       (function
-			(lambda (buf)
-			  (with-current-buffer buf
-			    (when magit-process
-			      (display-buffer (process-buffer magit-process))
-			      (goto-char (point-max))))))
-		       (current-buffer))))
-	       (setq successp t))
-	      (input
-	       (with-current-buffer input
-		 (setq default-directory dir)
-		 (setq magit-process
-		       ;; Don't use a pty, because it would set icrnl
-		       ;; which would modify the input (issue #20).
-		       (let ((process-connection-type nil))
-			 (apply 'magit-start-process cmd buf cmd args)))
-		 (set-process-filter magit-process 'magit-process-filter)
-		 (process-send-region magit-process
-				      (point-min) (point-max))
-		 (process-send-eof magit-process)
-		 (while (equal (process-status magit-process) 'run)
-		   (sit-for 0.1 t))
-		 (setq successp
-		       (equal (process-exit-status magit-process) 0))
-		 (setq magit-process nil))
-	       (magit-set-mode-line-process nil)
-	       (magit-need-refresh magit-process-client-buffer))
-	      (t
-	       (setq successp
-		     (equal (apply 'process-file cmd nil buf nil args) 0))
-	       (magit-set-mode-line-process nil)
-	       (magit-need-refresh magit-process-client-buffer))))
+  (setq default-directory dir)
+  (if noerase
+      (goto-char (point-max))
+    (erase-buffer))
+  (insert "$ " (or logline
+       (magit-concat-with-delim " " cmd-and-args))
+    "\n")
+  (cond (nowait
+         (setq magit-process
+         (let ((process-connection-type magit-process-connection-type))
+           (apply 'magit-start-process cmd buf cmd args)))
+         (set-process-sentinel magit-process 'magit-process-sentinel)
+         (set-process-filter magit-process 'magit-process-filter)
+         (when input
+     (with-current-buffer input
+       (process-send-region magit-process
+          (point-min) (point-max)))
+     (process-send-eof magit-process)
+     (sit-for 0.1 t))
+         (cond ((= magit-process-popup-time 0)
+          (magit-display-process))
+         ((> magit-process-popup-time 0)
+          (run-with-timer
+           magit-process-popup-time nil
+           (function
+      (lambda (buf)
+        (with-current-buffer buf
+          (when magit-process
+            (magit-display-process)
+            (goto-char (point-max))))))
+           (current-buffer))))
+         (setq successp t))
+        (input
+         (with-current-buffer input
+     (setq default-directory dir)
+     (setq magit-process
+           ;; Don't use a pty, because it would set icrnl
+           ;; which would modify the input (issue #20).
+           (let ((process-connection-type nil))
+       (apply 'magit-start-process cmd buf cmd args)))
+     (set-process-filter magit-process 'magit-process-filter)
+     (process-send-region magit-process
+              (point-min) (point-max))
+     (process-send-eof magit-process)
+     (while (equal (process-status magit-process) 'run)
+       (sit-for 0.1 t))
+     (setq successp
+           (equal (process-exit-status magit-process) 0))
+     (setq magit-process nil))
+         (magit-set-mode-line-process nil)
+         (magit-need-refresh magit-process-client-buffer))
+        (t
+         (setq successp
+         (equal (apply 'process-file cmd nil buf nil args) 0))
+         (magit-set-mode-line-process nil)
+         (magit-need-refresh magit-process-client-buffer))))
       (or successp
-	  noerror
-	  (error
-	   (or (with-current-buffer (get-buffer magit-process-buffer-name)
-		 (when (re-search-backward
-			(concat "^error: \\(.*\\)" paragraph-separate) nil t)
-		   (match-string 1)))
-	       "Git failed")))
+    noerror
+    (error
+     (or (with-current-buffer (get-buffer magit-process-buffer-name)
+     (when (re-search-backward
+      (concat "^error: \\(.*\\)" paragraph-separate) nil t)
+       (match-string 1)))
+         "Git failed")))
       successp)))
 
 (autoload 'dired-uncache "dired")
 (defun magit-process-sentinel (process event)
   (let ((msg (format "Git %s." (substring event 0 -1)))
-	(successp (string-match "^finished" event)))
+  (successp (string-match "^finished" event)))
     (with-current-buffer (process-buffer process)
       (let ((inhibit-read-only t))
-	(goto-char (point-max))
-	(insert msg "\n")
-	(message msg))
+  (goto-char (point-max))
+  (insert msg "\n")
+  (message msg))
       (unless (memq (process-status process) '(run open))
         (dired-uncache default-directory)))
     (setq magit-process nil)
@@ -1860,7 +1860,13 @@ function can be enriched by magit extension like magit-topgit and magit-svn"
   (interactive)
   (unless (get-buffer magit-process-buffer-name)
     (error "No Git commands have run"))
-  (display-buffer magit-process-buffer-name))
+  (split-window-vertically)
+  (other-window 1)
+  (switch-to-buffer magit-process-buffer-name)
+  (setq view-exit-action (lambda (buf)
+                           (delete-window  (get-buffer-window buf))
+                           (other-window 1))))
+
 
 ;;; Mode
 

@@ -95,6 +95,9 @@
                             (rvm-use-default)
                             (flymake-ruby-load)))
 
+(add-hook 'magit-log-edit-mode-hook (lambda ()
+                                 (flyspell-mode)
+                                 ))
 
 ;;; AUTO-MODE
 ;;(add-to-list 'auto-mode-alist '("\\.haml\\'" . haml-mode)) ;; haml-mode isn't autoing for some reason.
@@ -112,6 +115,7 @@
 (global-set-key (kbd "C-c d") 'make-directory)
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c f") 'flyspell-correct-word-before-point)
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "M-n") 'smart-symbol-go-forward)
 (global-set-key (kbd "M-p") 'smart-symbol-go-backward)

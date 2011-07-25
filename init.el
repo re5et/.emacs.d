@@ -7,6 +7,8 @@
              '("elpa" . "http://tromey.com/elpa/"))
 ;;; SET STUFF
 (setq custom-file "~/.emacs.d/custom.el"
+      bkup-backup-directory-info '((t "~/.emackups" ok-create full-path prepend-name))
+      inferior-lisp-program "clisp -K full"
       tramp-default-method "ssh"
       ido-enable-flex-matching t
       org-agenda-files (list "~/org/todo.org")
@@ -23,10 +25,12 @@
       ido-max-directory-size 100000
       magit-completing-read 'ido-completing-read
       font-lock-maximum-decoration t)
-
 (setq-default kill-read-only-ok t)
 (setq-default indent-tabs-mode nil)
 (fset 'yes-or-no-p 'y-or-n-p)
+(put 'narrow-to-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+
 ;;; LOAD PATH
 (let ((default-directory "~/.emacs.d/"))
   (normal-top-level-add-subdirs-to-load-path))
@@ -37,13 +41,19 @@
 (load "feature-mode/feature-mode.el")
 (load "my-functions.el")
 (load "rinari/rinari.el")
+(load "mine/hooks.el")
 (load custom-file 'noerror)
+(autoload 'paredit-mode "paredit"
+  "Minor mode for pseudo-structurally editing Lisp code." t)
+(autoload 'js2-mode "js2-mode" nil t)
 (autoload 'mo-git-blame-file "mo-git-blame" nil t)
 (autoload 'mo-git-blame-current "mo-git-blame" nil t)
 (autoload 'idomenu "idomenu" nil t)
 (autoload 'comint-dynamic-complete-filename "comint" nil t)
 
 ;;; REQUIRE
+(require 'slime)
+(require 'smex)
 (require 'ido)
 (require 'autopair)
 (require 'recentf)
@@ -52,8 +62,7 @@
 (require 'regex-tool)
 (require 'find-file-in-git-repo)
 (require 'backup-dir)
-(setq bkup-backup-directory-info
-      '((t "~/.emackups" ok-create full-path prepend-name)))
+
 ;; (require 'auto-complete)
 ;; (setq ac-sources '(ac-source-symbols
 ;;                     ac-source-abbrev
@@ -69,6 +78,7 @@
 ;;(require 'yasnippet)
 
 ;;; CALL STUFF
+(smex-initialize)
 (ido-mode t)
 (transient-mark-mode t)
 (go-to-hell-bars)
@@ -79,33 +89,8 @@
 ;;(yas/initialize)
 ;;(yas/load-directory "~/.emacs.d/snippets")
 
-;; HOOKS
-(add-hook 'find-file-hook 'delete-trailing-whitespace) ;; "
-(add-hook 'find-file-hook 'untabify-all)
-(add-hook 'before-save-hook 'delete-trailing-whitespace) ;; go to hell trailing whitespace
-(add-hook 'before-save-hook 'untabify-all)
-
-(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p) ;; make it executable if it should be (starts with #!)
-
-(add-hook 'ruby-mode-hook (lambda ()
-                            (autopair-mode)
-                            (rvm-use-default)
-                            (flymake-ruby-load)))
-
-(add-hook 'javascript-mode-hook (lambda ()
-                                  (autopair-mode)
-                                  ))
-
-(add-hook 'css-mode-hook (lambda ()
-                           (autopair-mode)
-                           ))
-
-(add-hook 'magit-log-edit-mode-hook (lambda ()
-                                 (flyspell-mode)
-                                 ))
-
 ;;; AUTO-MODE
-;;(add-to-list 'auto-mode-alist '("\\.haml\\'" . haml-mode)) ;; haml-mode isn't autoing for some reason.
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . css-mode)) ;; turn on css-mode for sass
 (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode)) ;; turn on ruby-mode for rakefiles
 
@@ -152,36 +137,11 @@
 (global-set-key (kbd "C-c M-v") 'scroll-other-window-down)
 (global-set-key (kbd "C-c C-v") 'scroll-other-window)
 (global-set-key (kbd "C-o") 'loccur-current)
-
-;; wtf am i doing
-(define-key key-translation-map "\C-j" "\C-x")
-
-(put 'narrow-to-region 'disabled nil)
-(put 'downcase-region 'disabled nil)
-
-
-(defun jslint-thisfile ()
-  (interactive)
-  (compile (format "jsl -process %s" (buffer-file-name))))
-
-(add-hook 'javascript-mode-hook
-          '(lambda ()
-             (local-set-key [f8] 'jslint-thisfile)))
-
-(require 'smex)
-(smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-x M-f") 'find-file-in-git-repo)
 (global-set-key (kbd "C-x K") 'kill-focused-buffer)
 (global-set-key (kbd "C-x f") 'toggle-full-window)
 
-(require 'slime)
-(setq inferior-lisp-program "clisp -K full")
-
-(autoload 'paredit-mode "paredit"
-  "Minor mode for pseudo-structurally editing Lisp code." t)
-(add-hook 'emacs-lisp-mode-hook           (lambda () (paredit-mode +1)))
-(add-hook 'lisp-mode-hook                 (lambda () (paredit-mode +1)))
-(add-hook 'lisp-interaction-mode-hook     (lambda () (paredit-mode +1)))
-(add-hook 'slime-repl-mode-hook           (lambda () (paredit-mode +1)))
+;; wtf am i doing
+(define-key key-translation-map "\C-j" "\C-x")

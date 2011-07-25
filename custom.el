@@ -27,6 +27,7 @@
  '(linum-delay t)
  '(linum-eager t)
  '(magit-commit-all-when-nothing-staged (quote ask-stage))
+ '(magit-process-popup-time 0)
  '(magit-save-some-buffers nil)
  '(mumamo-chunk-coloring 10)
  '(nxml-child-indent 2)

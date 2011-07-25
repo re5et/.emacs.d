@@ -76,9 +76,8 @@
 (auto-compression-mode 1) ; Lets emacs uncompress .gz files before opening them
 ;;(yas/initialize)
 ;;(yas/load-directory "~/.emacs.d/snippets")
-(server-start)
 
-;; ;;; HOKS
+;; HOOKS
 (add-hook 'find-file-hook 'delete-trailing-whitespace) ;; "
 (add-hook 'find-file-hook 'untabify-all)
 (add-hook 'before-save-hook 'delete-trailing-whitespace) ;; go to hell trailing whitespace

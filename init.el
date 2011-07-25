@@ -175,5 +175,12 @@
 (global-set-key (kbd "C-x K") 'kill-focused-buffer)
 (global-set-key (kbd "C-x f") 'toggle-full-window)
 
+(require 'slime)
+(setq inferior-lisp-program "clisp -K full")
 
-(setq magit-completing-read 'ido-completing-read)
+(autoload 'paredit-mode "paredit"
+  "Minor mode for pseudo-structurally editing Lisp code." t)
+(add-hook 'emacs-lisp-mode-hook           (lambda () (paredit-mode +1)))
+(add-hook 'lisp-mode-hook                 (lambda () (paredit-mode +1)))
+(add-hook 'lisp-interaction-mode-hook     (lambda () (paredit-mode +1)))
+(add-hook 'slime-repl-mode-hook           (lambda () (paredit-mode +1)))

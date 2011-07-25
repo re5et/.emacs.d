@@ -66,20 +66,6 @@
 (require 'find-file-in-git-repo)
 (require 'backup-dir)
 
-;; (require 'auto-complete)
-;; (setq ac-sources '(ac-source-symbols
-;;                     ac-source-abbrev
-;;                     ac-source-filename
-;;                     ac-source-imenu
-;;                     ac-source-words-in-all-buffer
-;;                     ac-source-words-in-same-mode-buffers))
-;;(require 'moccur-color)
-;;(require 'moccur-edit)
-;;(require 'elscreen)
-;;(require 'paren)
-;;(require 'smarttabs)
-;;(require 'yasnippet)
-
 ;;; CALL STUFF
 (smex-initialize)
 (ido-mode t)
@@ -89,8 +75,6 @@
 (show-paren-mode t)
 (highline-mode)
 (auto-compression-mode 1) ; Lets emacs uncompress .gz files before opening them
-;;(yas/initialize)
-;;(yas/load-directory "~/.emacs.d/snippets")
 
 ;;; AUTO-MODE
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))

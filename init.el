@@ -41,8 +41,8 @@
 (load "feature-mode/feature-mode.el")
 (load "my-functions.el")
 (load "rinari/rinari.el")
-(load "mine/hooks.el")
-(load "mine/keybindings.el")
+(load "hooks.el")
+(load "keybindings.el")
 (load custom-file 'noerror)
 
 ;; AUTOLOADS

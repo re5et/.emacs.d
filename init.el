@@ -75,7 +75,6 @@
 (transient-mark-mode t)
 (go-to-hell-bars)
 (recentf-mode t)
-(autopair-global-mode t)
 (show-paren-mode t)
 (highline-mode)
 (auto-compression-mode 1) ; Lets emacs uncompress .gz files before opening them
@@ -92,8 +91,17 @@
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p) ;; make it executable if it should be (starts with #!)
 
 (add-hook 'ruby-mode-hook (lambda ()
+                            (autopair-mode)
                             (rvm-use-default)
                             (flymake-ruby-load)))
+
+(add-hook 'javascript-mode-hook (lambda ()
+                                  (autopair-mode)
+                                  ))
+
+(add-hook 'css-mode-hook (lambda ()
+                           (autopair-mode)
+                           ))
 
 (add-hook 'magit-log-edit-mode-hook (lambda ()
                                  (flyspell-mode)

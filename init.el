@@ -66,10 +66,6 @@
 ;;(require 'smarttabs)
 ;;(require 'yasnippet)
 
-(setq rsense-home "/usr/bin/rsense-0.3")
-(add-to-list 'load-path (concat rsense-home "/etc"))
-(require 'rsense)
-
 ;;; CALL STUFF
 (ido-mode t)
 (transient-mark-mode t)

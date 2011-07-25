@@ -51,7 +51,9 @@
 (require 'rinari)
 (require 'regex-tool)
 (require 'find-file-in-git-repo)
-(require 'all)
+(require 'backup-dir)
+(setq bkup-backup-directory-info
+      '((t "~/.emackups" ok-create full-path prepend-name)))
 ;; (require 'auto-complete)
 ;; (setq ac-sources '(ac-source-symbols
 ;;                     ac-source-abbrev

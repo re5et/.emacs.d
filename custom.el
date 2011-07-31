@@ -31,6 +31,7 @@
  '(linum-delay t)
  '(linum-eager t)
  '(magit-commit-all-when-nothing-staged (quote ask-stage))
+ '(magit-completing-read-function (quote ido-completing-read))
  '(magit-process-popup-time 0)
  '(magit-save-some-buffers nil)
  '(mumamo-chunk-coloring 10)

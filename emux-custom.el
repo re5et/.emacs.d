@@ -25,7 +25,7 @@
  '(term-bind-key-alist (quote (("C-c C-c" . term-interrupt-subjob) ("C-S-p" . previous-line) ("C-S-s" . isearch-forward) ("C-S-r" . isearch-backward) ("C-m" . term-send-raw) ("M-f" . term-send-forward-word) ("M-b" . term-send-backward-word) ("M-o" . term-send-backspace) ("M-d" . term-send-forward-kill-word) ("M-DEL" . term-send-backward-kill-word) ("M-," . term-send-input) ("M-." . comint-dynamic-complete))))
  '(term-buffer-maximum-size 16384)
  '(term-default-bg-color "#000000")
- '(term-unbind-key-list (quote ("C-z" "C-x" "C-c" "C-h" "<ESC>")))
+ '(term-unbind-key-list (quote ("C-z" "C-x" "C-c" "C-h" "C-l" "<ESC>")))
  '(text-mode-hook (quote (turn-on-auto-fill text-mode-hook-identify)))
  '(tool-bar-mode nil)
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))

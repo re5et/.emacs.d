@@ -22,7 +22,8 @@
 (add-hook 'lisp-mode-hook                 (lambda () (paredit-mode +1)))
 (add-hook 'lisp-interaction-mode-hook     (lambda () (paredit-mode +1)))
 (add-hook 'slime-repl-mode-hook           (lambda () (paredit-mode +1)))
-(add-hook 'find-file-hook 'auto-make-directory)
+
+(add-hook 'before-save-hook 'auto-make-directory)
 (defun auto-make-directory ()
   (let ((dir (file-name-directory (buffer-file-name))))
     (unless (file-readable-p dir)

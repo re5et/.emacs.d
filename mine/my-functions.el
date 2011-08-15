@@ -155,11 +155,11 @@ stuff up"
 (defun replace-perl-regexp (&optional begin end pattern replace)
   (interactive "r")
   (let ((backto (point)))p
-    (shell-command-on-region
-     begin end
-     (format "perl -pe 's/%s/%s/g'" pattern replace)
-     nil t)
-    (goto-char backto)))
+       (shell-command-on-region
+        begin end
+        (format "perl -pe 's/%s/%s/g'" pattern replace)
+        nil t)
+       (goto-char backto)))
 
 (defun region-replace-perl-regexp (pattern replace)
   (replace-perl-regexp (region-beginning) (region-end) pattern replace))
@@ -192,14 +192,46 @@ stuff up"
 ;;      (set-buffer current-buffer)))
 
 
-(defun toggle-full-window ()
-  (interactive)
-  (if (one-window-p)
-      (set-window-configuration toggle-full-window)
-    (progn
-      (setq toggle-full-window (current-window-configuration))
-      (delete-other-windows))))3
-
 (defun kill-focused-buffer ()
   (interactive)
   (kill-buffer (current-buffer)))
+
+;; (defmacro full-frame-toggler (toggler-name &optional fn)
+;;   (let ((name
+;;          (intern (mapconcat
+;;                   'symbol-name
+;;                   `(,toggler-name toggler)
+;;                   "-"))))
+;;     `(defun ,name ()
+;;         (interactive)
+;;        (if (and (one-window-p) (boundp ',name))
+;;            (set-window-configuration ,name)
+;;          (progn
+;;            (setq ,name (current-window-configuration))
+;;            (delete-other-windows)
+;;            (and ,fn (funcall ,fn)))))))
+
+(defmacro toggler (toggler-name &optional fn full)
+  (let ((name
+         (intern
+          (mapconcat
+           'symbol-name
+           `(,toggler-name toggler)
+           "-"))))
+    `(defun ,name ()
+       (interactive)
+       (message (format "%s %s" ',toggler-name "toggled"))
+       (if (and (boundp ',name) (car ,name))
+           (progn
+             (set-window-configuration (cadr ,name))
+             (setq ,name '(nil nil)))
+         (progn
+           (setq ,name `(t ,(current-window-configuration)))
+           (and ,full (delete-other-windows))
+           (and ,fn (funcall ,fn)))))))
+
+(toggler scratch (lambda () (switch-to-buffer "*scratch*")) t)
+(toggler dired (lambda () (dired default-directory)) t)
+;(toggler magit (lambda () (switch-to-buffer (magit-find-buffer 'status default-directory))) t)
+(toggler term (lambda () (term "/bin/zsh")) t)
+(toggler embiggen nil t)

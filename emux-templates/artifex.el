@@ -1,6 +1,6 @@
 (emux-set-session-pwd "~/code/artifex")
 (emux-create-screen nil "garbage" "rake jasmine")
-(emux-create-terminal "mongodb" "rm -rf /data/db/mongod.lock && ~/.mongo/mongodb-linux-x86_64-1.6.5/bin/mongod")
+(emux-create-terminal "mongodb" "rm -rf /data/db/mongod.lock && mongod")
 (emux-create-terminal "rs" "rs")
 (emux-hsplit "rc" "rc")
 (emux-vsplit "mongo" "sleep 5 && mongo artifex_development")

@@ -44,7 +44,7 @@
 (global-set-key (kbd "C-<return>") 'embiggen-toggler)
 (global-set-key (kbd "C-x ;") 'scratch-toggler)
 (global-set-key (kbd "C-x d") 'dired-toggler)
-(global-set-key (kbd "C-x g") 'magit-toggler)
+(global-set-key (kbd "C-x g") 'magit-status)
 
 (define-key dired-mode-map (kbd "q") 'dired-toggler)
 (define-key dired-mode-map (kbd "<backspace>") 'dired-up-directory)

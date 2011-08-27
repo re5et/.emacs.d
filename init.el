@@ -1,4 +1,5 @@
 ;;; DOT EMACS
+(server-start)
 
 ;;; LOAD PATH
 (let ((default-directory "~/.emacs.d/"))

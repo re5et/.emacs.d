@@ -196,20 +196,25 @@ stuff up"
   (interactive)
   (kill-buffer (current-buffer)))
 
-;; (defmacro full-frame-toggler (toggler-name &optional fn)
-;;   (let ((name
-;;          (intern (mapconcat
-;;                   'symbol-name
-;;                   `(,toggler-name toggler)
-;;                   "-"))))
-;;     `(defun ,name ()
-;;         (interactive)
-;;        (if (and (one-window-p) (boundp ',name))
-;;            (set-window-configuration ,name)
-;;          (progn
-;;            (setq ,name (current-window-configuration))
-;;            (delete-other-windows)
-;;            (and ,fn (funcall ,fn)))))))
+(defun next-in-frame-window ()
+  (interactive)
+  (select-window (next-window)))
+
+(defun previous-in-frame-window ()
+  (interactive)
+  (select-window (previous-window)))
+
+(defun start-emux ()
+  (unless (featurep 'emux)
+    (require 'emux)
+    (emux-initialize))
+  (unless (member
+           "emux"
+           (mapcar
+            (lambda (frame) (frame-parameter frame 'name))
+            (frame-list)))
+    (modify-frame-parameters nil (list (cons 'name "emacs")))
+    (modify-frame-parameters (make-frame) (list (cons 'name "emux")))))
 
 (defmacro toggler (toggler-name &optional fn full)
   (let ((name
@@ -232,25 +237,6 @@ stuff up"
 
 (toggler scratch (lambda () (switch-to-buffer "*scratch*")) t)
 (toggler dired (lambda () (dired default-directory)) t)
-;(toggler magit (lambda () (switch-to-buffer (magit-find-buffer 'status default-directory))) t)
+(toggler music (lambda () (emms-smart-browse)) t)
 (toggler term (lambda () (term "/bin/zsh")) t)
 (toggler embiggen nil t)
-(defun next-in-frame-window ()
-  (interactive)
-  (select-window (next-window)))
-
-(defun previous-in-frame-window ()
-  (interactive)
-  (select-window (previous-window)))
-
-(defun start-emux ()
-  (unless (featurep 'emux)
-    (require 'emux)
-    (emux-initialize))
-  (unless (member
-           "emux"
-           (mapcar
-            (lambda (frame) (frame-parameter frame 'name))
-            (frame-list)))
-    (modify-frame-parameters nil (list (cons 'name "emacs")))
-    (modify-frame-parameters (make-frame) (list (cons 'name "emux")))))

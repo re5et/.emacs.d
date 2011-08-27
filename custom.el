@@ -3,6 +3,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-term-color-vector [unspecified "white" "red" "green" "yellow" "royal blue" "magenta" "cyan" "white"] t)
  '(column-highlight-mode t)
  '(column-number-mode t)
  '(crosshairs-overlay-priority 100)
@@ -14,7 +15,6 @@
  '(global-linum-mode t)
  '(global-whitespace-mode t)
  '(highline-selected-window t)
- '(highline-vertical (quote (1 . 1)))
  '(ido-auto-merge-delay-time 3)
  '(ido-everywhere t)
  '(indent-tabs-mode t)
@@ -34,6 +34,9 @@
  '(magit-completing-read-function (quote ido-completing-read))
  '(magit-process-popup-time 0)
  '(magit-save-some-buffers nil)
+ '(multi-term-program "/bin/zsh")
+ '(multi-term-scroll-show-maximum-output t)
+ '(multi-term-scroll-to-bottom-on-output t)
  '(mumamo-chunk-coloring 10)
  '(nxml-child-indent 2)
  '(nxml-outline-child-indent 2)
@@ -42,36 +45,16 @@
  '(sgml-basic-offset 4)
  '(size-indication-mode t)
  '(tab-width 2)
+ '(term-bind-key-alist (quote (("C-c C-c" . term-interrupt-subjob) ("C-S-p" . previous-line) ("C-S-s" . isearch-forward) ("C-S-r" . isearch-backward) ("C-m" . term-send-raw) ("M-f" . term-send-forward-word) ("M-b" . term-send-backward-word) ("M-o" . term-send-backspace) ("M-d" . term-send-forward-kill-word) ("M-DEL" . term-send-backward-kill-word) ("M-," . term-send-input) ("M-." . comint-dynamic-complete))))
+ '(term-buffer-maximum-size 16384)
+ '(term-default-bg-color "#000000")
+ '(term-default-fg-color "#AAAAAA")
+ '(term-unbind-key-list (quote ("C-z" "C-x" "C-c" "C-h" "C-l" "<ESC>")))
  '(text-mode-hook (quote (turn-on-auto-fill text-mode-hook-identify)))
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))
  '(whitespace-global-modes t)
  '(whitespace-line-column 800)
  '(yank-pop-change-selection t))
-
-;; (custom-set-faces
-;;  ;; custom-set-faces was added by Custom.
-;;  ;; If you edit it by hand, you could mess it up, so be careful.
-;;  ;; Your init file should contain only one such instance.
-;;  ;; If there is more than one, they won't work right.
-;;  '(default ((t (:inherit nil :weight normal :height 98 :width normal))))
-;;  '(font-lock-builtin-face ((((class color) (min-colors 88) (background dark)) (:foreground "#F0F"))))
-;;  '(font-lock-comment-delimiter-face ((default (:inherit font-lock-comment-face :foreground "#733")) (((class color) (min-colors 16)) nil)))
-;;  '(font-lock-comment-face ((((class color) (min-colors 88) (background dark)) (:foreground "#666"))))
-;;  '(font-lock-function-name-face ((((class color) (min-colors 88) (background dark)) (:foreground "#09F"))))
-;;  '(font-lock-keyword-face ((((class color) (min-colors 88) (background dark)) (:foreground "#FF0"))))
-;;  '(font-lock-negation-char-face ((t (:foreground "#F00"))))
-;;  '(font-lock-regexp-grouping-backslash ((t (:inherit bold :foreground "#90F"))))
-;;  '(font-lock-regexp-grouping-construct ((t (:inherit bold :foreground "#F0F"))))
-;;  '(font-lock-string-face ((((class color) (min-colors 88) (background dark)) (:foreground "#383"))))
-;;  '(font-lock-variable-name-face ((((class color) (min-colors 88) (background dark)) (:foreground "#F90"))))
-;;  '(magit-diff-add ((((class color) (background dark)) (:foreground "#3F3"))))
-;;  '(magit-diff-del ((((class color) (background dark)) (:foreground "#F33"))))
-;;  '(magit-diff-hunk-header ((t (:inherit magit-header :foreground "#09F" :slant italic))))
-;;  '(magit-diff-none ((t (:foreground "#444"))))
-;;  '(magit-header ((t (:foreground "#FF0"))))
-;;  '(magit-item-highlight ((((class color) (background dark)) (:background "#050000")))))
-
-                                        ;(load-theme 'tango-dark)
 
 (deftheme selwyn
   "my theme")
@@ -96,12 +79,13 @@
  '(button ((t (:underline t))))
  '(header-line ((t (:background "#262626" :foreground "#888888")))))
 (provide-theme 'selwyn)
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:stipple nil :background "#050505" :foreground "#BBB" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))
+ '(default ((t (:stipple nil :background "#000000" :foreground "#AAA" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))
  '(erc-prompt-face ((t (:background "lightBlue2" :foreground "green" :weight bold))))
  '(flymake-errline ((t (:background "red"))))
  '(font-lock-comment-delimiter-face ((t (:inherit font-lock-comment-face :foreground "#f90"))))
@@ -110,7 +94,7 @@
  '(font-lock-string-face ((t (:foreground "#c00"))))
  '(font-lock-variable-name-face ((t (:foreground "#FF0" :weight bold))))
  '(highlight ((t (:background "#330"))))
- '(highline-face ((t (:background "#000"))))
+ '(highline-face ((t (:background "#000011"))))
  '(highline-vertical-face ((t (:background "#030303"))))
  '(isearch ((t (:background "#220022" :foreground "#FF00FF"))))
  '(linum ((t (:foreground "#444"))))
@@ -119,7 +103,7 @@
  '(magit-item-highlight ((t (:background "#001"))))
  '(mode-line ((t (:background "#111" :foreground "#991"))))
  '(regex-tool-matched-face ((t (:background "#020" :foreground "Orange" :weight bold))))
- '(region ((t (:background "#110011"))))
+ '(region ((t (:background "#550055"))))
  '(show-paren-match ((t (:background "#06F" :foreground "#000" :weight ultra-bold))))
  '(show-paren-mismatch ((t (:background "#F00" :foreground "white" :weight ultra-bold))))
  '(whitespace-hspace ((t (:foreground "#222"))))
@@ -129,3 +113,4 @@
  '(whitespace-space ((t (:foreground "#111"))))
  '(whitespace-tab ((t (:foreground "#222"))))
  '(whitespace-trailing ((t (:foreground "#F00" :weight bold)))))
+

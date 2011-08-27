@@ -235,3 +235,10 @@ stuff up"
 ;(toggler magit (lambda () (switch-to-buffer (magit-find-buffer 'status default-directory))) t)
 (toggler term (lambda () (term "/bin/zsh")) t)
 (toggler embiggen nil t)
+(defun next-in-frame-window ()
+  (interactive)
+  (select-window (next-window)))
+
+(defun previous-in-frame-window ()
+  (interactive)
+  (select-window (previous-window)))

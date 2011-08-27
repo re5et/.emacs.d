@@ -204,6 +204,11 @@ stuff up"
   (interactive)
   (select-window (previous-window)))
 
+(defun auto-make-directory ()
+  (let ((dir (file-name-directory (buffer-file-name))))
+    (unless (file-readable-p dir)
+      (make-directory dir t))))
+
 (defun start-emux ()
   (unless (featurep 'emux)
     (require 'emux)

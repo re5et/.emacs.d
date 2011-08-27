@@ -242,3 +242,15 @@ stuff up"
 (defun previous-in-frame-window ()
   (interactive)
   (select-window (previous-window)))
+
+(defun start-emux ()
+  (unless (featurep 'emux)
+    (require 'emux)
+    (emux-initialize))
+  (unless (member
+           "emux"
+           (mapcar
+            (lambda (frame) (frame-parameter frame 'name))
+            (frame-list)))
+    (modify-frame-parameters nil (list (cons 'name "emacs")))
+    (modify-frame-parameters (make-frame) (list (cons 'name "emux")))))

@@ -73,6 +73,7 @@
 (load "rinari/rinari.el")
 (load "hooks.el")
 (load "keybindings.el")
+(load "stumpwm-mode.el")
 (load custom-file 'noerror)
 
 ;; AUTOLOADS

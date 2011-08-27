@@ -2,8 +2,8 @@
 (global-set-key (kbd "M-i") 'idomenu)
 (global-set-key (kbd "C-#") 'comment-region)
 (global-set-key (kbd "M-#") 'uncomment-region)
-(global-set-key (kbd "M-l")  'next-multiframe-window)
-(global-set-key (kbd "M-h") 'previous-multiframe-window)
+(global-set-key (kbd "M-l")  'next-in-frame-window)
+(global-set-key (kbd "M-h") 'previous-in-frame-window)
 (global-set-key (kbd "C-c r") 'rgrep)
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
@@ -41,6 +41,7 @@
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-x M-f") 'find-file-in-git-repo)
 (global-set-key (kbd "C-x K") 'kill-focused-buffer)
+
 (global-set-key (kbd "C-<return>") 'embiggen-toggler)
 (global-set-key (kbd "C-x ;") 'scratch-toggler)
 (global-set-key (kbd "C-x d") 'dired-toggler)

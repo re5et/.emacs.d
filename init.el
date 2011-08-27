@@ -1,4 +1,25 @@
 ;;; DOT EMACS
+
+;;; LOAD PATH
+(let ((default-directory "~/.emacs.d/"))
+  (normal-top-level-add-subdirs-to-load-path))
+
+;;; REQUIRE
+(require 'slime)
+(require 'smex)
+(require 'ido)
+(require 'autopair)
+(require 'recentf)
+(require 'highline)
+(require 'rinari)
+(require 'regex-tool)
+(require 'find-file-in-git-repo)
+(require 'backup-dir)
+(require 'dired)
+(require 'emms-setup)
+(require 'emms-player-simple)
+(require 'emms-source-file)
+(require 'emms-source-playlist)
 (require 'package)
 (add-to-list 'package-archives
              '("marmalade" .
@@ -31,10 +52,6 @@
 (put 'narrow-to-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 
-;;; LOAD PATH
-(let ((default-directory "~/.emacs.d/"))
-  (normal-top-level-add-subdirs-to-load-path))
-
 ;; LOAD
 (load "smartscan.el")
 (load "mpd.el")
@@ -54,17 +71,6 @@
 (autoload 'idomenu "idomenu" nil t)
 (autoload 'comint-dynamic-complete-filename "comint" nil t)
 
-;;; REQUIRE
-(require 'slime)
-(require 'smex)
-(require 'ido)
-(require 'autopair)
-(require 'recentf)
-(require 'highline)
-(require 'rinari)
-(require 'regex-tool)
-(require 'find-file-in-git-repo)
-(require 'backup-dir)
 
 ;;; CALL STUFF
 (smex-initialize)

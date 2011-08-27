@@ -21,6 +21,19 @@
 (require 'emms-source-file)
 (require 'emms-source-playlist)
 (require 'package)
+
+(emms-all)
+(emms-default-players)
+(add-hook 'emms-player-started-hook 'emms-show)
+(setq emms-show-format "now playing: %s"
+      emms-source-file-default-directory "~/music/"
+      emms-player-mpg321-parameters '("-o" "alsa")
+      emms-info-asynchronously nil
+      emms-playlist-buffer-name "*Music*"
+      emms-player-list '(emms-player-mpg321
+                         emms-player-ogg123
+                         emms-player-mplayer))
+
 (add-to-list 'package-archives
              '("marmalade" .
                "http://marmalade-repo.org/packages/") t)

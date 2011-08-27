@@ -46,5 +46,12 @@
 (global-set-key (kbd "C-x d") 'dired-toggler)
 (global-set-key (kbd "C-x g") 'magit-status)
 
+(global-set-key (kbd "C-x m") 'music-toggler)
+(global-set-key (kbd "C-c m q") 'emms-add-directory)
+(global-set-key (kbd "C-c m A") 'emms-play-directory)
+(global-set-key (kbd "C-c m n") 'emms-next)
+(global-set-key (kbd "C-c m p") 'emms-previous)
+
 (define-key dired-mode-map (kbd "q") 'dired-toggler)
+(define-key emms-playlist-mode-map (kbd "q") 'music-toggler)
 (define-key dired-mode-map (kbd "<backspace>") 'dired-up-directory)

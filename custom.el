@@ -98,6 +98,7 @@
  '(highlight ((t (:background "#330"))))
  '(highline-face ((t (:background "#000011"))))
  '(highline-vertical-face ((t (:background "#030303"))))
+ '(ido-first-match ((t (:foreground "#FF0" :weight bold))))
  '(isearch ((t (:background "#220022" :foreground "#FF00FF"))))
  '(linum ((t (:foreground "#444"))))
  '(magit-diff-add ((t (:foreground "#0F0"))))

@@ -72,9 +72,9 @@
 (load "feature-mode/feature-mode.el")
 (load "my-functions.el")
 (load "rinari/rinari.el")
-(load "hooks.el")
 (load "keybindings.el")
 (load "stumpwm-mode.el")
+(load "hooks.el")
 (load custom-file 'noerror)
 
 ;; AUTOLOADS

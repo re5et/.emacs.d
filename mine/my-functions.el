@@ -7,36 +7,45 @@
   (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
   (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1)))
 
-(defun could-eat-a-horse-kill (&optional arg)
-  "Kills line as normal, but if the line is emtpy then get rid of the
-line, then delete any space forward to the next non-whitespace
-character, then if the line has been deleted, move back to indentation
-and then indent according to mode."
+(defun hungry-kill (&optional arg)
   (interactive "P")
-  (kill-line)
-  (delete-horizontal-space)
-  (if (= (line-beginning-position) (line-end-position))
-      (progn
-        (delete-region (save-excursion
-                         (forward-line 0)
-                         (point))
-                       (save-excursion
-                         (forward-line 1)
-                         (point)))
-        (could-eat-a-horse-hill)
-        (back-to-indentation)))
-  (progn
-    (delete-region (point) (progn (skip-chars-forward " \t") (point)))
-    (indent-according-to-mode)))
+  (let ((next-line-empty
+         (save-excursion
+           (next-line)
+           (eq
+            (line-beginning-position)
+            (line-end-position))))
+        (at-end-of-line
+         (eq (point) (line-end-position))))
+    (progn
+      (kill-line arg)
+      (indent-according-to-mode)
+      (if (or next-line-empty at-end-of-line)
+          (progn
+            (delete-region (point) (next-non-white))
+            (indent-according-to-mode))))))
 
-(defun could-eat-a-horse-kill-whole-line (&optional arg)
-  (interactive)
+(defun hungry-kill-whole-line (&optional arg)
+  (interactive "P")
   (beginning-of-line)
-  (could-eat-a-horse-kill arg))
+  (hungry-kill arg)
+  (indent-according-to-mode))
+
 (defun backwards-kill ()
   (interactive)
   (delete-region (point) (line-beginning-position))
   (indent-according-to-mode))
+
+(defun jump-to-string (char)
+  (interactive "cjump to char:")
+  (search-forward (char-to-string char)))
+
+(defun next-non-white ()
+  (interactive)
+  (save-excursion
+    (skip-chars-forward " \t
+")
+    (point)))
 
 (defun into-and-indent ()
   (interactive)
@@ -45,6 +54,7 @@ and then indent according to mode."
     (end-of-line)
     (newline)
     (indent-according-to-mode)))
+
 ;; from http://emacsblog.org/2009/05/18/copying-lines-not-killing/
 (defun copy-line (&optional arg)
   "Do a kill-line but copy rather than kill.  This function directly calls
@@ -55,15 +65,6 @@ buffer read-only, so I suggest setting kill-read-only-ok to t."
   (toggle-read-only 1)
   (kill-line arg)
   (toggle-read-only 0))
-
-;; (defun move-line-and-indent (line-command &optional arg try-vscroll)
-;;   "Move to the next line and indent according to mode."
-;;   (interactive)
-;;   (if (not buffer-read-only)
-;;       (progn (indent-according-to-mode)
-;;              (apply line-command arg try-vscroll)
-;;              (indent-according-to-mode))
-;;     (apply line-command arg try-vscroll)))
 
 (defun indent-buffer ()
   "Fix indentation on the entire buffer."
@@ -81,10 +82,6 @@ stuff up"
   (interactive)
   (remove-hook 'pre-command-hook 'my-auto-indent)
   (remove-hook 'post-command-hook 'my-auto-indent))
-
-(add-hook 'ruby-mode-hook 'my-auto-indent)
-(add-hook 'javascript-mode-hook 'my-auto-indent)
-(add-hook 'lisp-mode-hook 'my-auto-indent)
 
 (defun ido-recentf-open ()
   "Use `ido-completing-read' to \\[find-file] a recent file"
@@ -147,14 +144,14 @@ stuff up"
    (concat "*" (file-name-extension (buffer-file-name)))
    dir))
 
-(defun reb-query-replace (to-string)
-  "Replace current RE from point with `query-replace-regexp'."
-  (interactive
-   (progn (barf-if-buffer-read-only)
-          (list (query-replace-read-to (reb-target-binding reb-regexp)
-                                       "Query replace"  t))))
-  (with-current-buffer reb-target-buffer
-    (query-replace-regexp (reb-target-binding reb-regexp) to-string)))
+;; (defun reb-query-replace (to-string)
+;;   "Replace current RE from point with `query-replace-regexp'."
+;;   (interactive
+;;    (progn (barf-if-buffer-read-only)
+;;           (list (query-replace-read-to (reb-target-binding reb-regexp)
+;;                                        "Query replace"  t))))
+;;   (with-current-buffer reb-target-buffer
+;;     (query-replace-regexp (reb-target-binding reb-regexp) to-string)))
 
 ;; (defun re-builder-query-replace-perl (&optional begin end pattern replace)
 ;;   (interactive "r")
@@ -163,35 +160,35 @@ stuff up"
 ;;           (format "replace %s in region with pattern: " pattern) nil)))
 ;;         (shell-command-on-region (format "perl -pe s/%s/%s/g" pattern replace))))
 
-(defun replace-perl-regexp (&optional begin end pattern replace)
-  (interactive "r")
-  (let ((backto (point)))p
-       (shell-command-on-region
-        begin end
-        (format "perl -pe 's/%s/%s/g'" pattern replace)
-        nil t)
-       (goto-char backto)))
+;; (defun replace-perl-regexp (&optional begin end pattern replace)
+;;   (interactive "r")
+;;   (let ((backto (point)))p
+;;        (shell-command-on-region
+;;         begin end
+;;         (format "perl -pe 's/%s/%s/g'" pattern replace)
+;;         nil t)
+;;        (goto-char backto)))
 
-(defun region-replace-perl-regexp (pattern replace)
-  (replace-perl-regexp (region-beginning) (region-end) pattern replace))
+;; (defun region-replace-perl-regexp (pattern replace)
+;;   (replace-perl-regexp (region-beginning) (region-end) pattern replace))
 
-(defun buffer-replace-perl-regexp (pattern replace)
-  (replace-perl-regexp (point-min) (point-max) pattern replace))
+;; (defun buffer-replace-perl-regexp (pattern replace)
+;;   (replace-perl-regexp (point-min) (point-max) pattern replace))
 
-(defun reb-execute-perl-regexp (pattern begin end)
-  (let ((replace (read-from-minibuffer "replacement: " nil)))
-    (replace-perl-regexp begin end pattern replace)))
+;; (defun reb-execute-perl-regexp (pattern begin end)
+;;   (let ((replace (read-from-minibuffer "replacement: " nil)))
+;;     (replace-perl-regexp begin end pattern replace)))
 
-(defun reb-execute-perl-regexp-on-buffer ()
-  (interactive)
-  (let ((pattern (substring (buffer-string) 1 (- (length (buffer-string)) 1))))
-    (set-buffer reb-target-buffer)
-    (reb-execute-perl-regexp pattern (point-min) (point-max))))
+;; (defun reb-execute-perl-regexp-on-buffer ()
+;;   (interactive)
+;;   (let ((pattern (substring (buffer-string) 1 (- (length (buffer-string)) 1))))
+;;     (set-buffer reb-target-buffer)
+;;     (reb-execute-perl-regexp pattern (point-min) (point-max))))
 
-(defun reb-execute-perl-regexp-on-region ()
-  (interactive)
-  (set-buffer reb-target-buffer)
-  (reb-execute-perl-regexp (region-beginning) (region-end)))
+;; (defun reb-execute-perl-regexp-on-region ()
+;;   (interactive)
+;;   (set-buffer reb-target-buffer)
+;;   (reb-execute-perl-regexp (region-beginning) (region-end)))
 
 ;; (defun reb-execute-perl-regexp (begin end)
 ;;    (interactive)

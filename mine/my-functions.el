@@ -213,6 +213,11 @@ stuff up"
     (unless (file-readable-p dir)
       (make-directory dir t))))
 
+(defun set-newline-and-indent ()
+  (interactive)
+  (local-unset-key (kbd "RET"))
+  (local-set-key (kbd "RET") 'newline-and-indent))
+
 (defun start-emux ()
   (unless (featurep 'emux)
     (require 'emux)

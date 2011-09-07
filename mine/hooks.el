@@ -10,22 +10,25 @@
 (add-hook
  'ruby-mode-hook
  (lambda ()
-   (linum-mode)
    (autopair-mode)
+   (set-newline-and-indent)
    (rvm-use-default)
+   (linum-mode)
    (flymake-ruby-load)))
 
 (add-hook
  'javascript-mode-hook
  (lambda ()
+   (autopair-mode)
    (linum-mode)
-   (autopair-mode)))
+   (set-newline-and-indent)))
 
 (add-hook
  'css-mode-hook
  (lambda ()
+   (autopair-mode)
    (linum-mode)
-   (autopair-mode)))
+   (set-newline-and-indent)))
 
 (add-hook
  'magit-log-edit-mode-hook
@@ -47,11 +50,9 @@
 (add-hook
  'lisp-interaction-mode-hook
  (lambda ()
-   (linum-mode)
    (paredit-mode +1)))
 
 (add-hook
  'slime-repl-mode-hook
  (lambda ()
-   (linum-mode)
    (paredit-mode +1)))

@@ -21,8 +21,6 @@
 (global-set-key (kbd "C-<backspace>") 'backwards-kill)
 (global-set-key (kbd "C-z") 'jump-to-string)
 (global-set-key (kbd "C-y") 'yank-and-indent)
-(global-set-key (kbd "C-S-p") 'clone-line-up)
-(global-set-key (kbd "C-S-n") 'clone-line-down)
 (global-set-key (kbd "C-,") 'indent-buffer)
 (global-set-key (kbd "M-s s") 'replace-string)
 (global-set-key (kbd "M-s S") 'replace-regexp)
@@ -42,13 +40,17 @@
 (global-set-key (kbd "C-x M-f") 'find-file-in-git-repo)
 (global-set-key (kbd "C-x K") 'kill-focused-buffer)
 (global-set-key (kbd "C-o") 'into-and-indent)
+(global-set-key (kbd "M-P") 'clone-line-up)
+(global-set-key (kbd "M-N") 'clone-line-down)
+(global-set-key (kbd "C-S-p") 'move-text-up)
+(global-set-key (kbd "C-S-n") 'move-text-down)
 
 (global-set-key (kbd "C-<return>") 'embiggen-toggler)
 (global-set-key (kbd "C-x ;") 'scratch-toggler)
 (global-set-key (kbd "C-x d") 'dired-toggler)
 (global-set-key (kbd "C-x g") 'magit-status)
-
 (global-set-key (kbd "C-x m") 'music-toggler)
+
 (global-set-key (kbd "C-c m q") 'emms-add-directory)
 (global-set-key (kbd "C-c m A") 'emms-play-directory)
 (global-set-key (kbd "C-c m n") 'emms-next)

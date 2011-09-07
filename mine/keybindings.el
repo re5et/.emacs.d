@@ -37,11 +37,11 @@
 (global-set-key (kbd "C-x :") 'execute-extended-command)
 (global-set-key (kbd "C-c M-v") 'scroll-other-window-down)
 (global-set-key (kbd "C-c C-v") 'scroll-other-window)
-(global-set-key (kbd "C-o") 'loccur-current)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-x M-f") 'find-file-in-git-repo)
 (global-set-key (kbd "C-x K") 'kill-focused-buffer)
+(global-set-key (kbd "C-o") 'into-and-indent)
 
 (global-set-key (kbd "C-<return>") 'embiggen-toggler)
 (global-set-key (kbd "C-x ;") 'scratch-toggler)

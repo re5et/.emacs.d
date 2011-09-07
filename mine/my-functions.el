@@ -38,6 +38,13 @@ and then indent according to mode."
   (delete-region (point) (line-beginning-position))
   (indent-according-to-mode))
 
+(defun into-and-indent ()
+  (interactive)
+  (let ((goto (next-non-white)))
+    (goto-char goto)
+    (end-of-line)
+    (newline)
+    (indent-according-to-mode)))
 ;; from http://emacsblog.org/2009/05/18/copying-lines-not-killing/
 (defun copy-line (&optional arg)
   "Do a kill-line but copy rather than kill.  This function directly calls

@@ -17,6 +17,7 @@
 (global-set-key (kbd "C-c C-a") 'beginning-of-line)
 (global-set-key (kbd "C-k") 'could-eat-a-horse-kill)
 (global-set-key (kbd "C-c C-k") 'could-eat-a-horse-kill-whole-line)
+(global-set-key (kbd "C-<backspace>") 'backwards-kill)
 (global-set-key (kbd "C-y") 'yank-and-indent)
 (global-set-key (kbd "C-S-p") 'clone-line-up)
 (global-set-key (kbd "C-S-n") 'clone-line-down)

@@ -33,6 +33,10 @@ and then indent according to mode."
   (interactive)
   (beginning-of-line)
   (could-eat-a-horse-kill arg))
+(defun backwards-kill ()
+  (interactive)
+  (delete-region (point) (line-beginning-position))
+  (indent-according-to-mode))
 
 ;; from http://emacsblog.org/2009/05/18/copying-lines-not-killing/
 (defun copy-line (&optional arg)

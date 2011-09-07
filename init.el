@@ -17,6 +17,7 @@
 (require 'find-file-in-git-repo)
 (require 'backup-dir)
 (require 'dired)
+(require 'dired-efap)
 (require 'emms-setup)
 (require 'emms-player-simple)
 (require 'emms-source-file)

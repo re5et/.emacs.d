@@ -56,6 +56,7 @@
 (define-key dired-mode-map (kbd "q") 'dired-toggler)
 (define-key emms-playlist-mode-map (kbd "q") 'music-toggler)
 (define-key dired-mode-map (kbd "<backspace>") 'dired-up-directory)
+(define-key dired-mode-map (kbd "e") 'dired-efap)
 
 (setq
  term-bind-key-alist

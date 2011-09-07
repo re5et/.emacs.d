@@ -5,6 +5,7 @@
 (add-hook 'before-save-hook 'untabify-all)
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p) ;; make it executable if it should be (starts with #!)
 (add-hook 'before-save-hook 'auto-make-directory)
+(add-hook 'emms-player-started-hook 'emms-show)
 
 (add-hook
  'ruby-mode-hook

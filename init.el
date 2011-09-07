@@ -26,7 +26,6 @@
 
 (emms-all)
 (emms-default-players)
-(add-hook 'emms-player-started-hook 'emms-show)
 (setq emms-show-format "now playing: %s"
       emms-source-file-default-directory "~/music/"
       emms-player-mpg321-parameters '("-o" "alsa")

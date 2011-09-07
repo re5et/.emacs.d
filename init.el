@@ -80,7 +80,6 @@
 ;; AUTOLOADS
 (autoload 'paredit-mode "paredit"
   "Minor mode for pseudo-structurally editing Lisp code." t)
-(autoload 'js2-mode "js2-mode" nil t)
 (autoload 'mo-git-blame-file "mo-git-blame" nil t)
 (autoload 'mo-git-blame-current "mo-git-blame" nil t)
 (autoload 'idomenu "idomenu" nil t)
@@ -98,7 +97,6 @@
 (auto-compression-mode 1) ; Lets emacs uncompress .gz files before opening them
 
 ;;; AUTO-MODE
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . css-mode)) ;; turn on css-mode for sass
 (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode)) ;; turn on ruby-mode for rakefiles
 

@@ -21,6 +21,7 @@
 (require 'emms-player-simple)
 (require 'emms-source-file)
 (require 'emms-source-playlist)
+(require 'yasnippet-bundle)
 (require 'package)
 
 (emms-all)

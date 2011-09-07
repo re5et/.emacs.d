@@ -10,7 +10,7 @@
 (defun hungry-kill (&optional arg)
   (interactive "P")
   (kill-line)
-  (delete-region (point) (next-non-white)))
+  (delete-region (point) (1- (next-non-white))))
 
 (defun hungry-kill-whole-line (&optional arg)
   (interactive "P")

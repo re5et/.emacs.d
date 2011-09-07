@@ -9,21 +9,8 @@
 
 (defun hungry-kill (&optional arg)
   (interactive "P")
-  (let ((next-line-empty
-         (save-excursion
-           (next-line)
-           (eq
-            (line-beginning-position)
-            (line-end-position))))
-        (at-end-of-line
-         (eq (point) (line-end-position))))
-    (progn
-      (kill-line arg)
-      (indent-according-to-mode)
-      (if (or next-line-empty at-end-of-line)
-          (progn
-            (delete-region (point) (next-non-white))
-            (indent-according-to-mode))))))
+  (kill-line)
+  (delete-region (point) (next-non-white)))
 
 (defun hungry-kill-whole-line (&optional arg)
   (interactive "P")

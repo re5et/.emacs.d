@@ -68,6 +68,7 @@
 
 ;; LOAD
 (load "smartscan.el")
+(load "move-text.el")
 (load "mpd.el")
 (load "feature-mode/feature-mode.el")
 (load "my-functions.el")

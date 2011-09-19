@@ -1,4 +1,5 @@
 (global-set-key (kbd "C-x C-c") 'dont-kill-emacs)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "M-i") 'idomenu)
 (global-set-key (kbd "C-#") 'comment-region)
 (global-set-key (kbd "M-#") 'uncomment-region)

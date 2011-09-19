@@ -41,8 +41,8 @@
 (global-set-key (kbd "C-x M-f") 'find-file-in-git-repo)
 (global-set-key (kbd "C-x K") 'kill-focused-buffer)
 (global-set-key (kbd "C-o") 'into-and-indent)
-(global-set-key (kbd "M-P") 'clone-line-up)
-(global-set-key (kbd "M-N") 'clone-line-down)
+(global-set-key (kbd "M-P") 'clone-text-up)
+(global-set-key (kbd "M-N") 'clone-text-down)
 (global-set-key (kbd "C-S-p") 'move-text-up)
 (global-set-key (kbd "C-S-n") 'move-text-down)
 

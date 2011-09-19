@@ -92,25 +92,31 @@ stuff up"
   (flymake-goto-next-error)
   (flymake-display-err-menu-for-current-line))
 
-(defun clone-line (dir)
-  "Copies current line up or down based on DIR, leaves cursor where it is"
-  (let ((line (buffer-substring (line-beginning-position) (line-end-position))))
-    (save-excursion
-      (if (equal dir "up")
+(defun clone-text (direction)
+  (interactive)
+  (let* ((text
           (progn
-            (previous-line)))
-      (end-of-line)
+            (unless (region-active-p)
+              (set-mark (line-beginning-position))
+              (goto-char (line-end-position)))
+            (buffer-substring (region-beginning) (region-end))))
+         (end (region-end)))
+    (goto-char (region-end))
+    (unless (eq (point) (line-beginning-position))
       (open-line 1)
-      (next-line)
-      (insert line))))
+      (next-line))
+    (insert text)
+    (if (eq direction 'up)
+        (goto-char end))
+    ))
 
-(defun clone-line-up ()
+(defun clone-text-up ()
   (interactive)
-  (clone-line "up"))
+  (clone-text 'up))
 
-(defun clone-line-down ()
+(defun clone-text-down ()
   (interactive)
-  (clone-line "down"))
+  (clone-text 'down))
 
 (defun quick-rgrep-path-depth (shallowness)
   (interactive)

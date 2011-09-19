@@ -54,7 +54,10 @@
   (interactive)
   (buffer-project-rgrep
    (lambda ()
-     (rgrep (thing-at-point 'symbol) "*" (buffer-project-root)))))
+     (let ((search-for (if (region-active-p)
+                           (buffer-substring (region-beginning) (region-end))
+                         (thing-at-point 'symbol))))
+       (rgrep search-for "*" (buffer-project-root))))))
 
 (defun project-find-file ()
   (interactive)

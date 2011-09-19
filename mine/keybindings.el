@@ -45,6 +45,8 @@
 (global-set-key (kbd "M-N") 'clone-text-down)
 (global-set-key (kbd "C-S-p") 'move-text-up)
 (global-set-key (kbd "C-S-n") 'move-text-down)
+(global-set-key (kbd "C-|") 'rotate-frame-window-buffers)
+
 
 (global-set-key (kbd "C-<return>") 'embiggen-toggler)
 (global-set-key (kbd "C-x ;") 'scratch-toggler)

@@ -227,6 +227,22 @@ stuff up"
     (modify-frame-parameters nil (list (cons 'name "emacs")))
     (modify-frame-parameters (make-frame) (list (cons 'name "emux")))))
 
+(defun rotate-frame-window-buffers ()
+  (interactive)
+  (let ((map
+       (mapcar
+        (lambda (window)
+          `(,window
+            ,(window-buffer
+              (next-window window))))
+        (window-list))))
+  (mapcar
+   (lambda (window-to-buffer)
+     (let ((window (car window-to-buffer))
+           (buffer (cadr window-to-buffer)))
+       (select-window window)
+       (switch-to-buffer buffer))) map)))
+
 (defmacro toggler (toggler-name &optional fn full)
   (let ((name
          (intern

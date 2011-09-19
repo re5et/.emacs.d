@@ -70,6 +70,7 @@
 (load "smartscan.el")
 (load "move-text.el")
 (load "mpd.el")
+(load "project.el")
 (load "feature-mode/feature-mode.el")
 (load "my-functions.el")
 (load "rinari/rinari.el")

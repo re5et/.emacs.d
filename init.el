@@ -55,7 +55,7 @@
       backup-directory-alist '(("." . "~/.emacs.d/.backups"))
       echo-keystrokes 0.1
       next-line-add-newlines nil
-      recentf-max-saved-items 50
+      recentf-max-saved-items 999
       column-number-mode t
       ido-max-directory-size 100000
       magit-completing-read 'ido-completing-read
@@ -69,7 +69,6 @@
 ;; LOAD
 (load "smartscan.el")
 (load "move-text.el")
-(load "mpd.el")
 (load "project.el")
 (load "feature-mode/feature-mode.el")
 (load "my-functions.el")
@@ -101,6 +100,7 @@
 ;;; AUTO-MODE
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . css-mode)) ;; turn on css-mode for sass
 (add-to-list 'auto-mode-alist '("\\.rake\\'" . ruby-mode)) ;; turn on ruby-mode for rakefiles
+(add-to-list 'auto-mode-alist '("\\.stumpwmrc\\'" . stumpwm-mode))
 
 ;; wtf am i doing
 (define-key key-translation-map "\C-j" "\C-x")

@@ -1,0 +1,14 @@
+#name : describe
+#group : testing
+# --
+describe ${1:Thing} do
+
+  before do
+    $2
+  end
+
+  it 'should ${3:do something}' do
+    $0
+  end
+
+end

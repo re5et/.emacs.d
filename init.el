@@ -21,7 +21,7 @@
 (require 'emms-player-simple)
 (require 'emms-source-file)
 (require 'emms-source-playlist)
-(require 'yasnippet-bundle)
+(require 'yasnippet)
 (require 'package)
 (require 'misc)
 
@@ -97,6 +97,8 @@
 (show-paren-mode t)
 (highline-mode)
 (auto-compression-mode 1) ; Lets emacs uncompress .gz files before opening them
+(yas/initialize)
+(yas/load-directory "~/.emacs.d/mine/yasnippet-0.6.1c/snippets/")
 
 ;;; AUTO-MODE
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . css-mode)) ;; turn on css-mode for sass

@@ -34,12 +34,27 @@
 ")
     (point)))
 
-(defun into-and-indent ()
+(defun previous-non-white ()
   (interactive)
+  (save-excursion
+    (skip-chars-backward " \t
+")
+    (point)))
+
+(defun next-newline (arg)
+  (interactive "P")
   (let ((goto (next-non-white)))
     (goto-char goto)
     (end-of-line)
-    (newline)
+    (reindent-then-newline-and-indent)))
+
+(defun previous-newline (arg)
+  (interactive "P")
+  (let ((goto (previous-non-white)))
+    (goto-char goto)
+    (beginning-of-line)
+    (reindent-then-newline-and-indent)
+    (previous-line)
     (indent-according-to-mode)))
 
 ;; from http://emacsblog.org/2009/05/18/copying-lines-not-killing/
@@ -62,6 +77,11 @@ buffer read-only, so I suggest setting kill-read-only-ok to t."
 (defun my-auto-indent ()
   "indent all the gosh darned time."
   (indent-according-to-mode))
+
+(defun enable-auto-indent ()
+  (interactive)
+  (add-hook 'pre-command-hook 'my-auto-indent)
+  (add-hook 'post-command-hook 'my-auto-indent))
 
 (defun disable-auto-indent ()
   "disable my-auto-indent in cases where it screws
@@ -230,18 +250,18 @@ stuff up"
 (defun rotate-frame-window-buffers ()
   (interactive)
   (let ((map
-       (mapcar
-        (lambda (window)
-          `(,window
-            ,(window-buffer
-              (next-window window))))
-        (window-list))))
-  (mapcar
-   (lambda (window-to-buffer)
-     (let ((window (car window-to-buffer))
-           (buffer (cadr window-to-buffer)))
-       (select-window window)
-       (switch-to-buffer buffer))) map)))
+         (mapcar
+          (lambda (window)
+            `(,window
+              ,(window-buffer
+                (next-window window))))
+          (window-list))))
+    (mapcar
+     (lambda (window-to-buffer)
+       (let ((window (car window-to-buffer))
+             (buffer (cadr window-to-buffer)))
+         (select-window window)
+         (switch-to-buffer buffer))) map)))
 
 (defmacro toggler (toggler-name &optional fn full)
   (let ((name

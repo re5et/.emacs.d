@@ -43,13 +43,14 @@
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-x K") 'kill-focused-buffer)
-(global-set-key (kbd "C-o") 'into-and-indent)
+(global-set-key (kbd "C-o") 'next-newline)
+(global-set-key (kbd "M-o") 'previous-newline)
+(global-set-key (kbd "M-z") 'zap-up-to-char)
 (global-set-key (kbd "M-P") 'clone-text-up)
 (global-set-key (kbd "M-N") 'clone-text-down)
 (global-set-key (kbd "C-S-p") 'move-text-up)
 (global-set-key (kbd "C-S-n") 'move-text-down)
 (global-set-key (kbd "C-|") 'rotate-frame-window-buffers)
-
 
 (global-set-key (kbd "C-<return>") 'embiggen-toggler)
 (global-set-key (kbd "C-x ;") 'scratch-toggler)

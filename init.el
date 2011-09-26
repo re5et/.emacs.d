@@ -23,6 +23,7 @@
 (require 'emms-source-playlist)
 (require 'yasnippet-bundle)
 (require 'package)
+(require 'misc)
 
 (emms-all)
 (emms-default-players)

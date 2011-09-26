@@ -111,4 +111,4 @@
 (add-project '(:has
                (config.ru app/views app/models app/controllers)
                :ignore
-               (tmp coverage log vendor .git public/system)))
+               (tmp coverage log vendor .git public/system public/assets)))

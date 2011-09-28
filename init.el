@@ -35,11 +35,9 @@
                          emms-player-ogg123
                          emms-player-mplayer))
 
-(add-to-list 'package-archives
-             '("marmalade" .
-               "http://marmalade-repo.org/packages/") t)
-(add-to-list 'package-archives
-             '("elpa" . "http://tromey.com/elpa/"))
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("elpa" . "http://tromey.com/elpa/"))
+
 ;;; SET STUFF
 (setq custom-file "~/.emacs.d/custom.el"
       bkup-backup-directory-info '((t "~/.emackups" ok-create full-path prepend-name))

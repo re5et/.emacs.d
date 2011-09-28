@@ -1,0 +1,4 @@
+#name : .a
+#group : jQuery
+# --
+.attr('$1')$0

@@ -1,0 +1,4 @@
+#name : ex
+#group : text
+# --
+expect($1).${2:toEqual}($0)

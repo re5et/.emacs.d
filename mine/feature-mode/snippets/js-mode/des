@@ -1,0 +1,14 @@
+#name : des
+#group : test
+# --
+describe('$1', function(){
+
+  beforeEach(function(){
+    $2
+  });
+
+  it('should ${3:do something}', function(){
+    $0
+  });
+
+});

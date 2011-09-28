@@ -1,0 +1,6 @@
+#name : $f
+#group : jQuery
+# --
+$(function(){
+  $0
+});

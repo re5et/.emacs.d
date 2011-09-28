@@ -13,7 +13,6 @@
 (require 'highline)
 (require 'rinari)
 (require 'regex-tool)
-(require 'find-file-in-git-repo)
 (require 'backup-dir)
 (require 'dired)
 (require 'dired-efap)

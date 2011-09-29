@@ -62,8 +62,8 @@
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x m") 'music-toggler)
 
-(global-set-key (kbd "C-c m q") 'emms-add-directory)
-(global-set-key (kbd "C-c m A") 'emms-play-directory)
+(global-set-key (kbd "C-c m q") 'emms-add-directory-tree)
+(global-set-key (kbd "C-c m A") 'emms-play-directory-tree)
 (global-set-key (kbd "C-c m n") 'emms-next)
 (global-set-key (kbd "C-c m p") 'emms-previous)
 

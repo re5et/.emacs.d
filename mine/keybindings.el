@@ -1,4 +1,6 @@
 (global-set-key (kbd "C-x C-c") 'dont-kill-emacs)
+(global-set-key (kbd "C-S-b") 'buffer-history-previous)
+(global-set-key (kbd "C-S-f") 'buffer-history-next)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "M-i") 'idomenu)
 (global-set-key (kbd "C-#") 'comment-region)

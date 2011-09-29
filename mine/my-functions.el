@@ -263,6 +263,14 @@ stuff up"
          (select-window window)
          (switch-to-buffer buffer))) map)))
 
+(defun buffer-history-next ()
+  (interactive)
+  (switch-to-buffer (next-buffer)))
+
+(defun buffer-history-previous ()
+  (interactive)
+  (switch-to-buffer (previous-buffer)))
+
 (defmacro toggler (toggler-name &optional fn full)
   (let ((name
          (intern

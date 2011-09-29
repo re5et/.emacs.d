@@ -271,6 +271,10 @@ stuff up"
   (interactive)
   (switch-to-buffer (previous-buffer)))
 
+(defun dired-default ()
+  (interactive)
+  (dired default-directory))
+
 (defmacro toggler (toggler-name &optional fn full)
   (let ((name
          (intern

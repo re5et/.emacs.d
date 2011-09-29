@@ -13,7 +13,6 @@
 (global-set-key (kbd "C-c r") 'rgrep)
 (global-set-key (kbd "C-c M-r") 'rgrep-project)
 (global-set-key (kbd "C-c M-R") 'rgrep-project-thing-at-point)
-(global-set-key (kbd "C-c r") 'rgrep)
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c f") 'flyspell-correct-word-before-point)

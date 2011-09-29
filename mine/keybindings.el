@@ -7,6 +7,8 @@
 (global-set-key (kbd "M-#") 'uncomment-region)
 (global-set-key (kbd "M-l")  'next-in-frame-window)
 (global-set-key (kbd "M-h") 'previous-in-frame-window)
+(global-set-key (kbd "M-L")  'next-multiframe-window)
+(global-set-key (kbd "M-H") 'previous-multiframe-window)
 (global-set-key (kbd "C-c r") 'rgrep)
 (global-set-key (kbd "C-c M-r") 'rgrep-project)
 (global-set-key (kbd "C-c M-R") 'rgrep-project-thing-at-point)

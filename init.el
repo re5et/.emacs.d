@@ -8,6 +8,7 @@
 (require 'slime)
 (require 'smex)
 (require 'ido)
+(require 'ido-ubiquitous)
 (require 'autopair)
 (require 'recentf)
 (require 'highline)

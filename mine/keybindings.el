@@ -28,6 +28,7 @@
 (global-set-key (kbd "C-c k") 'copy-line)
 (global-set-key (kbd "C-c C-k") 'hungry-kill-whole-line)
 (global-set-key (kbd "C-<backspace>") 'backwards-kill)
+(global-set-key (kbd "S-<backspace>") 'pop-to-mark-command)
 (global-set-key (kbd "C-z") 'jump-to-string)
 (global-set-key (kbd "C-y") 'yank-and-indent)
 (global-set-key (kbd "C-,") 'indent-buffer)

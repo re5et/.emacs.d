@@ -3,6 +3,8 @@
 (global-set-key (kbd "C-S-b") 'buffer-history-previous)
 (global-set-key (kbd "C-S-f") 'buffer-history-next)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "C-x c") 'emux-create-terminal)
+(global-set-key (kbd "C-x P") 'emux-load-session-template)
 (global-set-key (kbd "M-i") 'idomenu)
 (global-set-key (kbd "C-#") 'comment-region)
 (global-set-key (kbd "M-#") 'uncomment-region)

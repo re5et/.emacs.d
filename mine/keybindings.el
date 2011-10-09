@@ -1,7 +1,5 @@
 (global-set-key (kbd "C-x C-c") 'dont-kill-emacs)
 (global-set-key (kbd "C-x C-d") 'dired-default)
-(global-set-key (kbd "C-S-b") 'buffer-history-previous)
-(global-set-key (kbd "C-S-f") 'buffer-history-next)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-x c") 'emux-create-terminal)
 (global-set-key (kbd "C-x P") 'emux-load-session-template)
@@ -57,6 +55,8 @@
 (global-set-key (kbd "M-N") 'clone-text-down)
 (global-set-key (kbd "C-S-p") 'move-text-up)
 (global-set-key (kbd "C-S-n") 'move-text-down)
+(global-set-key (kbd "C-S-b") 'bury-buffer)
+(global-set-key (kbd "C-S-f") 'unbury-buffer)
 (global-set-key (kbd "C-|") 'rotate-frame-window-buffers)
 
 (global-set-key (kbd "C-<return>") 'embiggen-toggler)

@@ -10,6 +10,7 @@
 (require 'ido)
 (require 'ido-ubiquitous)
 (require 'autopair)
+(require 'visible-mark)
 (require 'recentf)
 (require 'highline)
 (require 'rinari)
@@ -89,7 +90,6 @@
 ;;; CALL STUFF
 (smex-initialize)
 (ido-mode t)
-(transient-mark-mode t)
 (go-to-hell-bars)
 (recentf-mode t)
 (show-paren-mode t)

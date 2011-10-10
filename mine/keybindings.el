@@ -31,6 +31,7 @@
 (global-set-key (kbd "C-z") 'jump-to-string)
 (global-set-key (kbd "C-y") 'yank-and-indent)
 (global-set-key (kbd "C-,") 'indent-buffer)
+(global-set-key (kbd "C-S-i") 'indent-region)
 (global-set-key (kbd "M-s s") 'replace-string)
 (global-set-key (kbd "M-s S") 'replace-regexp)
 (global-set-key (kbd "C-c C-e") 'eshell)

@@ -182,6 +182,12 @@ stuff up"
   (interactive)
   (dired default-directory))
 
+(defun replace-thing-at-point-with-last-kill ()
+  (interactive)
+  (replace-string
+   (current-kill 0)
+   (thing-at-point 'symbol) t (point-min) (point-max)))
+
 (defmacro toggler (toggler-name &optional fn full)
   (let ((name
          (intern

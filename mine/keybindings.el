@@ -34,6 +34,7 @@
 (global-set-key (kbd "C-S-i") 'indent-region)
 (global-set-key (kbd "M-s s") 'replace-string)
 (global-set-key (kbd "M-s S") 'replace-regexp)
+(global-set-key (kbd "M-s r") 'replace-thing-at-point-with-last-kill)
 (global-set-key (kbd "C-c C-e") 'eshell)
 (global-set-key (kbd "C-x C-r") 'ido-recentf-open)
 (global-set-key (kbd "C-x M-f") 'project-find-file)

@@ -12,20 +12,10 @@
   (kill-line)
   (delete-region (point) (1- (next-non-white))))
 
-(defun hungry-kill-whole-line (&optional arg)
-  (interactive "P")
-  (beginning-of-line)
-  (hungry-kill arg)
-  (indent-according-to-mode))
-
 (defun backwards-kill ()
   (interactive)
   (delete-region (point) (line-beginning-position))
   (indent-according-to-mode))
-
-(defun jump-to-string (char)
-  (interactive "cjump to char:")
-  (search-forward (char-to-string char)))
 
 (defun next-non-white ()
   (interactive)

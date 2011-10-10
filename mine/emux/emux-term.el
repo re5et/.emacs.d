@@ -64,7 +64,8 @@
 (defun emux-clear-screen ()
   (interactive)
   (mark-whole-buffer)
-  (delete-region (point-min) (point-max)))
+  (delete-region (point-min) (point-max))
+  (term-char-mode))
 
 (defadvice scroll-down (before emux-scroll-down)
   "Jump into line mode on scroll-down"

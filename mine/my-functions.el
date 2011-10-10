@@ -127,8 +127,7 @@ stuff up"
       (next-line))
     (insert text)
     (if (eq direction 'up)
-        (goto-char end))
-    ))
+        (goto-char end))))
 
 (defun clone-text-up ()
   (interactive)
@@ -137,81 +136,6 @@ stuff up"
 (defun clone-text-down ()
   (interactive)
   (clone-text 'down))
-
-(defun quick-rgrep-path-depth (shallowness)
-  (interactive)
-  (rgrep
-   (thing-at-point 'symbol)
-   "*"
-   (mapconcat 'identity
-              (reverse (last (reverse (split-string (buffer-file-name) "/")) shallowness)) "/")))
-
-(defun quick-rgrep ()
-  (interactive)
-  (quick-rgrep-path-depth 5))
-
-(defun quick-rgrep-path (dir)
-  (interactive "D")
-  (rgrep
-   (thing-at-point 'symbol)
-   (concat "*" (file-name-extension (buffer-file-name)))
-   dir))
-
-;; (defun reb-query-replace (to-string)
-;;   "Replace current RE from point with `query-replace-regexp'."
-;;   (interactive
-;;    (progn (barf-if-buffer-read-only)
-;;           (list (query-replace-read-to (reb-target-binding reb-regexp)
-;;                                        "Query replace"  t))))
-;;   (with-current-buffer reb-target-buffer
-;;     (query-replace-regexp (reb-target-binding reb-regexp) to-string)))
-
-;; (defun re-builder-query-replace-perl (&optional begin end pattern replace)
-;;   (interactive "r")
-;;   (let ((replace
-;;          (read-from-minibuffer
-;;           (format "replace %s in region with pattern: " pattern) nil)))
-;;         (shell-command-on-region (format "perl -pe s/%s/%s/g" pattern replace))))
-
-;; (defun replace-perl-regexp (&optional begin end pattern replace)
-;;   (interactive "r")
-;;   (let ((backto (point)))p
-;;        (shell-command-on-region
-;;         begin end
-;;         (format "perl -pe 's/%s/%s/g'" pattern replace)
-;;         nil t)
-;;        (goto-char backto)))
-
-;; (defun region-replace-perl-regexp (pattern replace)
-;;   (replace-perl-regexp (region-beginning) (region-end) pattern replace))
-
-;; (defun buffer-replace-perl-regexp (pattern replace)
-;;   (replace-perl-regexp (point-min) (point-max) pattern replace))
-
-;; (defun reb-execute-perl-regexp (pattern begin end)
-;;   (let ((replace (read-from-minibuffer "replacement: " nil)))
-;;     (replace-perl-regexp begin end pattern replace)))
-
-;; (defun reb-execute-perl-regexp-on-buffer ()
-;;   (interactive)
-;;   (let ((pattern (substring (buffer-string) 1 (- (length (buffer-string)) 1))))
-;;     (set-buffer reb-target-buffer)
-;;     (reb-execute-perl-regexp pattern (point-min) (point-max))))
-
-;; (defun reb-execute-perl-regexp-on-region ()
-;;   (interactive)
-;;   (set-buffer reb-target-buffer)
-;;   (reb-execute-perl-regexp (region-beginning) (region-end)))
-
-;; (defun reb-execute-perl-regexp (begin end)
-;;    (interactive)
-;;    (let ((pattern (buffer-string))
-;;          (replace (read-from-minibuffer "replace with: " nil))
-;;          (old-buffer current-buffer))
-;;      (set-buffer reb-target-buffer)
-;;      (replace-perl-regexp (region-beginning) (region-end) pattern replace)
-;;      (set-buffer current-buffer)))
-
 
 (defun kill-focused-buffer ()
   (interactive)

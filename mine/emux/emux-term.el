@@ -7,7 +7,7 @@
         (emux-rename-terminal name))
     (if command
         (emux-terminal-command command))
-  new-term))
+    new-term))
 
 (defun emux-rename-terminal (name)
   (interactive "snew terminal name: ")
@@ -60,6 +60,11 @@
   (interactive)
   (with-output-to-string
     (shell-command-on-region (point-min) (point-max) command standard-output)))
+
+(defun emux-clear-screen ()
+  (interactive)
+  (mark-whole-buffer)
+  (delete-region (point-min) (point-max)))
 
 (defadvice scroll-down (before emux-scroll-down)
   "Jump into line mode on scroll-down"

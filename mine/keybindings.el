@@ -1,8 +1,7 @@
 (global-set-key (kbd "C-x C-c") 'dont-kill-emacs)
 (global-set-key (kbd "C-x C-d") 'dired-default)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
-(global-set-key (kbd "C-x c") 'emux-create-terminal)
-(global-set-key (kbd "C-x P") 'emux-load-session-template)
+(global-set-key (kbd "C-x B") 'bookmark-jump)
 (global-set-key (kbd "M-i") 'idomenu)
 (global-set-key (kbd "C-#") 'comment-region)
 (global-set-key (kbd "M-#") 'uncomment-region)
@@ -74,6 +73,11 @@
 (define-key emms-playlist-mode-map (kbd "q") 'music-toggler)
 (define-key dired-mode-map (kbd "<backspace>") 'dired-up-directory)
 (define-key dired-mode-map (kbd "e") 'dired-efap)
+
+(global-set-key (kbd "C-x c") 'emux-create-terminal)
+(global-set-key (kbd "C-x P") 'emux-load-session-template)
+(global-set-key (kbd "C-S-l") 'emux-clear-screen)
+
 
 (setq
  term-bind-key-alist

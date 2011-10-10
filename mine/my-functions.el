@@ -90,13 +90,6 @@ stuff up"
   (remove-hook 'pre-command-hook 'my-auto-indent)
   (remove-hook 'post-command-hook 'my-auto-indent))
 
-(defun ido-recentf-open ()
-  "Use `ido-completing-read' to \\[find-file] a recent file"
-  (interactive)
-  (if (find-file (ido-completing-read "Find recent file: " recentf-list))
-      (message "Opening file...")
-    (message "Aborting")))
-
 (defun yank-and-indent ()
   "Yank and then indent the newly formed region according to mode."
   (interactive)

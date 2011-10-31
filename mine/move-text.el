@@ -32,3 +32,5 @@
   arg lines up."
   (interactive "*p")
   (move-text-internal (- arg)))
+
+(provide 'move-text)

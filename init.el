@@ -17,6 +17,7 @@
 (require 'stumpwm-mode)
 (require 'misc)
 (require 'project)
+(require 'move-text)
 (require 'my-package)
 (require 'my-settings)
 (require 'my-emms)
@@ -27,5 +28,3 @@
 (require 'my-keybindings)
 (require 'my-hooks)
 (require 'my-initializers)
-
-(load "move-text.el")

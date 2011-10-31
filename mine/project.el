@@ -92,3 +92,5 @@
 
 (defun project-define (project)
   (push project projects))
+
+(provide 'project)

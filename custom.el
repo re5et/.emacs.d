@@ -49,7 +49,7 @@
  '(magit-completing-read-function (quote ido-completing-read))
  '(magit-process-popup-time 0)
  '(magit-save-some-buffers nil)
- '(multi-term-program "/bin/zsh")
+ '(multi-term-program "/bin/zsh" t)
  '(multi-term-scroll-show-maximum-output t)
  '(mumamo-chunk-coloring 10)
  '(nxml-child-indent 2)
@@ -103,7 +103,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#000000" :foreground "#AAA" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 200 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))
+ '(default ((t (:inherit nil :stipple nil :background "#000000" :foreground "#AAA" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))
  '(erc-prompt-face ((t (:background "lightBlue2" :foreground "green" :weight bold))))
  '(flymake-errline ((t (:background "red"))))
  '(font-lock-comment-delimiter-face ((t (:inherit font-lock-comment-face :foreground "#f90"))))
@@ -118,6 +118,8 @@
  '(ido-first-match ((t (:foreground "#FF0" :weight bold))))
  '(ido-only-match ((t (:foreground "#0F0" :weight extra-bold))))
  '(isearch ((t (:background "#220022" :foreground "#FF00FF"))))
+ '(isearch-lazy-highlight-face ((t (:background "#440000"))) t)
+ '(lazy-highlight ((t (:background "#FFFF00"))))
  '(linum ((t (:foreground "#0F0"))))
  '(magit-diff-add ((t (:foreground "#0F0"))))
  '(magit-diff-del ((t (:foreground "#F00"))))

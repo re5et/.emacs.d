@@ -24,6 +24,7 @@
 (global-set-key (kbd "C-c m c") 'mpc-clear-playlist)
 (global-set-key (kbd "C-a") 'back-to-indentation)
 (global-set-key (kbd "C-c C-a") 'beginning-of-line)
+(global-set-key (kbd "C-S-s") 'isearch-forward-at-point)
 (global-set-key (kbd "C-k") 'kill-line)
 (global-set-key (kbd "C-S-k") 'hungry-kill)
 (global-set-key (kbd "C-c k") 'copy-line)
@@ -108,3 +109,5 @@
    ("M-DEL" . term-send-backward-kill-word)
    ("M-," . term-send-input)
    ("M-." . comint-dynamic-complete)))
+
+(provide 'my-keybindings)

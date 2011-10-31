@@ -1,9 +1,9 @@
 ;; HOOKS
 (add-hook 'find-file-hook 'delete-trailing-whitespace)
 (add-hook 'find-file-hook 'untabify-all)
-(add-hook 'before-save-hook 'delete-trailing-whitespace) ;; go to hell trailing whitespace
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 (add-hook 'before-save-hook 'untabify-all)
-(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p) ;; make it executable if it should be (starts with #!)
+(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 (add-hook 'before-save-hook 'auto-make-directory)
 (add-hook 'emms-player-started-hook 'emms-show)
 
@@ -17,7 +17,7 @@
    (flymake-ruby-load)))
 
 (add-hook
- 'javascript-mode-hook
+ 'js-mode-hook
  (lambda ()
    (autopair-mode)
    (linum-mode)

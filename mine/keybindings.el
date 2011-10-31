@@ -1,3 +1,5 @@
+(define-key key-translation-map "\C-j" "\C-x")
+
 (global-set-key (kbd "C-x C-c") 'dont-kill-emacs)
 (global-set-key (kbd "C-x C-d") 'dired-default)
 (global-set-key (kbd "C-x C-b") 'ibuffer)

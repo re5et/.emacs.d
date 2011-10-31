@@ -1,10 +1,6 @@
-;;; DOT EMACS
-
-;;; LOAD PATH
 (let ((default-directory "~/.emacs.d/"))
   (normal-top-level-add-subdirs-to-load-path))
 
-;;; REQUIRE
 (require 'slime)
 (require 'smex)
 (require 'ido)
@@ -32,6 +28,4 @@
 (require 'my-hooks)
 (require 'my-initializers)
 
-;; LOAD
-(load "smartscan.el")
 (load "move-text.el")

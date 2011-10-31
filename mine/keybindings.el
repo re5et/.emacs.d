@@ -12,8 +12,8 @@
 (global-set-key (kbd "M-L")  'next-multiframe-window)
 (global-set-key (kbd "M-H") 'previous-multiframe-window)
 (global-set-key (kbd "C-c r") 'rgrep)
-(global-set-key (kbd "C-c M-r") 'rgrep-project)
-(global-set-key (kbd "C-c M-R") 'rgrep-project-thing-at-point)
+(global-set-key (kbd "C-c M-r") 'project-rgrep)
+(global-set-key (kbd "C-c M-R") 'project-rgrep-thing-at-point)
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c f") 'flyspell-correct-word-before-point)
@@ -80,7 +80,6 @@
 (global-set-key (kbd "C-x c") 'emux-create-terminal)
 (global-set-key (kbd "C-x P") 'emux-load-session-template)
 (global-set-key (kbd "C-S-l") 'emux-clear-screen)
-
 
 (setq
  term-bind-key-alist

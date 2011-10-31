@@ -73,7 +73,6 @@
 (global-set-key (kbd "C-c m n") 'emms-next)
 (global-set-key (kbd "C-c m p") 'emms-previous)
 
-(define-key dired-mode-map (kbd "q") 'dired-toggler)
 (define-key emms-playlist-mode-map (kbd "q") 'music-toggler)
 (define-key dired-mode-map (kbd "<backspace>") 'dired-up-directory)
 (define-key dired-mode-map (kbd "e") 'dired-efap)

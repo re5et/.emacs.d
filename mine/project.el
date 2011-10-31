@@ -2,7 +2,7 @@
 (defvar buffer-project nil)
 (make-variable-buffer-local 'buffer-project)
 
-(defun has-paths (paths &optional dir)
+(defun project-has-paths (paths &optional dir)
   (let ((dir (or dir default-directory)))
     (if (member
          nil
@@ -11,79 +11,84 @@
             (file-exists-p (expand-file-name (symbol-name path) dir)))
           paths))
         (unless (string= dir "/")
-          (has-paths paths (expand-file-name ".." dir)))
+          (project-has-paths paths (expand-file-name ".." dir)))
       dir)))
 
-(defun get-buffer-project ()
+(defun project-for-current-buffer ()
   (or buffer-project
-      (car (mapcar
-            (lambda (project)
-              (let* ((paths (cadr (member :has project)))
-                     (ignore (cadr (member :ignore project)))
-                     (found-project (has-paths paths (buffer-file-name))))
-                (if found-project
-                    `(,found-project . ,ignore))))
-            projects))))
+      (dolist (project projects)
+        (let* ((paths (plist-get project :has))
+               (found-project (project-has-paths paths)))
+          (if found-project
+              (progn
+                (plist-put project :root (directory-file-name found-project))
+                (return (setq buffer-project project))))))))
 
-(defun buffer-project-root ()
-  (car (get-buffer-project)))
+(defun project-get (member)
+  (plist-get
+   (project-for-current-buffer)
+   member))
 
-(defun buffer-project-ignored ()
-  (cdr (get-buffer-project)))
+(defun project-root ()
+  (project-get :root))
 
-(defun set-buffer-project ()
-  (setq buffer-project (get-buffer-project)))
+(defun project-ignored ()
+  (project-get :ignore))
 
-(defun buffer-project-rgrep (fn)
+(defun project-type ()
+  (project-get :type))
+
+(defun project-buffer-rgrep (fn)
   (let* ((original-ignored grep-find-ignored-directories)
          (grep-find-ignored-directories
           (append original-ignored
                   (mapcar
                    (lambda (dir)
                      (symbol-name dir))
-                   '(.git tmp log coverage public/system doc vendor)))))
+                   (project-ignored)))))
     (funcall fn)))
 
-(defun rgrep-project ()
+(defun project-rgrep ()
   (interactive)
-  (buffer-project-rgrep
+  (project-buffer-rgrep
    (lambda ()
      (call-interactively 'rgrep))))
 
-(defun rgrep-project-thing-at-point ()
+(defun project-rgrep-thing-at-point ()
   (interactive)
-  (buffer-project-rgrep
+  (project-buffer-rgrep
    (lambda ()
      (let ((search-for (if (region-active-p)
                            (buffer-substring (region-beginning) (region-end))
                          (thing-at-point 'symbol))))
-       (rgrep search-for "*" (buffer-project-root))))))
+       (rgrep search-for "*" (project-root))))))
 
 (defun project-find-file ()
   (interactive)
   (find-file
    (format "%s/%s"
-           (buffer-project-root)
+           (project-root)
            (ido-completing-read
             "file: "
-            (project-get-files)))))
+            (project-files)))))
 
-(defun project-get-files ()
+(defun project-files ()
+  (message (project-root))
   (split-string
    (shell-command-to-string
     (mapconcat
      'identity
      `("find"
-       ,(buffer-project-root)
+       ,(project-root)
        "\\("
-       ,(format "-path \\*/%s" (car (buffer-project-ignored)))
+       ,(format "-path \\*/%s" (car (project-ignored)))
        ,(mapconcat (lambda (dir)
                      (format "-o -path \\*/%s" (symbol-name dir)))
-                   (cdr (buffer-project-ignored)) " ")
+                   (cdr (project-ignored)) " ")
        "\\)"
        "-prune -o -type f"
-       ,(format "| sed s:'%s/'::" (buffer-project-root))
+       ,(format "| sed -E s:'%s/'::" (project-root))
        ) " "))))
 
-(defun add-project (project)
+(defun project-define (project)
   (push project projects))

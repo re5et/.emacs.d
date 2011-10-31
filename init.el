@@ -105,8 +105,11 @@
 
 ;; wtf am i doing
 (define-key key-translation-map "\C-j" "\C-x")
+(project-define
+ '(:type rails
+   :has (config.ru app/views app/models app/controllers)
+   :ignore (tmp coverage log vendor .git public/system public/assets)))
 
-(add-project '(:has
-               (config.ru app/views app/models app/controllers)
-               :ignore
-               (tmp coverage log vendor .git public/system public/assets)))
+(project-define
+ '(:type emacs
+   :has (init.el)))

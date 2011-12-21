@@ -41,6 +41,7 @@
 (global-set-key (kbd "C-c C-e") 'eshell)
 (global-set-key (kbd "C-x C-r") 'ido-recentf-open)
 (global-set-key (kbd "C-x M-f") 'project-find-file)
+(global-set-key (kbd "C-x C-S-f") 'find-file-other-window)
 (global-set-key (kbd "C-c i f") 'insert-file-name)
 (global-set-key (kbd "C-c i d") 'insert-dir-name)
 (global-set-key (kbd "M-/") 'hippie-expand)

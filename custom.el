@@ -54,6 +54,9 @@
  '(mumamo-chunk-coloring 10)
  '(nxml-child-indent 2)
  '(nxml-outline-child-indent 2)
+ '(ruby-block-delay 0.1)
+ '(ruby-block-highlight-toggle t)
+ '(ruby-end-insert-newline nil)
  '(save-interprogram-paste-before-kill t)
  '(save-place t nil (saveplace))
  '(sgml-basic-offset 4)
@@ -105,7 +108,7 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "#000000" :foreground "#AAA" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))
  '(erc-prompt-face ((t (:background "lightBlue2" :foreground "green" :weight bold))))
- '(flymake-errline ((t (:background "red"))))
+ '(flymake-errline ((t (:background "#600"))))
  '(font-lock-comment-delimiter-face ((t (:inherit font-lock-comment-face :foreground "#f90"))))
  '(font-lock-comment-face ((t (:foreground "#444"))))
  '(font-lock-function-name-face ((t (:foreground "#F90" :weight bold))))

@@ -19,6 +19,9 @@
    stumpwm-mode
    misc
    project
+   auto-indent-mode
+   ruby-end
+   ruby-block
    move-text
    my-package
    my-settings

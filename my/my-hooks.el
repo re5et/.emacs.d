@@ -10,25 +10,26 @@
 (add-hook
  'ruby-mode-hook
  (lambda ()
+   (auto-indent-mode)
    (autopair-mode)
-   (set-newline-and-indent)
-   (rvm-use-default)
    (linum-mode)
+   (ruby-block-mode)
+   (rvm-activate-corresponding-ruby)
    (flymake-ruby-load)))
 
 (add-hook
  'js-mode-hook
  (lambda ()
+   (auto-indent-mode)
    (autopair-mode)
-   (linum-mode)
-   (set-newline-and-indent)))
+   (linum-mode)))
 
 (add-hook
  'css-mode-hook
  (lambda ()
+   (auto-indent-mode)
    (autopair-mode)
-   (linum-mode)
-   (set-newline-and-indent)))
+   (linum-mode)))
 
 (add-hook
  'magit-log-edit-mode-hook

@@ -234,4 +234,10 @@ stuff up"
         (add-hook 'isearch-mode-hook 'isearch-set-initial-string)
         (isearch-forward regexp-p no-recursive-edit)))))
 
+(defun space-out ()
+  (interactive)
+  (newline)
+  (newline)
+  (previous-line))
+
 (provide 'my-functions)

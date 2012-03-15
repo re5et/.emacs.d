@@ -53,6 +53,7 @@
 (global-set-key (kbd "C-x K") 'kill-focused-buffer)
 (global-set-key (kbd "C-o") 'next-newline)
 (global-set-key (kbd "M-o") 'previous-newline)
+(global-set-key (kbd "M-<return>") 'space-out)
 (global-set-key (kbd "M-z") 'zap-up-to-char)
 (global-set-key (kbd "M-P") 'clone-text-up)
 (global-set-key (kbd "M-N") 'clone-text-down)

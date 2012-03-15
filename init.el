@@ -18,7 +18,7 @@
    feature-mode
    stumpwm-mode
    misc
-   project
+	 simp
    auto-indent-mode
    ruby-end
    ruby-block

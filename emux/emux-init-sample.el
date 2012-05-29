@@ -1,0 +1,77 @@
+(let ((default-directory "~/.emacs.d/"))
+  (normal-top-level-add-subdirs-to-load-path))
+
+(require 'emux)
+
+(global-set-key (kbd "C-c c") 'emux-terminal-create)
+(global-set-key (kbd "C-c P") 'emux-session-load-template)
+
+(setq
+ multi-term-program "/bin/zsh"
+ term-unbind-key-list '("C-z" "C-x" "C-c" "C-h" "C-l" "<ESC>")
+ emux-completing-read-command 'ido-completing-read)
+
+(setq
+ term-bind-key-alist
+ '(("C-c c" . emux-terminal-create)
+   ("C-c r" . emux-terminal-rename)
+   ("C-c k" . emux-terminal-destroy)
+   ("C-c C" . emux-screen-create)
+   ("C-c R" . emux-screen-rename)
+   ("C-c s" . emux-screen-switch)
+   ("C-c M-s" . emux-jump-to-screen)
+   ("C-c S" . emux-session-switch)
+   ("C-c P" . emux-session-load-template)
+   ("C-c C-S-k" . emux-session-destroy)
+   ("C-c b" . emux-jump-to-session-buffer)
+   ("C-c B" . emux-jump-to-global-buffer)
+   ("C-S-y" . emux-terminal-yank)
+   ("C-c -" . emux-terminal-vsplit)
+   ("C-c |" . emux-terminal-hsplit)
+   ("C-c C-c" . term-interrupt-subjob)
+   ("C-S-c" . term-interrupt-subjob)
+   ("C-S-p" . previous-line)
+   ("C-S-s" . isearch-forward)
+   ("C-S-r" . isearch-backward)
+   ("C-m" . term-send-raw)
+   ("M-f" . term-send-forward-word)
+   ("M-b" . term-send-backward-word)
+   ("M-o" . term-send-backspace)
+   ("M-d" . term-send-forward-kill-word)
+   ("M-DEL" . term-send-backward-kill-word)
+   ("M-," . term-send-input)
+   ("M-." . comint-dynamic-complete)))
+
+(setq inhibit-splash-screen t)
+(emux-session-create '(:name "default"))
+(emux-screen-create)
+
+
+;; '(:both
+;; 	(("C-c c" . emux-terminal-create)
+;; 	 ("C-c r" . emux-terminal-rename)
+;; 	 ("C-c k" . emux-terminal-destroy)
+;; 	 ("C-c C" . emux-screen-create)
+;; 	 ("C-c R" . emux-screen-rename)
+;; 	 ("C-c s" . emux-screen-switch)
+;; 	 ("C-c M-s" . emux-jump-to-screen)
+;; 	 ("C-c S" . emux-session-switch)
+;; 	 ("C-c P" . emux-session-load-template)
+;; 	 ("C-c C-S-k" . emux-session-destroy)
+;; 	 ("C-c b" . emux-jump-to-buffer)
+;; 	 ("C-S-y" . emux-terminal-yank)
+;; 	 ("C-c -" . emux-terminal-vsplit)
+;; 	 ("C-c |" . emux-terminal-hsplit)
+;; 	 ("C-c C-c" . term-interrupt-subjob)
+;; 	 ("C-S-c" . term-interrupt-subjob)
+;; 	 ("M-," . term-send-input)
+;; 	 ("M-." . comint-dynamic-complete))
+;; 	:char
+;; 	(("C-m" . term-send-raw)
+;; 	 ("M-f" . term-send-forward-word)
+;; 	 ("M-b" . term-send-backward-word)
+;; 	 ("M-o" . term-send-backspace)
+;; 	 ("M-d" . term-send-forward-kill-word)
+;; 	 ("M-DEL" . term-send-backward-kill-word))
+;; 	:term-unbind
+;; 	("C-z" "C-x" "C-c" "C-h" "C-l" "<ESC>"))

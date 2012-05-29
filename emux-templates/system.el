@@ -1,0 +1,8 @@
+(emux-session-set-default-directory "~/")
+(emux-screen-create '(:name "system"))
+(emux-terminal-hsplit "bmon" "bmon")
+(emux-terminal-vsplit "free space" "watch df -h")
+(other-window 1)
+(proced)
+(other-window 1)
+(delete-window)

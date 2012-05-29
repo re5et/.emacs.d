@@ -13,6 +13,11 @@
  '(elscreen-display-tab nil)
  '(emms-playlist-default-major-mode (quote emms-playlist-mode))
  '(emms-source-file-default-directory "~/music/")
+ '(emux-completing-read-command (quote ido-completing-read))
+ '(eshell-cd-shows-directory nil)
+ '(eshell-cmpl-cycle-completions t)
+ '(eshell-cmpl-cycle-cutoff-length 10)
+ '(eshell-cmpl-expand-before-complete t)
  '(fringe-mode (quote (1 . 1)) nil (fringe))
  '(global-linum-mode nil)
  '(global-visible-mark-mode t)
@@ -108,7 +113,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#000000" :foreground "#AAA" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))
+ '(default ((t (:inherit nil :stipple nil :background "#000000" :foreground "#AAA" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "unknown" :family "dejavu sans mono"))))
  '(erc-prompt-face ((t (:background "lightBlue2" :foreground "green" :weight bold))))
  '(flymake-errline ((t (:background "#600"))))
  '(font-lock-comment-delimiter-face ((t (:inherit font-lock-comment-face :foreground "#f90"))))

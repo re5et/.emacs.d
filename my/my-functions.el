@@ -144,13 +144,13 @@ stuff up"
 
 (defun start-emux ()
   (unless (featurep 'emux)
-    (require 'emux)
-    (emux-initialize))
-  (unless (member
-           "emux"
-           (mapcar
-            (lambda (frame) (frame-parameter frame 'name))
-            (frame-list)))
+    (require 'emux))
+  (unless
+      (member
+       "emux"
+       (mapcar
+        (lambda (frame) (frame-parameter frame 'name))
+        (frame-list)))
     (modify-frame-parameters nil (list (cons 'name "emacs")))
     (modify-frame-parameters (make-frame) (list (cons 'name "emux")))))
 

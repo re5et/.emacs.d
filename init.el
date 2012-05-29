@@ -18,11 +18,12 @@
    feature-mode
    stumpwm-mode
    misc
-	 simp
+   simp
    auto-indent-mode
    ruby-end
    ruby-block
    move-text
+   emux
    my-package
    my-settings
    my-emms

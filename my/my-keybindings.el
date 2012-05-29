@@ -32,6 +32,7 @@
 (global-set-key (kbd "S-<backspace>") 'pop-to-mark-command)
 (global-set-key (kbd "C-z") 'jump-to-string)
 (global-set-key (kbd "C-y") 'yank-and-indent)
+(global-set-key (kbd "C-M-y") 'kill-ring-search)
 (global-set-key (kbd "C-,") 'indent-buffer)
 (global-set-key (kbd "C-S-i") 'indent-region)
 (global-set-key (kbd "M-s s") 'replace-string)

@@ -66,7 +66,7 @@
  '(ruby-end-insert-newline nil)
  '(save-interprogram-paste-before-kill t)
  '(save-place t nil (saveplace))
- '(sgml-basic-offset 4)
+ '(sgml-basic-offset 2)
  '(size-indication-mode t)
  '(tab-width 2)
  '(term-buffer-maximum-size 16384)

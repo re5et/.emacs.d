@@ -24,6 +24,7 @@
    ruby-block
    move-text
    emux
+   midnight
    my-package
    my-settings
    my-emms
@@ -34,3 +35,6 @@
    my-keybindings
    my-hooks
    my-initializers))
+
+(midnight-delay-set 'midnight-delay "1:00am")
+(setq clean-buffer-list-delay-general 1)

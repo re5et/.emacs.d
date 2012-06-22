@@ -5,6 +5,7 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-x B") 'bookmark-jump)
 (global-set-key (kbd "M-i") 'idomenu)
+(global-set-key (kbd "C-?") 'revert-buffer)
 (global-set-key (kbd "C-#") 'comment-region)
 (global-set-key (kbd "M-#") 'uncomment-region)
 (global-set-key (kbd "M-l")  'next-in-frame-window)

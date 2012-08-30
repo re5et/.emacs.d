@@ -34,7 +34,8 @@
 (add-hook
  'magit-log-edit-mode-hook
  (lambda ()
-   (flyspell-mode)))
+   (flyspell-mode)
+   (set-fill-column 72)))
 
 (add-hook
  'emacs-lisp-mode-hook

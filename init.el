@@ -25,6 +25,7 @@
    move-text
    emux
    midnight
+   my-advice
    my-package
    my-settings
    my-emms

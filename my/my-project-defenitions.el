@@ -4,6 +4,10 @@
    :ignore (tmp coverage log vendor .git .css private public)))
 
 (simp-project-define
+ '(:type node
+   :has (node_modules package.json)))
+
+(simp-project-define
  '(:type emacs
    :has (init.el)))
 

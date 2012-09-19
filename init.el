@@ -24,6 +24,7 @@
    ruby-block
    move-text
    emux
+   winner-mode
    midnight
    my-advice
    my-package

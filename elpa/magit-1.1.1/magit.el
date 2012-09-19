@@ -1954,7 +1954,7 @@ function can be enriched by magit extension like magit-topgit and magit-svn"
                  (process-send-eof magit-process)
                  (sit-for 0.1 t))
                (cond ((= magit-process-popup-time 0)
-                      (pop-to-buffer (process-buffer magit-process)))
+                      (switch-to-buffer (process-buffer magit-process)))
                      ((> magit-process-popup-time 0)
                       (run-with-timer
                        magit-process-popup-time nil
@@ -2087,7 +2087,7 @@ function can be enriched by magit extension like magit-topgit and magit-svn"
   (interactive)
   (unless (get-buffer magit-process-buffer-name)
     (error "No Git commands have run"))
-  (display-buffer magit-process-buffer-name))
+  (switch-to-buffer magit-process-buffer-name))
 
 ;;; Mode
 

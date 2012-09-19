@@ -151,8 +151,4 @@ and enter term-char-mode"
   "Make sure that before keyboard quitting go back to term-char-mode"
   (emux-terminal-focus-prompt))
 
-(defadvice he-substitute-string (around emux-hippie-expand activate)
-  (term-send-backward-kill-word)
-  (emux-terminal-send-raw (ad-get-arg 0)))
-
 (provide 'emux-terminal)

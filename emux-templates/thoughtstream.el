@@ -1,0 +1,6 @@
+(emux-session-set-default-directory "~/code/thoughtstream")
+(emux-screen-create '(:name "node") "ns" "cd node-app && make server")
+(emux-screen-create '(:name "rails") "rs" "cd rails-app && rails s")
+(emux-screen-create '(:name "tests") "guard" "cd rails-app && guard")
+(emux-screen-create '(:name "mongo") "mongo" "mongo supermini")
+(emux-screen-create '(:name "misc") "git" "git status")

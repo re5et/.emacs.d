@@ -8,6 +8,11 @@
    :has (node_modules package.json)))
 
 (simp-project-define
+ '(:type thoughtstream
+   :has (node-app rails-app npTuioClient)
+   :ignore (db docs .git ios-app npTuioClient scripts shared rails-app/public/javascripts node-app/node_modules shared .jhw-cache)))
+
+(simp-project-define
  '(:type emacs
    :has (init.el)))
 

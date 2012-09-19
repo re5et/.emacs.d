@@ -123,6 +123,7 @@
  '(font-lock-string-face ((t (:foreground "#c00"))))
  '(font-lock-variable-name-face ((t (:foreground "#FF0" :weight bold))))
  '(fringe ((t (:background "#111" :foreground "#500"))))
+ '(header-line ((t (:background "#000" :foreground "#FFF" :weight ultra-bold))))
  '(highlight ((t (:background "#330"))))
  '(highline-face ((t (:background "#000011"))))
  '(highline-vertical-face ((t (:background "#030303"))))

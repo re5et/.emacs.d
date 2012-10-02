@@ -148,6 +148,7 @@
  '(show-paren-mismatch ((t (:background "#F00" :foreground "white" :weight ultra-bold))))
  '(visible-mark-face ((t (:foreground "#0F0" :underline "#F0F"))))
  '(visible-mark-non-trailing-face0 ((t (:foreground "#F0F"))) t)
+ '(whitespace-empty ((t (:background "#100" :foreground "firebrick"))))
  '(whitespace-hspace ((t (:foreground "#222"))))
  '(whitespace-indentation ((t (:inherit nil :foreground "#400"))))
  '(whitespace-line ((t (:inherit default))))

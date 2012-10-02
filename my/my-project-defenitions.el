@@ -5,12 +5,12 @@
 
 (simp-project-define
  '(:type node
-   :has (node_modules package.json)))
+   :has (node_modules)))
 
 (simp-project-define
  '(:type thoughtstream
    :has (node-app rails-app npTuioClient)
-   :ignore (db docs .git ios-app npTuioClient scripts shared rails-app/public/javascripts node-app/node_modules shared .jhw-cache)))
+   :ignore (db docs .git ios-app npTuioClient scripts shared rails-app/public/javascripts node-app/node_modules shared .jhw-cache rails-app/tmp rails-app/public)))
 
 (simp-project-define
  '(:type emacs

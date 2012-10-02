@@ -265,4 +265,8 @@ stuff up"
           (select-window first-win)
           (if this-win-2nd (other-window 1))))))
 
+(defun multi-occur-all-buffers (regexp)
+  (interactive "sregexp: ")
+  (multi-occur (buffer-list) regexp))
+
 (provide 'my-functions)

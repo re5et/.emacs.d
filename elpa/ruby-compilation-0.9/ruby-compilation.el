@@ -4,10 +4,10 @@
 
 ;; Author: Eric Schulte
 ;; URL: https://github.com/eschulte/rinari
-;; Version: 0.8
+;; Version: 0.9
 ;; Created: 2008-08-23
 ;; Keywords: test convenience
-;; Package-Requires: ((ruby-mode "1.1") (inf-ruby "2.2.1"))
+;; Package-Requires: ((inf-ruby "2.2.1"))
 
 ;;; License:
 
@@ -91,7 +91,7 @@
    "Return a list of all the rake tasks defined in the current
 projects.  I know this is a hack to put all the logic in the
 exec-to-string command, but it works and seems fast"
-   (delq nil (mapcar '(lambda(line)
+   (delq nil (mapcar #'(lambda(line)
 			(if (string-match "rake \\([^ ]+\\)" line) (match-string 1 line)))
 		     (split-string (shell-command-to-string "rake -T") "[\n]"))))
 
@@ -103,7 +103,7 @@ exec-to-string command, but it works and seems fast"
    "Return a list of all the cap tasks defined in the current
 project.  I know this is a hack to put all the logic in the
 exec-to-string command, but it works and seems fast"
-   (delq nil (mapcar '(lambda(line)
+   (delq nil (mapcar #'(lambda(line)
 			(if (string-match "cap \\([^ ]+\\)" line) (match-string 1 line)))
 		     (split-string (shell-command-to-string "cap -T") "[\n]"))))
 
@@ -154,8 +154,7 @@ name to construct the name of the compilation buffer."
     (if (string-match "shell" task)
 	(progn ;; hand the shell command to `run-ruby'
 	  (run-ruby (concat "cap " cap-args) "cap")
-	  (save-excursion
-	    (set-buffer "*cap*")
+	  (with-current-buffer "*cap*"
 	    (set (make-local-variable 'inf-ruby-first-prompt-pattern) "^cap> ")
 	    (set (make-local-variable 'inf-ruby-prompt-pattern) "^cap> ")))
       (progn ;; handle all cap commands aside from shell
@@ -215,8 +214,8 @@ name to construct the name of the compilation buffer."
 (defun ruby-compilation-do (name cmdlist)
   (let* ((buffer (apply 'make-comint name (car cmdlist) nil (cdr cmdlist)))
          (proc (get-buffer-process buffer)))
-    (save-excursion
-      (set-buffer buffer) ;; set buffer local variables and process ornaments
+    (with-current-buffer buffer
+      ;; set buffer local variables and process ornaments
       (buffer-disable-undo)
       (set-process-sentinel proc 'ruby-compilation-sentinel)
       (set-process-filter proc 'ruby-compilation-insertion-filter)

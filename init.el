@@ -27,6 +27,7 @@
    winner
    midnight
    my-advice
+   my-backup
    my-package
    my-settings
    my-emms

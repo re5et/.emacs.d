@@ -8,6 +8,7 @@
    ido
    ido-ubiquitous
    autopair
+   iedit
    visible-mark
    highline
    rinari

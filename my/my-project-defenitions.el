@@ -1,4 +1,9 @@
 (simp-project-define
+ '(:type git
+   :has (.git)
+   :ignore (.git)))
+
+(simp-project-define
  '(:type rails
    :has (config.ru app/views app/models app/controllers)
    :ignore (tmp coverage log vendor .git .css private public)))

@@ -50,7 +50,10 @@ using the unix find command for speedy results"
            (simp-project-root)
            (ido-completing-read
             "file: "
-            (simp-project-files)))))
+            (sort
+             (simp-project-files)
+             (lambda (a b)
+               (< (length a) (length b))))))))
 
 (defun simp-project-files ()
   "returns a list of files in a project, excluding project's

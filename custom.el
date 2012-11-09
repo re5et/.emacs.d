@@ -33,6 +33,10 @@
  '(highline-selected-window t)
  '(hippie-expand-try-functions-list (quote (yas/hippie-try-expand try-complete-file-name-partially try-complete-file-name try-expand-all-abbrevs try-expand-list try-expand-line try-expand-dabbrev try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill try-complete-lisp-symbol-partially try-complete-lisp-symbol)))
  '(ido-auto-merge-delay-time 5)
+ '(ido-decorations (quote ("
+-> " "" "
+   " "
+   ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
  '(ido-enable-flex-matching t)
  '(ido-everywhere t)
  '(ido-max-directory-size 100000)
@@ -58,6 +62,8 @@
  '(magit-process-connection-type nil)
  '(magit-process-popup-time 0)
  '(magit-save-some-buffers nil)
+ '(midnight-delay "1:00am")
+ '(midnight-mode t nil (midnight))
  '(multi-term-program "/bin/zsh")
  '(multi-term-scroll-show-maximum-output t)
  '(mumamo-chunk-coloring 10)

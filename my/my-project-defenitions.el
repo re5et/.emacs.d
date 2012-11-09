@@ -1,8 +1,3 @@
-(simp-project-define
- '(:type git
-         :has (.git)
-         :ignore (.git)))
-
 (let
     ((rails-ignore '(tmp
                      coverage
@@ -13,6 +8,11 @@
                      private
                      public
                      .jhw-cache)))
+
+  (simp-project-define
+   '(:type git
+           :has (.git)
+           :ignore (.git)))
 
   (simp-project-define
    `(:type rails
@@ -32,11 +32,6 @@
 
   (simp-project-define
    '(:type emacs
-           :has (init.el)))
-
-  (simp-project-define
-   '(:type git
-           :has (.git)
-           :ignore (.git))))
+           :has (init.el))))
 
 (provide 'my-project-defenitions)

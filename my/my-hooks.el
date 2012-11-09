@@ -47,7 +47,9 @@
  'lisp-mode-hook
  (lambda ()
    (linum-mode)
-   (paredit-mode +1)))
+   (paredit-mode +1)
+   (if (string-match "stumpwmrc$" buffer-file-name)
+       (stumpwm-mode))))
 
 (add-hook
  'lisp-interaction-mode-hook

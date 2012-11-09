@@ -78,6 +78,7 @@
  '(save-interprogram-paste-before-kill t)
  '(save-place t nil (saveplace))
  '(sgml-basic-offset 2)
+ '(simp-completing-read-command (quote ido-completing-read))
  '(size-indication-mode t)
  '(tab-width 2)
  '(term-buffer-maximum-size 16384)

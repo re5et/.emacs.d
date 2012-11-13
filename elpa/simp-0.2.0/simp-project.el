@@ -1,11 +1,11 @@
 ;;; simp-project.el --- Simple project defenition, chiefly for file finding, and grepping
 
-;; Copyright (C) 2011 @re5et
+;; Copyright (C) 2011-2012 @re5et
 
 ;; Author: atom smith
 ;; URL: https://github.com/re5et/simp
 ;; Created: 22 Dec 2011
-;; Version: 0.1.1
+;; Version: 0.2.0
 ;; Keywords: project grep find
 
 ;; This file is NOT part of GNU Emacs.
@@ -79,8 +79,10 @@
 (defvar simp-buffer-project nil)
 (make-variable-buffer-local 'simp-buffer-project)
 
-(defcustom simp-completing-read-command 'completing-read
-  "The completing read command simp-completing-read will use.")
+(defcustom simp-completing-read-command
+  'completing-read
+  "The completing read command simp-completing-read will use."
+  :group 'simp)
 
 (defun simp-completing-read (prompt collection)
   "Internal simp use, completing read used by simp.
@@ -101,7 +103,8 @@ correct project and set it"
           (if found-project
               (progn
                 (plist-put project :root (directory-file-name found-project))
-                (return (setq simp-buffer-project project))))))))
+                (return (setq simp-buffer-project project))))))
+      (error "simp did not find a project to work with :(")))
 
 (defun simp-glob-in-dir (glob dir)
   "Returns a list of any files matching the given GLOB are in DIR"
@@ -113,16 +116,18 @@ to see if they exist in DIR"
   (let ((dir (or dir default-directory)))
     (if (member
          nil
-         (mapcar (lambda (path) (simp-glob-in-dir path dir)) paths))
-        (unless (string= dir "/")
+         (mapcar
+          (lambda (path)
+            (simp-glob-in-dir path dir))
+          paths))
+        (if (string= dir "/") nil
           (simp-project-has-paths paths (expand-file-name ".." dir)))
       dir)))
 
 (defun simp-project-get (member)
   "get MEMBER property from the current project"
-  (plist-get
-   (simp-project-for-current-buffer)
-   member))
+  (if (simp-project-for-current-buffer)
+      (plist-get (simp-project-for-current-buffer) member)))
 
 (defun simp-project-root ()
   "get the current buffers project root"

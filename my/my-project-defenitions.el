@@ -32,6 +32,7 @@
 
   (simp-project-define
    '(:type emacs
-           :has (init.el))))
+           :has (init.el)
+           :ignore (.git))))
 
 (provide 'my-project-defenitions)

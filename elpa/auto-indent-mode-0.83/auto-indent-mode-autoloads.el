@@ -5,7 +5,7 @@
 
 ;;;### (autoloads (auto-indent-global-mode auto-indent-minor-mode-on
 ;;;;;;  auto-indent-minor-mode auto-indent-eol-char-newline auto-indent-eol-newline)
-;;;;;;  "auto-indent-mode" "auto-indent-mode.el" (20637 19025))
+;;;;;;  "auto-indent-mode" "auto-indent-mode.el" (20641 50490))
 ;;; Generated autoloads from auto-indent-mode.el
 
 (autoload 'auto-indent-eol-newline "auto-indent-mode" "\
@@ -65,8 +65,8 @@ See `auto-indent-minor-mode' for more information on Auto-Indent minor mode.
 
 ;;;***
 
-;;;### (autoloads nil nil ("auto-indent-mode-pkg.el") (20637 19025
-;;;;;;  700089))
+;;;### (autoloads nil nil ("auto-indent-mode-pkg.el") (20641 50490
+;;;;;;  844439))
 
 ;;;***
 

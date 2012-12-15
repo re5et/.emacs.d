@@ -1,4 +1,0 @@
-#name : fun
-#group : methods
-# --
-function($1){$0}

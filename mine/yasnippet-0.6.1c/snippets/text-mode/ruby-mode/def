@@ -1,6 +1,0 @@
-#name : def
-#group : methods
-# --
-def ${1:method}${2:(${3:args})}
-  $0
-end

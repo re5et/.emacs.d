@@ -96,7 +96,8 @@ and enter term-char-mode"
   (interactive)
   (mark-whole-buffer)
   (delete-region (point-min) (point-max))
-  (term-char-mode))
+  (if (equal major-mode 'term-mode)
+      (term-char-mode)))
 
 (defun emux-terminal-focus-prompt ()
   (interactive)

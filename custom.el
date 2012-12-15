@@ -150,7 +150,7 @@
  '(mode-line ((t (:background "#111" :foreground "#0F0"))))
  '(mode-line-inactive ((t (:background "#262626" :foreground "#777"))))
  '(regex-tool-matched-face ((t (:background "#020" :foreground "Orange" :weight bold))))
- '(region ((t (:background "#550055"))))
+ '(region ((t (:background "#111"))))
  '(show-paren-match ((t (:background "#06F" :foreground "#000" :weight ultra-bold))))
  '(show-paren-mismatch ((t (:background "#F00" :foreground "white" :weight ultra-bold))))
  '(visible-mark-face ((t (:foreground "#0F0" :underline "#F0F"))))

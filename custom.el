@@ -86,7 +86,7 @@
  '(term-default-fg-color "#FFFFFF")
  '(term-unbind-key-list (quote ("C-z" "C-x" "C-c" "C-h" "C-l" "<ESC>")))
  '(text-mode-hook (quote (turn-on-auto-fill text-mode-hook-identify)))
- '(transient-mark-mode nil)
+ '(transient-mark-mode t)
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))
  '(visible-mark-inhibit-trailing-overlay t)
  '(visible-mark-max 1)

@@ -8,15 +8,12 @@
    ido
    ido-ubiquitous
    autopair
-   iedit
    visible-mark
    highline
-   rinari
    backup-dir
    dired
    dired-efap
    yasnippet
-   feature-mode
    stumpwm-mode
    misc
    simp
@@ -27,6 +24,8 @@
    emux
    winner
    midnight
+   isearch-symbol-at-point
+   multiple-cursors
    my-advice
    my-backup
    my-package

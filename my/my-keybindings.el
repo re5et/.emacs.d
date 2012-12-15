@@ -1,5 +1,7 @@
 (define-key key-translation-map "\C-j" "\C-x")
 
+
+(global-set-key (kbd "C-c j") 'newline-and-indent)
 (global-set-key (kbd "C-x C-c") 'dont-kill-emacs)
 (global-set-key (kbd "C-x C-d") 'dired-default)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
@@ -22,7 +24,10 @@
 (global-set-key (kbd "C-c m c") 'mpc-clear-playlist)
 (global-set-key (kbd "C-a") 'back-to-indentation)
 (global-set-key (kbd "C-c C-a") 'beginning-of-line)
-(global-set-key (kbd "C-S-s") 'isearch-forward-at-point)
+(global-set-key (kbd "C-S-s") 'isearch-symbol-at-point)
+(global-set-key (kbd "C-S-r") 'isearch-backward-symbol-at-point)
+(global-set-key (kbd "C-S-m") 'mc/mark-all-like-this-dwim)
+(global-set-key (kbd "C-S-y") 'mc--maybe-set-killed-rectangle)
 (global-set-key (kbd "C-k") 'kill-line)
 (global-set-key (kbd "C-S-k") 'hungry-kill)
 (global-set-key (kbd "C-c k") 'copy-line)
@@ -35,7 +40,6 @@
 (global-set-key (kbd "C-S-i") 'indent-region)
 (global-set-key (kbd "M-s s") 'replace-string)
 (global-set-key (kbd "M-s S") 'replace-regexp)
-(global-set-key (kbd "C-S-R") 'iedit-mode)
 (global-set-key (kbd "M-s r") 'replace-thing-at-point-with-last-kill)
 (global-set-key (kbd "C-c C-e") 'eshell)
 (global-set-key (kbd "C-x C-S-f") 'find-file-other-window)

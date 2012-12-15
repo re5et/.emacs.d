@@ -38,6 +38,3 @@
    my-keybindings
    my-hooks
    my-initializers))
-
-(midnight-delay-set 'midnight-delay "1:00am")
-(setq clean-buffer-list-delay-general 1)

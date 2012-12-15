@@ -4,6 +4,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-term-color-vector [unspecified "white" "red" "green" "yellow" "royal blue" "magenta" "cyan" "white"] t)
+ '(clean-buffer-list-delay-general 1)
  '(column-highlight-mode t)
  '(column-number-mode t)
  '(compilation-ask-about-save nil)

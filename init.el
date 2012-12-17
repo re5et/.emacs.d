@@ -22,10 +22,12 @@
    ruby-block
    move-text
    emux
+   expand-region
    winner
    midnight
    isearch-symbol-at-point
    multiple-cursors
+   wagger
    my-advice
    my-backup
    my-package

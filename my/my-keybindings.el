@@ -1,7 +1,7 @@
 (define-key key-translation-map "\C-j" "\C-x")
 
-
 (global-set-key (kbd "C-c j") 'newline-and-indent)
+(global-set-key (kbd "C-c m") 'er/expand-region)
 (global-set-key (kbd "C-x C-c") 'dont-kill-emacs)
 (global-set-key (kbd "C-x C-d") 'dired-default)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
@@ -40,7 +40,6 @@
 (global-set-key (kbd "C-S-i") 'indent-region)
 (global-set-key (kbd "M-s s") 'replace-string)
 (global-set-key (kbd "M-s S") 'replace-regexp)
-(global-set-key (kbd "M-s r") 'replace-thing-at-point-with-last-kill)
 (global-set-key (kbd "C-c C-e") 'eshell)
 (global-set-key (kbd "C-x C-S-f") 'find-file-other-window)
 (global-set-key (kbd "C-x M-f") 'simp-project-find-file)

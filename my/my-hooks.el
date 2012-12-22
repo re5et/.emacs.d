@@ -11,7 +11,6 @@
  'ruby-mode-hook
  (lambda ()
    (auto-indent-mode)
-   (autopair-mode)
    (linum-mode)
    (ruby-block-mode)
    (rvm-activate-corresponding-ruby)
@@ -21,14 +20,17 @@
  'js-mode-hook
  (lambda ()
    (auto-indent-mode)
-   (autopair-mode)
+   (linum-mode)))
+
+(add-hook
+ 'coffee-mode-hook
+ (lambda ()
    (linum-mode)))
 
 (add-hook
  'css-mode-hook
  (lambda ()
    (auto-indent-mode)
-   (autopair-mode)
    (linum-mode)))
 
 (add-hook

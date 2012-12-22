@@ -92,10 +92,11 @@
  '(visible-mark-inhibit-trailing-overlay t)
  '(visible-mark-max 1)
  '(vlf-batch-size 102400)
+ '(wgrep-auto-save-buffer t)
  '(whitespace-global-modes t)
  '(whitespace-line-column 800)
  '(yank-pop-change-selection t)
- '(yas/global-mode t nil (yasnippet))
+ '(yas-global-mode t nil (yasnippet))
  '(yas/trigger-key ""))
 
 (deftheme selwyn

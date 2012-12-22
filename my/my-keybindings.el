@@ -1,7 +1,7 @@
 (define-key key-translation-map "\C-j" "\C-x")
 
 (global-set-key (kbd "C-c j") 'newline-and-indent)
-(global-set-key (kbd "C-c m") 'er/expand-region)
+(global-set-key (kbd "M-M") 'er/expand-region)
 (global-set-key (kbd "C-x C-c") 'dont-kill-emacs)
 (global-set-key (kbd "C-x C-d") 'dired-default)
 (global-set-key (kbd "C-x C-b") 'ibuffer)

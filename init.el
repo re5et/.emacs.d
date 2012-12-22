@@ -7,7 +7,6 @@
    smex
    ido
    ido-ubiquitous
-   ido-better-flex
    autopair
    visible-mark
    highline

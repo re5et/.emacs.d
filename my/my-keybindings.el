@@ -64,7 +64,6 @@
 (global-set-key (kbd "C-S-f") 'unbury-buffer)
 (global-set-key (kbd "C-|") 'rotate-frame-window-buffers)
 (global-set-key (kbd "M-|") 'toggle-window-split)
-(global-set-key (kbd "M-M") 'multi-occur-all-buffers)
 
 (global-set-key (kbd "C-<return>") 'embiggen-toggler)
 (global-set-key (kbd "C-x ;") 'scratch-toggler)

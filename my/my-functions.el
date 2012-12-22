@@ -64,28 +64,6 @@ buffer read-only, so I suggest setting kill-read-only-ok to t."
   (save-excursion)
   (indent-region (point-min) (point-max)))
 
-(defun my-auto-indent ()
-  "indent all the gosh darned time."
-  (indent-according-to-mode))
-
-(defun enable-auto-indent ()
-  (interactive)
-  (add-hook 'pre-command-hook 'my-auto-indent)
-  (add-hook 'post-command-hook 'my-auto-indent))
-
-(defun disable-auto-indent ()
-  "disable my-auto-indent in cases where it screws
-stuff up"
-  (interactive)
-  (remove-hook 'pre-command-hook 'my-auto-indent)
-  (remove-hook 'post-command-hook 'my-auto-indent))
-
-(defun yank-and-indent ()
-  "Yank and then indent the newly formed region according to mode."
-  (interactive)
-  (yank)
-  (indent-according-to-mode))
-
 (defun untabify-all ()
   (interactive)
   (untabify (point-min) (point-max)))
@@ -207,26 +185,6 @@ stuff up"
 (toggler term (lambda () (term "/bin/zsh")) t)
 (toggler embiggen nil t)
 
-;; I-search with initial contents
-(defvar isearch-initial-string nil)
-
-(defun isearch-set-initial-string ()
-  (remove-hook 'isearch-mode-hook 'isearch-set-initial-string)
-  (setq isearch-string isearch-initial-string)
-  (isearch-search-and-update))
-
-(defun isearch-forward-at-point (&optional regexp-p no-recursive-edit)
-  "Interactive search forward for the symbol at point."
-  (interactive "P\np")
-  (if regexp-p (isearch-forward regexp-p no-recursive-edit)
-    (let* ((end (progn (skip-syntax-forward "w_") (point)))
-           (begin (progn (skip-syntax-backward "w_") (point))))
-      (if (eq begin end)
-          (isearch-forward regexp-p no-recursive-edit)
-        (setq isearch-initial-string (buffer-substring begin end))
-        (add-hook 'isearch-mode-hook 'isearch-set-initial-string)
-        (isearch-forward regexp-p no-recursive-edit)))))
-
 (defun space-out ()
   (interactive)
   (newline)
@@ -257,9 +215,5 @@ stuff up"
           (set-window-buffer (next-window) next-win-buffer)
           (select-window first-win)
           (if this-win-2nd (other-window 1))))))
-
-(defun multi-occur-all-buffers (regexp)
-  (interactive "sregexp: ")
-  (multi-occur (buffer-list) regexp))
 
 (provide 'my-functions)

@@ -21,8 +21,6 @@
 ;;
 ;; (require 'sass-mode)
 
-;; sass-mode requires haml-mode, which can be found at http://github.com/nex3/haml-mode.
-
 ;;; Code:
 
 (require 'haml-mode)

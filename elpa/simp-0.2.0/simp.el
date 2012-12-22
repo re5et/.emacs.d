@@ -41,5 +41,6 @@
 (require 'simp-project)
 (require 'simp-project-files)
 (require 'simp-project-rgrep)
+(require 'simp-project-find-spec)
 
 (provide 'simp)

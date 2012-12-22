@@ -3,22 +3,6 @@
 ;;; Code:
 
 
-;;;### (autoloads (multi-term) "multi-term" "multi-term.el" (19937
-;;;;;;  19437))
-;;; Generated autoloads from multi-term.el
-
-(autoload 'multi-term "multi-term" "\
-Create new term buffer.
-Will prompt you shell name when you type `C-u' before this command.
-
-\(fn)" t nil)
-
-;;;***
-
-;;;### (autoloads nil nil ("multi-term-pkg.el") (19937 19437 700670))
-
-;;;***
-
 (provide 'multi-term-autoloads)
 ;; Local Variables:
 ;; version-control: never

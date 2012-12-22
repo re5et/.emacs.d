@@ -10,7 +10,6 @@
    autopair
    visible-mark
    highline
-   backup-dir
    dired
    dired-efap
    yasnippet
@@ -18,8 +17,6 @@
    misc
    simp
    auto-indent-mode
-   ruby-end
-   ruby-block
    move-text
    emux
    expand-region

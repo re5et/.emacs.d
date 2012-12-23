@@ -69,9 +69,9 @@
 (global-set-key (kbd "C-x C-S-f") 'find-file-other-window)
 
 (global-set-key (kbd "C-c m q") 'emms-add-directory-tree)
-(global-set-key (kbd "C-c m a") 'emms-play-directory-tree)
-(global-set-key (kbd "C-c m n") 'emms-next)
-(global-set-key (kbd "C-c m p") 'emms-previous)
+(global-set-key (kbd "C-c m p") 'emms-play-directory-tree)
+(global-set-key (kbd "C-c m f") 'emms-next)
+(global-set-key (kbd "C-c m b") 'emms-previous)
 
 (define-key emms-playlist-mode-map (kbd "q") 'music-toggler)
 (define-key dired-mode-map (kbd "<backspace>") 'dired-up-directory)

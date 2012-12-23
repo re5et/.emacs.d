@@ -50,6 +50,7 @@
 (global-set-key (kbd "C-c c") 'emux-terminal-create)
 (global-set-key (kbd "C-c P") 'emux-session-load-template)
 (global-set-key (kbd "C-c g") 'magit-status)
+(global-set-key (kbd "C-c G") 'google-this)
 (global-set-key (kbd "C-c r") 'simp-project-rgrep)
 (global-set-key (kbd "C-c R") 'simp-project-rgrep-thing-at-point)
 (global-set-key (kbd "C-c K") 'kill-focused-buffer)

@@ -4,6 +4,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-term-color-vector [unspecified "white" "red" "green" "yellow" "royal blue" "magenta" "cyan" "white"] t)
+ '(auto-indent-next-pair-timer-geo-mean (quote ((default 0.0005 0))))
  '(clean-buffer-list-delay-general 1)
  '(column-highlight-mode t)
  '(column-number-mode t)
@@ -60,8 +61,6 @@
  '(magit-commit-all-when-nothing-staged (quote ask-stage))
  '(magit-completing-read-function (quote ido-completing-read))
  '(magit-default-tracking-name-function (quote magit-default-tracking-name-branch-only))
- '(magit-process-connection-type nil)
- '(magit-process-popup-time 0)
  '(magit-save-some-buffers nil)
  '(midnight-delay "1:00am")
  '(midnight-mode t nil (midnight))

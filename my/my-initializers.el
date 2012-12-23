@@ -1,6 +1,6 @@
 (smex-initialize)
+(icomplete-mode)
 (ido-mode t)
-(ido-better-flex/enable)
 (go-to-hell-bars)
 (recentf-mode t)
 (show-paren-mode t)

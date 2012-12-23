@@ -34,8 +34,7 @@
               (unless (yes-or-no-p (concat "WARNING: " problem " still commit?"))
                 (progn
                   (setq ok-to-commit nil)
-                  (throw 'break nil)))))
-        (setq ok-to-commit t)))
+                  (throw 'break nil)))))))
     (if ok-to-commit ad-do-it)))
 
 (ad-activate 'magit-log-edit-commit)

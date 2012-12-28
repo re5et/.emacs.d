@@ -49,6 +49,7 @@
  '(indicate-empty-lines t)
  '(inferior-lisp-program "sbcl")
  '(iswitchb-use-virtual-buffers t nil (recentf))
+ '(itail-fancy-mode-line t)
  '(js-indent-level 2)
  '(js2-auto-indent-p nil)
  '(js2-basic-offset 2)

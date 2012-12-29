@@ -57,7 +57,7 @@ will be used as the text shown on the minibuffer completion,
 COLLECTION is the list of possible completions."
   (funcall emux-completing-read-command prompt collection))
 
-(defun emux-flatten(x)
+(defun emux-flatten (x)
   "Internal eumx use, generic list flattener."
   (cond ((null x) nil)
         ((listp x) (append (emux-flatten (car x)) (emux-flatten (cdr x))))

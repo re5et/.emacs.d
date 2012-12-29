@@ -88,7 +88,17 @@ the NAME and COMMAND arguments"
 to the current buffers terminal"
   (interactive)
   (emux-terminal-focus-prompt)
-  (emux-terminal-send-raw (current-kill 0 t)))
+  (flet ((insert-for-yank (string) (term-send-raw-string string)))
+    (yank)))
+
+(defun emux-terminal-yank-pop ()
+  (interactive)
+  (emux-terminal-focus-prompt)
+  (dotimes (i (- (point) (mark t)))
+    (term-send-backspace))
+  (process-send-string
+   (get-buffer-process (current-buffer))
+   (current-kill 1)))
 
 (defun emux-terminal-clear-screen ()
   "Remove all output from current buffer
@@ -120,17 +130,41 @@ and enter term-char-mode"
     (kill-process process)
     (kill-buffer buffer)))
 
-(defadvice scroll-down (before emux-terminal-scroll-down activate)
-  "Jump into line mode on scroll-down"
+(defun emux-beginning-of-buffer ()
+  (interactive)
+  (beginning-of-buffer)
   (emux-terminal-blur-prompt))
 
-(defadvice previous-line (before emux-terminal-previous-line activate)
-  "Jump into line mode on previous-line"
+(defun emux-end-of-buffer ()
+  (interactive)
+  (emux-terminal-focus-prompt)
+  (recenter (- -2 (min (max 0 scroll-margin)
+                       (truncate (/ (window-body-height) 4.0))))))
+
+(defun emux-scroll-down-command ()
+  (interactive)
+  (scroll-down-command)
   (emux-terminal-blur-prompt))
 
-(defadvice beginning-of-buffer (before emux-terminal-beginning-of-buffer activate)
-  "Go into term-line-mode when moving to beginning of buffer"
+(defun emux-scroll-up-command ()
+  (interactive)
+  (condition-case nil
+      (scroll-up-command)
+    (error
+     (emux-terminal-focus-prompt))))
+
+(defun emux-previous-line ()
+  (interactive)
+  (previous-line)
   (emux-terminal-blur-prompt))
+
+;; (defadvice scroll-down (before emux-terminal-scroll-down activate)
+;;   "Jump into line mode on scroll-down"
+;;   (emux-terminal-blur-prompt))
+
+;; (defadvice previous-line (before emux-terminal-previous-line activate)
+;;   "Jump into line mode on previous-line"
+;;   (emux-terminal-blur-prompt))
 
 (defadvice isearch-backward (before emux-terminal-isearch-backward activate)
   "Go into term-line-mode when moving to beginning of buffer"
@@ -140,16 +174,14 @@ and enter term-char-mode"
   "Go to term-char-mode when attemting to use previous command"
   (emux-terminal-focus-prompt))
 
-;; (defadvice end-of-buffer (after emux-terminal-end-of-buffer activate)
-;;   "refocus prompt on end of buffer"
-;;   (emux-terminal-focus-prompt))
-
 (defadvice term-interrupt-subjob (before emux-terminal-interrupt-subjob activate)
   "Make sure that before keyboard quitting go back to term-char-mode"
   (emux-terminal-focus-prompt))
 
-(defadvice keyboard-quit (before emux-terminal-keyboard-quit activate)
+(defun emux-keyboard-quit ()
   "Make sure that before keyboard quitting go back to term-char-mode"
+  (interactive)
+  (keyboard-quit)
   (emux-terminal-focus-prompt))
 
 (provide 'emux-terminal)

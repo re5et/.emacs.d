@@ -1,4 +1,4 @@
-(setq custom-file "~/.emacs.d/custom.el"
+(setq custom-file "~/.emacs.d/my/my-customizations.el"
       bkup-backup-directory-info '((t "~/.emackups" ok-create full-path prepend-name))
       inferior-lisp-program "clisp -K full"
       tramp-default-method "ssh"

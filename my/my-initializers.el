@@ -1,10 +1,11 @@
 (smex-initialize)
 (icomplete-mode)
 (ido-mode t)
+(winner-mode)
 (go-to-hell-bars)
 (recentf-mode t)
 (show-paren-mode t)
-(highline-mode)
-(auto-compression-mode 1) ; Lets emacs uncompress .gz files before opening them
+(highline-mode 1)
+(auto-compression-mode 1)
 (yas-global-mode 1)
 (provide 'my-initializers)

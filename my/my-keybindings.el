@@ -31,7 +31,7 @@
 (global-set-key (kbd "M-<return>") 'space-out)
 
 (global-set-key (kbd "C-S-y") 'kill-ring-search)
-(global-set-key (kbd "C-S-l") 'emux-terminal-clear-screen)
+(global-set-key (kbd "C-S-l") 'emux-term-clear-screen)
 (global-set-key (kbd "C-S-i") 'indent-region)
 (global-set-key (kbd "C-S-p") 'move-text-up)
 (global-set-key (kbd "C-S-n") 'move-text-down)
@@ -78,8 +78,8 @@
 
 (setq
  term-bind-key-alist
- '(("C-x r" . emux-terminal-rename)
-   ("C-x K" . emux-terminal-destroy)
+ '(("C-x r" . emux-term-rename)
+   ("C-x K" . emux-term-destroy)
    ("C-x C" . emux-screen-create)
    ("C-x R" . emux-screen-rename)
    ("C-x s" . emux-screen-switch)
@@ -87,10 +87,10 @@
    ("C-x S" . emux-session-switch)
    ("C-x C-S-k" . emux-session-destroy)
    ("C-x B" . emux-jump-to-buffer)
-   ("C-S-y" . emux-terminal-yank)
-   ("M-Y" . emux-terminal-yank-pop)
-   ("C-x -" . emux-terminal-vsplit)
-   ("C-x |" . emux-terminal-hsplit)
+   ("C-S-y" . emux-term-yank)
+   ("M-Y" . emux-term-yank-pop)
+   ("C-x -" . emux-term-vsplit)
+   ("C-x |" . emux-term-hsplit)
    ("C-c C-c" . term-interrupt-subjob)
    ("M-f" . term-send-forward-word)
    ("M-b" . term-send-backward-word)

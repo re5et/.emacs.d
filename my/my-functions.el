@@ -115,14 +115,9 @@ buffer read-only, so I suggest setting kill-read-only-ok to t."
     (unless (file-readable-p dir)
       (make-directory dir t))))
 
-(defun set-newline-and-indent ()
-  (interactive)
-  (local-unset-key (kbd "RET"))
-  (local-set-key (kbd "RET") 'newline-and-indent))
-
 (defun start-emux ()
-  (unless (featurep 'emux)
-    (require 'emux))
+  (unless (featurep 'emux-session)
+    (require 'emux-session))
   (unless
       (member
        "emux"
@@ -148,14 +143,6 @@ buffer read-only, so I suggest setting kill-read-only-ok to t."
          (select-window window)
          (switch-to-buffer buffer))) map)))
 
-(defun buffer-history-next ()
-  (interactive)
-  (switch-to-buffer (next-buffer)))
-
-(defun buffer-history-previous ()
-  (interactive)
-  (switch-to-buffer (previous-buffer)))
-
 (defun dired-default ()
   (interactive)
   (dired default-directory))
@@ -179,10 +166,6 @@ buffer read-only, so I suggest setting kill-read-only-ok to t."
            (and ,full (delete-other-windows))
            (and ,fn (funcall ,fn)))))))
 
-(toggler scratch (lambda () (switch-to-buffer "*scratch*")) t)
-(toggler dired (lambda () (dired default-directory)) t)
-(toggler music (lambda () (emms-smart-browse)) t)
-(toggler term (lambda () (term "/bin/zsh")) t)
 (toggler embiggen nil t)
 
 (defun space-out ()
@@ -226,20 +209,22 @@ buffer read-only, so I suggest setting kill-read-only-ok to t."
     (error (message "Invalid expression")
            (insert (current-kill 0)))))
 
-(defun rename-file-and-buffer (new-name)
-  "Renames both current buffer and file it's visiting to NEW-NAME."
-  (interactive "sNew name: ")
+(defun rename-current-buffer-and-file ()
+  "Renames current buffer and file it is visiting."
+  (interactive)
   (let ((name (buffer-name))
         (filename (buffer-file-name)))
-    (if (not filename)
-        (message "Buffer '%s' is not visiting a file!" name)
-      (if (get-buffer new-name)
-          (message "A buffer named '%s' already exists!" new-name)
-        (progn
-          (rename-file name new-name 1)
+    (if (not (and filename (file-exists-p filename)))
+        (error "Buffer '%s' is not visiting a file!" name)
+      (let ((new-name (read-file-name "New name: " default-directory filename)))
+                (if (get-buffer new-name)
+            (error "A buffer named '%s' already exists!" new-name)
+          (rename-file filename new-name 1)
           (rename-buffer new-name)
           (set-visited-file-name new-name)
-          (set-buffer-modified-p nil))))))
+          (set-buffer-modified-p nil)
+          (message "File '%s' successfully renamed to '%s'"
+                   name (file-name-nondirectory new-name)))))))
 
 (defun google-this ()
   (interactive)

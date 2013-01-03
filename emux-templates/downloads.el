@@ -2,4 +2,4 @@
 (emux-screen-create '(:name "downloads") "download-dir" "lm")
 (emux-term-hsplit "sb" "ssh sb")
 (emux-term-command "ll d/ --sort time -r")
-(emux-term "rsync" "download_sync")
+(emux-term-vsplit "rsync" "download_sync")

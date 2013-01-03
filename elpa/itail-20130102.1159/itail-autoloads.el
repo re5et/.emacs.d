@@ -3,8 +3,8 @@
 ;;; Code:
 
 
-;;;### (autoloads nil nil ("itail-pkg.el" "itail.el") (20702 225
-;;;;;;  844468))
+;;;### (autoloads nil nil ("itail-pkg.el" "itail.el") (20709 1137
+;;;;;;  12448))
 
 ;;;***
 

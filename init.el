@@ -18,7 +18,7 @@
    simp
    auto-indent-mode
    move-text
-   emux
+   emux-session
    expand-region
    winner
    midnight

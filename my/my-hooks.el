@@ -26,19 +26,19 @@
  'coffee-mode-hook
  (lambda ()
    (linum-mode)
-   (smart-rigid-indent-local-bindings)))
+   (smart-indent-rigidly-mode)))
 
 (add-hook
  'sass-mode-hook
  (lambda ()
    (linum-mode)
-   (smart-rigid-indent-local-bindings)))
+   (smart-indent-rigidly-mode)))
 
 (add-hook
  'haml-mode-hook
  (lambda ()
    (linum-mode)
-   (smart-rigid-indent-local-bindings)))
+   (smart-indent-rigidly-mode)))
 
 (add-hook
  'css-mode-hook

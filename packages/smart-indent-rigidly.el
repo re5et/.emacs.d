@@ -3,7 +3,7 @@
 ;; Copyright (C) 2012 @re5et
 
 ;; Author: atom smith
-;; URL: https://github.com/re5et/itail
+;; URL: https://github.com/re5et/...
 ;; Created: 04 Jan 2013
 ;; Version: 0.0.1
 ;; Keywords: indenting coffee-mode haml-mode sass-mode
@@ -29,10 +29,26 @@
 ;; Boston, MA 02110-1301
 ;; USA
 
+(defgroup smart-indent-rigidly nil
+  "Smart rigid indentation."
+  :group 'editing)
+
+(defcustom smart-indent-indent-key
+  "<tab>"
+  "the key binding for indent"
+  :type 'string
+  :group 'smart-indent-rigidly)
+
+(defcustom smart-indent-unindent-key
+  "<backtab>"
+  "the key binding for unindent"
+  :type 'string
+  :group 'smart-indent-rigidly)
+
 (defvar smart-indent-rigidly-keymap
   (let ((map (make-sparse-keymap)))
-    (define-key map (kbd "<tab>") 'smart-rigid-indent)
-    (define-key map (kbd "<backtab>") 'smart-rigid-unindent)
+    (define-key map (read-kbd-macro smart-indent-indent-key) 'smart-rigid-indent)
+    (define-key map (read-kbd-macro smart-indent-unindent-key) 'smart-rigid-unindent)
     map)
   "The keymap used in `smart-indent-rigidly-keymap' buffers.")
 

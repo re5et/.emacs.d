@@ -25,7 +25,20 @@
 (add-hook
  'coffee-mode-hook
  (lambda ()
-   (linum-mode)))
+   (linum-mode)
+   (smart-rigid-indent-local-bindings)))
+
+(add-hook
+ 'sass-mode-hook
+ (lambda ()
+   (linum-mode)
+   (smart-rigid-indent-local-bindings)))
+
+(add-hook
+ 'haml-mode-hook
+ (lambda ()
+   (linum-mode)
+   (smart-rigid-indent-local-bindings)))
 
 (add-hook
  'css-mode-hook

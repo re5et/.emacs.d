@@ -234,4 +234,29 @@ buffer read-only, so I suggest setting kill-read-only-ok to t."
            (thing-at-point 'symbol))))
     (browse-url (concat "https://www.google.com/search?&q=" search-phrase))))
 
+(defun smart-rigid-indent-local-bindings ()
+  (interactive)
+  (local-set-key (kbd "TAB") 'smart-rigid-indent)
+  (local-set-key (kbd "<backtab>") 'smart-rigid-unindent))
+
+(defun smart-rigid-indent ()
+  (interactive)
+  (smart-indent-rigidly tab-width))
+
+(defun smart-rigid-unindent ()
+  (interactive)
+  (smart-indent-rigidly (* -1 tab-width)))
+
+(defun smart-indent-rigidly (count)
+  (let ((deactivate-mark nil)
+        (beginning-position
+         (if (region-active-p)
+             (region-beginning)
+           (line-beginning-position)))
+        (end-position
+         (if (region-active-p)
+             (region-end)
+           (line-end-position))))
+    (indent-rigidly  beginning-position end-position count)))
+
 (provide 'my-functions)

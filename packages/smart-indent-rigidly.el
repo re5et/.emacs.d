@@ -34,13 +34,13 @@
   :group 'editing)
 
 (defcustom smart-indent-indent-key
-  "<tab>"
+  "<C-tab>"
   "the key binding for indent"
   :type 'string
   :group 'smart-indent-rigidly)
 
 (defcustom smart-indent-unindent-key
-  "<backtab>"
+  "<C-S-iso-lefttab>"
   "the key binding for unindent"
   :type 'string
   :group 'smart-indent-rigidly)
@@ -71,17 +71,40 @@
   (smart-indent-rigidly (* -1 tab-width)))
 
 (defun smart-indent-rigidly (count)
-  (let ((deactivate-mark nil)
-        (beginning-position
-         (if (region-active-p)
-             (save-excursion
-               (goto-line (line-number-at-pos (region-beginning)))
-               (line-beginning-position))
-           (line-beginning-position)))
-        (end-position
-         (if (region-active-p)
-             (region-end)
-           (line-end-position))))
-    (indent-rigidly beginning-position end-position count)))
+  (if (and
+       (string-match
+        ;; if the line is empty just use whatever
+        ;; indent does for current mode
+        "^[ \t]*$"
+        (buffer-substring-no-properties
+         (line-beginning-position)
+         (line-end-position)))
+       (not (region-active-p)))
+      (indent-for-tab-command)
+    ;; otherwise decide what to indent
+    (let ((deactivate-mark nil)
+          (beginning-position
+           ;; if there is an active region
+           (if (region-active-p)
+               (save-excursion
+                 ;; indent every line in the region
+                 (goto-line
+                  (line-number-at-pos
+                   (region-beginning)))
+                 (line-beginning-position))
+             ;; otherwise just indent the line
+             (line-beginning-position)))
+          (end-position
+           (if (region-active-p)
+               (save-excursion
+                 (goto-line
+                  (line-number-at-pos
+                   (region-end)))
+                 (line-end-position))
+             (line-end-position))))
+      (indent-rigidly
+       beginning-position
+       end-position
+       count))))
 
 (provide 'smart-indent-rigidly)

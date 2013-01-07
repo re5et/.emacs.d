@@ -5,6 +5,7 @@
  ;; If there is more than one, they won't work right.
  '(ansi-term-color-vector [unspecified "white" "red" "green" "yellow" "royal blue" "magenta" "cyan" "white"] t)
  '(auto-indent-next-pair-timer-geo-mean (quote ((default 0.0005 0))))
+ '(bookmark-default-file "~/.emacs.d/my/my-bookmarks.el")
  '(clean-buffer-list-delay-general 1)
  '(column-highlight-mode t)
  '(column-number-mode t)

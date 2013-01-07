@@ -61,8 +61,8 @@ buffer read-only, so I suggest setting kill-read-only-ok to t."
 (defun indent-buffer ()
   "Fix indentation on the entire buffer."
   (interactive)
-  (save-excursion)
-  (indent-region (point-min) (point-max)))
+  (save-excursion
+    (indent-region (point-min) (point-max))))
 
 (defun untabify-all ()
   (interactive)
@@ -235,7 +235,7 @@ buffer read-only, so I suggest setting kill-read-only-ok to t."
     (browse-url (concat "https://www.google.com/search?&q=" search-phrase))))
 
 
-(defmacro with-default-directory-from-bookmark (body)
+(defmacro with-directory-from-bookmark (body)
   "Run body with default-directory set to
 to the location of the selected bookmark."
   `(let ((bookmark (list
@@ -245,10 +245,14 @@ to the location of the selected bookmark."
      (let ((default-directory (bookmark-location (car bookmark))))
        ,body)))
 
+(defun call-interactively-with-directory-from-bookmark (fn)
+  (with-directory-from-bookmark
+   (call-interactively fn)))
+
 (defun magit-status-from-bookmark ()
   "Magit status for bookmark"
   (interactive)
-  (with-default-directory-from-bookmark
-   (call-interactively 'magit-status)))
+  (call-interactively-with-directory-from-bookmark
+   'magit-status))
 
 (provide 'my-functions)

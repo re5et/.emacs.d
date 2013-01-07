@@ -234,4 +234,21 @@ buffer read-only, so I suggest setting kill-read-only-ok to t."
            (thing-at-point 'symbol))))
     (browse-url (concat "https://www.google.com/search?&q=" search-phrase))))
 
+
+(defmacro with-default-directory-from-bookmark (body)
+  "Run body with default-directory set to
+to the location of the selected bookmark."
+  `(let ((bookmark (list
+                    (bookmark-completing-read
+                     "bookmark"
+                     bookmark-current-bookmark))))
+     (let ((default-directory (bookmark-location (car bookmark))))
+       ,body)))
+
+(defun magit-status-from-bookmark ()
+  "Magit status for bookmark"
+  (interactive)
+  (with-default-directory-from-bookmark
+   (call-interactively 'magit-status)))
+
 (provide 'my-functions)

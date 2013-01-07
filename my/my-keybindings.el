@@ -64,7 +64,7 @@
 (global-set-key (kbd "C-x B") 'bookmark-jump)
 (global-set-key (kbd "C-x K") 'kill-focused-buffer)
 (global-set-key (kbd "C-x g") 'magit-status)
-(global-set-key (kbd "C-x G") 'google-this)
+(global-set-key (kbd "C-x G") 'magit-status-from-bookmark)
 (global-set-key (kbd "C-x C-d") 'dired-default)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-x C-c") 'dont-kill-emacs)

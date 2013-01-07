@@ -49,10 +49,13 @@
 (global-set-key (kbd "C-c f") 'flyspell-correct-word-before-point)
 (global-set-key (kbd "C-c k") 'copy-line)
 (global-set-key (kbd "C-c e") 'flymake-goto-next-error-and-show)
-(global-set-key (kbd "C-c r") 'simp-project-rgrep)
-(global-set-key (kbd "C-c R") 'simp-project-rgrep-thing-at-point)
+(global-set-key (kbd "C-c f") 'simp-project-find-file)
+(global-set-key (kbd "C-c s") 'simp-project-rgrep)
+(global-set-key (kbd "C-c S") 'simp-project-rgrep-thing-at-point)
 (global-set-key (kbd "C-c M") 'rename-current-buffer-and-file)
 
+(global-set-key (kbd "C-c C-f") 'simp-project-with-bookmark-find-file)
+(global-set-key (kbd "C-c C-s") 'simp-project-with-bookmark-rgrep)
 (global-set-key (kbd "C-c C-k") 'kill-whole-line)
 (global-set-key (kbd "C-c C-a") 'beginning-of-line)
 (global-set-key (kbd "C-c M-v") 'scroll-other-window-down)
@@ -65,7 +68,6 @@
 (global-set-key (kbd "C-x C-d") 'dired-default)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-x C-c") 'dont-kill-emacs)
-(global-set-key (kbd "C-x M-f") 'simp-project-find-file)
 (global-set-key (kbd "C-x C-p") 'eval-and-replace)
 (global-set-key (kbd "C-x C-S-f") 'find-file-other-window)
 

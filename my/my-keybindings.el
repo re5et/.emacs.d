@@ -58,6 +58,7 @@
 (global-set-key (kbd "C-c M-v") 'scroll-other-window-down)
 (global-set-key (kbd "C-c C-v") 'scroll-other-window)
 
+(global-set-key (kbd "C-x B") 'bookmark-jump)
 (global-set-key (kbd "C-x K") 'kill-focused-buffer)
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x G") 'google-this)

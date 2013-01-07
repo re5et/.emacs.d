@@ -43,6 +43,7 @@
  '(ido-everywhere t)
  '(ido-max-directory-size 100000)
  '(ido-mode (quote both) nil (ido))
+ '(ido-ubiquitous-mode t)
  '(ido-use-virtual-buffers t)
  '(indent-tabs-mode t)
  '(indicate-buffer-boundaries (quote left))

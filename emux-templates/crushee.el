@@ -1,10 +1,8 @@
 (emux-session-set-default-directory "~/code/crushee")
-;; (emux-screen-create '(:name "bg") "jasmine" "rake jasmine")
-;; (emux-term-create "mongodb" "rm -rf /data/db/mongod.lock && mongod")
 (emux-term-create "server" "rs &")
-(itail "log/development.log")
+(emux-session-name-buffer
+ (itail "log/development.log"))
 (emux-term-hsplit "rc" "rc")
-;; (emux-term "mongo" "sleep 5 && mongo artifex_development")
 (emux-screen-create '(:name "tests") "rspec")
 (emux-term-send-raw "rake spec")
 (emux-term "cucumber")

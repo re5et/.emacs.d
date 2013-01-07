@@ -1,6 +1,7 @@
 (smex-initialize)
 (icomplete-mode)
 (ido-mode t)
+(ido-ubiquitous-mode t)
 (winner-mode)
 (go-to-hell-bars)
 (recentf-mode t)

@@ -82,7 +82,7 @@
                                 :underline t)
             (push symbol faces)))
         (setq visible-mark-non-trailing-faces (nreverse faces)))))
-
+                  
 (defun visible-mark-initialize-overlays ()
   (mapcar 'delete-overlay visible-mark-overlays)
   (let (overlays)

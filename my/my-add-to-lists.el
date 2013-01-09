@@ -6,4 +6,5 @@
 (add-to-list 'auto-mode-alist '("Rakefile" . ruby-mode))
 (add-to-list 'auto-mode-alist '(".stumpwmrc'" . stumpwm-mode))
 (add-to-list 'auto-mode-alist '(".hamlbars'" . haml-mode))
+(add-to-list 'auto-mode-alist '(".hamlc'" . haml-mode))
 (provide 'my-add-to-lists)

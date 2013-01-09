@@ -246,6 +246,7 @@ to the location of the selected bookmark."
        ,body)))
 
 (defun call-interactively-with-directory-from-bookmark (fn)
+  (interactive "afunction: ")
   (with-directory-from-bookmark
    (call-interactively fn)))
 

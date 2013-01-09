@@ -236,16 +236,22 @@ buffer read-only, so I suggest setting kill-read-only-ok to t."
 
 
 (defmacro with-directory-from-bookmark (body)
-  "Run body with default-directory set to
+  "Run BODY with default-directory set to
 to the location of the selected bookmark."
-  `(let ((bookmark (list
-                    (bookmark-completing-read
-                     "bookmark"
-                     bookmark-current-bookmark))))
-     (let ((default-directory (bookmark-location (car bookmark))))
+  `(let ((bookmark
+          (list
+           (bookmark-completing-read
+            "bookmark"
+            bookmark-current-bookmark))))
+     (let ((default-directory
+             (file-name-directory
+              (expand-file-name
+               (bookmark-location
+                (car bookmark))))))
        ,body)))
 
 (defun call-interactively-with-directory-from-bookmark (fn)
+  "Interactively call FN with-directory-from-bookmark"
   (interactive "afunction: ")
   (with-directory-from-bookmark
    (call-interactively fn)))
@@ -253,7 +259,7 @@ to the location of the selected bookmark."
 (defun magit-status-from-bookmark ()
   "Magit status for bookmark"
   (interactive)
-  (call-interactively-with-directory-from-bookmark
-   'magit-status))
+  (with-directory-from-bookmark
+   (magit-status default-directory)))
 
 (provide 'my-functions)

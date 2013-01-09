@@ -16,7 +16,6 @@
    stumpwm-mode
    misc
    simp
-   auto-indent-mode
    move-text
    emux-session
    expand-region

@@ -13,7 +13,6 @@
  (lambda ()
    (auto-indent-mode)
    (linum-mode)
-   (ruby-block-mode)
    (rvm-activate-corresponding-ruby)
    (flymake-ruby-load)))
 

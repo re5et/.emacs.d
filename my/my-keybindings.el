@@ -65,6 +65,11 @@
 (global-set-key (kbd "C-x K") 'kill-focused-buffer)
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x G") 'magit-status-from-bookmark)
+
+(global-set-key (kbd "C-x c") 'emux-term)
+(global-set-key (kbd "C-x P") 'emux-session-load-template)
+(global-set-key (kbd "C-x S") 'emux-session-switch)
+
 (global-set-key (kbd "C-x C-d") 'dired-default)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-x C-c") 'dont-kill-emacs)

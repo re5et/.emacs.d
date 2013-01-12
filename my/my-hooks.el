@@ -6,6 +6,7 @@
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 (add-hook 'before-save-hook 'auto-make-directory)
 (add-hook 'emms-player-started-hook 'emms-show)
+(add-hook 'compilation-filter-hook 'rgrep-supress-find-command)
 
 (add-hook
  'ruby-mode-hook

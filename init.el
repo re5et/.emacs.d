@@ -46,8 +46,3 @@
 ;; Also auto refresh dired, but be quiet about it
 (setq global-auto-revert-non-file-buffers t)
 (setq auto-revert-verbose nil)
-
-;; everwhere
-(global-set-key (kbd "C-x c") 'emux-term)
-(global-set-key (kbd "C-x P") 'emux-session-load-template)
-(global-set-key (kbd "C-x S") 'emux-session-switch)

@@ -262,4 +262,11 @@ to the location of the selected bookmark."
   (with-directory-from-bookmark
    (magit-status default-directory)))
 
+(defun rgrep-supress-find-command ()
+  (interactive)
+  (save-excursion
+    (when (string-match "find.*" (buffer-substring-no-properties (point-min) (point-max)))
+      (and (toggle-read-only)
+           (replace-regexp "find.*" "" nil (point-min) (point-max))))))
+
 (provide 'my-functions)

@@ -58,7 +58,6 @@
 (global-set-key (kbd "C-c C-a") 'beginning-of-line)
 (global-set-key (kbd "C-c M-v") 'scroll-other-window-down)
 (global-set-key (kbd "C-c C-v") 'scroll-other-window)
-(global-set-key (kbd "C-c C-/") 'winner-undo)
 
 (global-set-key (kbd "C-x B") 'bookmark-jump)
 (global-set-key (kbd "C-x K") 'kill-focused-buffer)

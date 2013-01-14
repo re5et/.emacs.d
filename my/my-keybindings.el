@@ -26,6 +26,11 @@
 (global-set-key (kbd "M-#") 'uncomment-region)
 (global-set-key (kbd "M-?") 'comint-dynamic-complete-filename)
 
+(global-set-key (kbd "M-i") nil)
+(global-set-key (kbd "M-i b") 'ispell-buffer)
+(global-set-key (kbd "M-i w") 'ispell-word)
+(global-set-key (kbd "M-i s") 'dictionary-search)
+
 (global-set-key (kbd "C-S-y") 'kill-ring-search)
 (global-set-key (kbd "C-S-l") 'emux-term-clear-screen)
 (global-set-key (kbd "C-S-i") 'indent-region)

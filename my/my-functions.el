@@ -17,36 +17,6 @@
   (delete-region (point) (line-beginning-position))
   (indent-according-to-mode))
 
-(defun next-non-white ()
-  (interactive)
-  (save-excursion
-    (skip-chars-forward " \t
-")
-    (point)))
-
-(defun previous-non-white ()
-  (interactive)
-  (save-excursion
-    (skip-chars-backward " \t
-")
-    (point)))
-
-(defun next-newline (arg)
-  (interactive "P")
-  (let ((goto (next-non-white)))
-    (goto-char goto)
-    (end-of-line)
-    (reindent-then-newline-and-indent)))
-
-(defun previous-newline (arg)
-  (interactive "P")
-  (let ((goto (previous-non-white)))
-    (goto-char goto)
-    (beginning-of-line)
-    (reindent-then-newline-and-indent)
-    (previous-line)
-    (indent-according-to-mode)))
-
 ;; from http://emacsblog.org/2009/05/18/copying-lines-not-killing/
 (defun copy-line (&optional arg)
   "Do a kill-line but copy rather than kill.  This function directly calls
@@ -147,33 +117,6 @@ buffer read-only, so I suggest setting kill-read-only-ok to t."
   (interactive)
   (dired default-directory))
 
-(defmacro toggler (toggler-name &optional fn full)
-  (let ((name
-         (intern
-          (mapconcat
-           'symbol-name
-           `(,toggler-name toggler)
-           "-"))))
-    `(defun ,name ()
-       (interactive)
-       (message (format "%s %s" ',toggler-name "toggled"))
-       (if (and (boundp ',name) (car ,name))
-           (progn
-             (set-window-configuration (cadr ,name))
-             (setq ,name '(nil nil)))
-         (progn
-           (setq ,name `(t ,(current-window-configuration)))
-           (and ,full (delete-other-windows))
-           (and ,fn (funcall ,fn)))))))
-
-(toggler embiggen nil t)
-
-(defun space-out ()
-  (interactive)
-  (newline)
-  (newline)
-  (previous-line))
-
 (defun toggle-window-split ()
   (interactive)
   (if (= (count-windows) 2)
@@ -268,5 +211,20 @@ to the location of the selected bookmark."
     (when (string-match "find.*" (buffer-substring-no-properties (point-min) (point-max)))
       (and (toggle-read-only)
            (replace-regexp "find.*" "" nil (point-min) (point-max))))))
+
+(defun indent-and-open-newline (&optional previous)
+  "Add a newline after current line and tab to indentation.
+If PREVIOUS is non-nil, go up a line first."
+  (interactive)
+  (if previous
+      (previous-line))
+  (end-of-line)
+  (newline)
+  (indent-for-tab-command))
+
+(defun previous-indent-and-open-newline ()
+  "call indent-and-open-newline with previous non-nil"
+  (interactive)
+  (indent-and-open-newline t))
 
 (provide 'my-functions)

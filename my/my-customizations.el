@@ -13,6 +13,7 @@
  '(crosshairs-overlay-priority 100)
  '(css-indent-level 2)
  '(css-indent-offset 2)
+ '(delete-selection-mode t)
  '(display-time-mode t)
  '(elscreen-display-tab nil)
  '(emms-playlist-default-major-mode (quote emms-playlist-mode))

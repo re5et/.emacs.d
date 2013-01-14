@@ -178,7 +178,7 @@ buffer read-only, so I suggest setting kill-read-only-ok to t."
     (browse-url (concat "https://www.google.com/search?&q=" search-phrase))))
 
 
-(defmacro with-directory-from-bookmark (body)
+(defmacro with-directory-from-bookmark (&rest body)
   "Run BODY with default-directory set to
 to the location of the selected bookmark."
   `(let ((bookmark
@@ -191,7 +191,7 @@ to the location of the selected bookmark."
               (expand-file-name
                (bookmark-location
                 (car bookmark))))))
-       ,body)))
+       ,@body)))
 
 (defun call-interactively-with-directory-from-bookmark (fn)
   "Interactively call FN with-directory-from-bookmark"
@@ -203,7 +203,11 @@ to the location of the selected bookmark."
   "Magit status for bookmark"
   (interactive)
   (with-directory-from-bookmark
-   (call-interactively (magit-status default-directory))))
+   (let ((dir default-directory)
+         (buffer (magit-find-buffer 'magit-status-mode default-directory)))
+     (if buffer
+         (kill-buffer buffer))
+     (magit-status dir))))
 
 (defun rgrep-supress-find-command ()
   (interactive)

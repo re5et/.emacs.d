@@ -260,7 +260,7 @@ to the location of the selected bookmark."
   "Magit status for bookmark"
   (interactive)
   (with-directory-from-bookmark
-   (magit-status default-directory)))
+   (call-interactively (magit-status default-directory))))
 
 (defun rgrep-supress-find-command ()
   (interactive)

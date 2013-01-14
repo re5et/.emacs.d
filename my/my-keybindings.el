@@ -3,8 +3,7 @@
 (global-set-key (kbd "S-<backspace>") 'pop-to-mark-command)
 (global-set-key (kbd "S-SPC") 'exchange-point-and-mark)
 
-(global-set-key (kbd "C-a") 'back-to-indentation)
-(global-set-key (kbd "C-o") 'next-newline)
+(global-set-key (kbd "C-o") 'indent-and-open-newline)
 (global-set-key (kbd "C-?") 'revert-buffer)
 (global-set-key (kbd "C-,") 'indent-buffer)
 (global-set-key (kbd "C-|") 'rotate-frame-window-buffers)
@@ -12,15 +11,14 @@
 (global-set-key (kbd "C-<return>") 'embiggen-toggler)
 (global-set-key (kbd "C-<backspace>") 'backwards-kill)
 
-(global-set-key (kbd "M-i") 'idomenu)
 (global-set-key (kbd "M-l")  'next-in-frame-window)
-(global-set-key (kbd "M-h") 'previous-in-frame-window)
+(global-set-key (kbd "M-l")  'next-in-frame-window)
+(global-set-key (kbd "M-o") 'previous-indent-and-open-newline)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-M") 'er/expand-region)
 (global-set-key (kbd "M-L")  'next-multiframe-window)
 (global-set-key (kbd "M-H") 'previous-multiframe-window)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
-(global-set-key (kbd "M-o") 'previous-newline)
 (global-set-key (kbd "M-z") 'zap-up-to-char)
 (global-set-key (kbd "M-P") 'clone-text-up)
 (global-set-key (kbd "M-N") 'clone-text-down)
@@ -28,7 +26,6 @@
 (global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "M-#") 'uncomment-region)
 (global-set-key (kbd "M-?") 'comint-dynamic-complete-filename)
-(global-set-key (kbd "M-<return>") 'space-out)
 
 (global-set-key (kbd "C-S-y") 'kill-ring-search)
 (global-set-key (kbd "C-S-l") 'emux-term-clear-screen)
@@ -60,6 +57,7 @@
 (global-set-key (kbd "C-c C-a") 'beginning-of-line)
 (global-set-key (kbd "C-c M-v") 'scroll-other-window-down)
 (global-set-key (kbd "C-c C-v") 'scroll-other-window)
+(global-set-key (kbd "C-c C-/") 'winner-undo)
 
 (global-set-key (kbd "C-x B") 'bookmark-jump)
 (global-set-key (kbd "C-x K") 'kill-focused-buffer)

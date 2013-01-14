@@ -47,6 +47,7 @@
 (global-set-key (kbd "C-c k") 'copy-line)
 (global-set-key (kbd "C-c e") 'flymake-goto-next-error-and-show)
 (global-set-key (kbd "C-c f") 'simp-project-find-file)
+(global-set-key (kbd "C-c d") 'simp-project-root-dired)
 (global-set-key (kbd "C-c s") 'simp-project-rgrep)
 (global-set-key (kbd "C-c S") 'simp-project-rgrep-thing-at-point)
 (global-set-key (kbd "C-c M") 'rename-current-buffer-and-file)

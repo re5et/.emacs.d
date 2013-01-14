@@ -1,7 +1,6 @@
 (define-key key-translation-map "\C-j" "\C-x")
 
 (global-set-key (kbd "S-<backspace>") 'pop-to-mark-command)
-(global-set-key (kbd "S-SPC") 'exchange-point-and-mark)
 
 (global-set-key (kbd "C-o") 'indent-and-open-newline)
 (global-set-key (kbd "C-?") 'revert-buffer)
@@ -34,6 +33,7 @@
 (global-set-key (kbd "C-S-n") 'move-text-down)
 (global-set-key (kbd "C-S-b") 'bury-buffer)
 (global-set-key (kbd "C-S-f") 'unbury-buffer)
+(global-set-key (kbd "C-S-SPC") 'exchange-point-and-mark)
 (global-set-key (kbd "C-c C-S-f") 'winner-redo)
 (global-set-key (kbd "C-c C-S-b") 'winner-undo)
 

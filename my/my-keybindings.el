@@ -27,6 +27,7 @@
 (global-set-key (kbd "M-?") 'comint-dynamic-complete-filename)
 
 (global-set-key (kbd "M-i") nil)
+(global-set-key (kbd "M-i m") 'flyspell-mode)
 (global-set-key (kbd "M-i b") 'ispell-buffer)
 (global-set-key (kbd "M-i w") 'ispell-word)
 (global-set-key (kbd "M-i s") 'dictionary-search)

@@ -55,10 +55,13 @@
 (global-set-key (kbd "C-c d") 'simp-project-root-dired)
 (global-set-key (kbd "C-c s") 'simp-project-rgrep)
 (global-set-key (kbd "C-c S") 'simp-project-rgrep-thing-at-point)
+(global-set-key (kbd "C-c b") 'simp-project-ibuffer-files-only)
+(global-set-key (kbd "C-c B") 'simp-project-ibuffer)
 (global-set-key (kbd "C-c M") 'rename-current-buffer-and-file)
 
 (global-set-key (kbd "C-c C-f") 'simp-project-with-bookmark-find-file)
 (global-set-key (kbd "C-c C-s") 'simp-project-with-bookmark-rgrep)
+(global-set-key (kbd "C-c C-b") 'simp-project-with-bookmark-ibuffer)
 (global-set-key (kbd "C-c C-k") 'kill-whole-line)
 (global-set-key (kbd "C-c C-a") 'beginning-of-line)
 (global-set-key (kbd "C-c M-v") 'scroll-other-window-down)

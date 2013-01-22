@@ -233,4 +233,7 @@ If PREVIOUS is non-nil, go up a line first."
   (interactive)
   (indent-and-open-newline t))
 
+(defun magit-tracking-name-unfucked-with (remote branch)
+  branch)
+
 (provide 'my-functions)

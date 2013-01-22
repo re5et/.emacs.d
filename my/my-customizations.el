@@ -64,7 +64,7 @@
  '(linum-eager t)
  '(magit-commit-all-when-nothing-staged (quote ask-stage))
  '(magit-completing-read-function (quote ido-completing-read))
- '(magit-default-tracking-name-function (quote magit-default-tracking-name-branch-only))
+ '(magit-default-tracking-name-function (quote magit-tracking-name-unfucked-with))
  '(magit-save-some-buffers nil)
  '(midnight-delay "1:00am")
  '(midnight-mode t nil (midnight))

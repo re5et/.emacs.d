@@ -1,3 +1,4 @@
 /packages/archives/*
 /.mc-lists.el
 /url/cookies
+/elpa/archives/gnu/archive-contents

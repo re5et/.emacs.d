@@ -5,9 +5,10 @@
  'require
  '(slime
    smex
+   smartparens
+   auto-complete
    ido
    ido-ubiquitous
-   autopair
    visible-mark
    highline
    dired

@@ -236,4 +236,14 @@ If PREVIOUS is non-nil, go up a line first."
 (defun magit-tracking-name-unfucked-with (remote branch)
   branch)
 
+(defun magit-quick-stash ()
+  "Immediately stash with mesage
+
+WIP on branchname: short-sha commit-message"
+  (interactive)
+  (magit-stash ""))
+
+(define-key magit-mode-map (kbd "Z") 'magit-quick-stash)
+
+
 (provide 'my-functions)

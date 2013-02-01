@@ -243,7 +243,4 @@ WIP on branchname: short-sha commit-message"
   (interactive)
   (magit-stash ""))
 
-(define-key magit-mode-map (kbd "Z") 'magit-quick-stash)
-
-
 (provide 'my-functions)

@@ -9,6 +9,11 @@
 (add-hook 'compilation-filter-hook 'rgrep-supress-find-command)
 
 (add-hook
+ 'magit-status-mode-hook
+ (lambda ()
+   (define-key magit-mode-map (kbd "Z") 'magit-quick-stash)))
+
+(add-hook
  'ruby-mode-hook
  (lambda ()
    (auto-indent-mode)

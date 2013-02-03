@@ -2,6 +2,8 @@
 
 (global-set-key (kbd "S-<backspace>") 'pop-to-mark-command)
 
+(global-set-key (kbd "C-=") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
 (global-set-key (kbd "C-o") 'indent-and-open-newline)
 (global-set-key (kbd "C-?") 'revert-buffer)
 (global-set-key (kbd "C-,") 'indent-buffer)

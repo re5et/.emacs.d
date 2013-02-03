@@ -9,4 +9,5 @@
 (highline-mode 1)
 (auto-compression-mode 1)
 (yas-global-mode 1)
+(powerline-default)
 (provide 'my-initializers)

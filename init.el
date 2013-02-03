@@ -26,6 +26,7 @@
    multiple-cursors
    magit-commit-training-wheels
    itail
+   powerline
    smart-indent-rigidly
    my-advice
    my-backup

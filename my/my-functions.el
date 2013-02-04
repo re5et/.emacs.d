@@ -205,11 +205,7 @@ to the location of the selected bookmark."
   (with-directory-from-bookmark
    ;; magit does some pretty funny stuff invovling buffers
    ;; and default-directory, the below works around it.
-   (let ((dir default-directory)
-         (buffer (magit-find-buffer 'magit-status-mode default-directory)))
-     (if buffer
-         (kill-buffer buffer))
-     (magit-status dir))))
+   (magit-status default-directory)))
 
 (defun rgrep-supress-find-command ()
   (interactive)

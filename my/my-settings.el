@@ -34,6 +34,6 @@
 (put 'narrow-to-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 
-(load custom-file 'noerror)
+(load custom-file)
 
 (provide 'my-settings)

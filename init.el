@@ -31,7 +31,6 @@
    my-advice
    my-backup
    my-package
-   my-settings
    my-emms
    my-autoloads
    my-add-to-lists
@@ -39,6 +38,7 @@
    my-functions
    my-keybindings
    my-hooks
+   my-settings
    my-initializers))
 
 (if (featurep 'my-local)

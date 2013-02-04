@@ -51,7 +51,7 @@
  '(hippie-expand-try-functions-list (quote (yas/hippie-try-expand try-complete-file-name-partially try-complete-file-name try-expand-all-abbrevs try-expand-list try-expand-line try-expand-dabbrev try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill try-complete-lisp-symbol-partially try-complete-lisp-symbol)))
  '(ido-auto-merge-delay-time 5)
  '(ido-decorations (quote ("
--> " "" "
+>> " "" "
    " "
    ..." "[" "]" " [No match]" " [Matched]" " [Not readable]" " [Too big]" " [Confirm]")))
  '(ido-enable-flex-matching t)
@@ -123,42 +123,35 @@
 
 (deftheme selwyn
   "my theme")
+
 (custom-theme-set-faces
  'selwyn
- '(default ((t (:background "#050505" :foreground "#AAA" :height 100 :width normal :foundry "unknown" :family "dejavu sans mono"))))
- '(cursor ((t (:background "#FF0" :foreground "#F00"))))
- '(mode-line ((t (:background "#111" :foreground "#888888"))))
- '(mode-line-inactive ((t (:background "#262626" :foreground "#888888"))))
- '(fringe ((t (:background "#111"))))
- '(minibuffer-prompt ((t (:foreground "#09F" :weight bold))))
- '(font-lock-builtin-face ((t (:foreground "#F0F"))))
- '(font-lock-comment-face ((t (:foreground "#af5f00"))))
- '(font-lock-constant-face ((t (:foreground "#0F0"))))
- '(font-lock-keyword-face ((t (:foreground "#00afff" :weight bold))))
- '(font-lock-string-face ((t (:foreground "#090"))))
- '(font-lock-type-face ((t (:foreground "#ff5fff" :weight bold))))
- '(font-lock-warning-face ((t (:background "#ff0000" :foreground "#ffffff"))))
- '(isearch ((t (:background "#ffaf5f" :foreground "#000000"))))
- '(link ((t (:foreground "#00afff" :underline t))))
- '(link-visited ((t (:foreground "#ff5fff" :underline t))))
- '(button ((t (:underline t))))
- '(header-line ((t (:background "#262626" :foreground "#888888")))))
+'(default ((t (:background "#050505" :foreground "#AAA" :height 100 :width normal :foundry "unknown" :family "dejavu sans mono")))))
+
 (provide-theme 'selwyn)
+
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#000000" :foreground "#FFF" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))
+ '(default ((t (:inherit nil :stipple nil :background "#000000" :foreground "#FFF" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "unknown" :family "dejavu sans mono"))))
  '(ac-completion-face ((t (:foreground "#555" :underline "#F0F"))))
+ '(button ((t (:underline t))))
+ '(cursor ((t (:background "#FF0" :foreground "#F00"))))
  '(erc-prompt-face ((t (:background "lightBlue2" :foreground "green" :weight bold))))
  '(flymake-errline ((t (:background "#600"))))
+ '(font-lock-builtin-face ((t (:foreground "#F0F"))))
  '(font-lock-comment-delimiter-face ((t (:inherit font-lock-comment-face :foreground "#f90"))))
  '(font-lock-comment-face ((t (:foreground "#888"))))
+ '(font-lock-constant-face ((t (:foreground "#0F0"))))
  '(font-lock-function-name-face ((t (:foreground "#F90" :weight bold))))
+ '(font-lock-keyword-face ((t (:foreground "#00afff" :weight bold))))
  '(font-lock-string-face ((t (:foreground "#c00"))))
+ '(font-lock-type-face ((t (:foreground "#ff5fff" :weight bold))))
  '(font-lock-variable-name-face ((t (:foreground "#FF0" :weight bold))))
+ '(font-lock-warning-face ((t (:background "#ff0000" :foreground "#ffffff"))))
  '(fringe ((t (:background "#111" :foreground "#500"))))
  '(header-line ((t (:background "#000" :foreground "#FFF" :weight ultra-bold))))
  '(highlight ((t (:background "#330"))))
@@ -169,19 +162,22 @@
  '(ido-only-match ((t (:foreground "#0F0" :weight extra-bold))))
  '(isearch ((t (:background "#220022" :foreground "#FF00FF"))))
  '(lazy-highlight ((t (:background "#222222" :foreground "#FFFF00"))))
- '(linum ((t (:foreground "#0F0"))))
+ '(link ((t (:foreground "#00afff" :underline t))))
+ '(link-visited ((t (:foreground "#ff5fff" :underline t))))
+ '(linum ((t (:foreground "#444"))))
  '(magit-diff-add ((t (:foreground "#0F0"))))
  '(magit-diff-del ((t (:foreground "#F00"))))
  '(magit-item-highlight ((t (:background "#002"))))
- '(mode-line ((t (:background "#111" :foreground "#0F0"))))
- '(mode-line-inactive ((t (:background "#262626" :foreground "#777"))))
+ '(minibuffer-prompt ((t (:foreground "#09F" :weight bold))))
+ '(mode-line ((t (:background "#111" :foreground "#0F0" :weight bold))))
+ '(mode-line-inactive ((t (:background "#111" :foreground "#444"))))
  '(popup-face ((t (:background "#111" :foreground "#888"))))
  '(popup-menu-face ((t (:background "#111" :foreground "#0F0"))))
  '(popup-menu-selection-face ((t (:background "#111" :foreground "yellow"))))
- '(powerline-active1 ((t (:inherit mode-line :background "#151515"))))
- '(powerline-active2 ((t (:inherit mode-line :background "#222"))))
- '(powerline-inactive1 ((t (:inherit mode-line-inactive :background "#151515"))))
- '(powerline-inactive2 ((t (:inherit mode-line-inactive :background "#222"))))
+ '(powerline-active1 ((t (:inherit mode-line :background "#1c1c1c" :foreground "#09f" :weight bold))))
+ '(powerline-active2 ((t (:inherit mode-line :background "#050505" :foreground "#F0F" :weight bold))))
+ '(powerline-inactive1 ((t (:inherit mode-line-inactive :background "#090909"))))
+ '(powerline-inactive2 ((t (:inherit mode-line-inactive :background "#030303"))))
  '(regex-tool-matched-face ((t (:background "#020" :foreground "Orange" :weight bold))))
  '(region ((t (:background "#111"))))
  '(show-paren-match ((t (:background "#06F" :foreground "#000" :weight ultra-bold))))
@@ -189,6 +185,7 @@
  '(sp-pair-overlay-face ((t (:background "#111"))))
  '(sp-show-pair-match-face ((t (:background "#F0F"))))
  '(sp-show-pair-mismatch-face ((t (:background "red" :foreground "white"))))
+ '(vertical-border ((((type x tty)) (:inherit mode-line-inactive :foreground "#333"))))
  '(visible-mark-face ((t (:foreground "#0F0" :underline "#F0F"))))
  '(visible-mark-non-trailing-face0 ((t (:foreground "#F0F"))) t)
  '(whitespace-empty ((t (:background "#100" :foreground "firebrick"))))

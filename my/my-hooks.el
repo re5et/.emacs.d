@@ -14,6 +14,12 @@
    (define-key magit-mode-map (kbd "Z") 'magit-quick-stash)))
 
 (add-hook
+ 'dired-mode-hook
+ (lambda ()
+   (define-key dired-mode-map (kbd "<backspace>") 'dired-up-directory)
+   (define-key dired-mode-map (kbd "e") 'dired-efap)))
+
+(add-hook
  'ruby-mode-hook
  (lambda ()
    (auto-indent-mode)

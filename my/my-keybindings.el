@@ -91,7 +91,4 @@
 (global-set-key (kbd "M-j m f") 'emms-next)
 (global-set-key (kbd "M-j m b") 'emms-previous)
 
-(define-key dired-mode-map (kbd "<backspace>") 'dired-up-directory)
-(define-key dired-mode-map (kbd "e") 'dired-efap)
-
 (provide 'my-keybindings)

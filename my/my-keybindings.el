@@ -51,10 +51,12 @@
 
 (global-set-key (kbd "M-j") nil)
 (global-set-key (kbd "M-j j") 'newline-and-indent)
+(global-set-key (kbd "M-j J") 'bookmark-jump)
 (global-set-key (kbd "M-j f") 'flyspell-correct-word-before-point)
 (global-set-key (kbd "M-j k") 'copy-line)
 (global-set-key (kbd "M-j e") 'flymake-goto-next-error-and-show)
 (global-set-key (kbd "M-j M") 'rename-current-buffer-and-file)
+(global-set-key (kbd "M-j K") 'kill-focused-buffer)
 
 (global-set-key (kbd "M-j f") 'simp-project-find-file)
 (global-set-key (kbd "M-j d") 'simp-project-root-dired)
@@ -62,24 +64,21 @@
 (global-set-key (kbd "M-j S") 'simp-project-rgrep-thing-at-point)
 (global-set-key (kbd "M-j b") 'simp-project-ibuffer-files-only)
 (global-set-key (kbd "M-j B") 'simp-project-ibuffer)
+(global-set-key (kbd "M-j g") 'magit-status)
 
 (global-set-key (kbd "M-j M-f") 'simp-project-with-bookmark-find-file)
 (global-set-key (kbd "M-j M-s") 'simp-project-with-bookmark-rgrep)
 (global-set-key (kbd "M-j M-b") 'simp-project-with-bookmark-ibuffer)
+(global-set-key (kbd "M-j M-g") 'magit-status-from-bookmark)
 
 (global-set-key (kbd "M-j M-k") 'kill-whole-line)
 
 (global-set-key (kbd "M-j C-S-f") 'winner-redo)
 (global-set-key (kbd "M-j C-S-b") 'winner-undo)
 
-(global-set-key (kbd "C-x B") 'bookmark-jump)
-(global-set-key (kbd "C-x K") 'kill-focused-buffer)
-(global-set-key (kbd "C-x g") 'magit-status)
-(global-set-key (kbd "C-x G") 'magit-status-from-bookmark)
-
-(global-set-key (kbd "C-x c") 'emux-term)
-(global-set-key (kbd "C-x P") 'emux-session-load-template)
-(global-set-key (kbd "C-x S") 'emux-session-switch)
+(global-set-key (kbd "M-j c") 'emux-term)
+(global-set-key (kbd "M-j P") 'emux-session-load-template)
+(global-set-key (kbd "M-j S") 'emux-session-switch)
 
 (global-set-key (kbd "C-x C-d") 'dired-default)
 (global-set-key (kbd "C-x C-b") 'ibuffer)

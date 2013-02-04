@@ -20,7 +20,7 @@
  '(css-indent-offset 2)
  '(delete-selection-mode t)
  '(display-time-mode t)
- '(electric-pair-mode t)
+ '(electric-pair-mode nil)
  '(electric-pair-skip-self nil)
  '(elscreen-display-tab nil)
  '(emms-playlist-default-major-mode (quote emms-playlist-mode))

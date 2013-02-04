@@ -112,6 +112,7 @@
  '(text-mode-hook (quote (turn-on-auto-fill text-mode-hook-identify)))
  '(transient-mark-mode t)
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))
+ '(vc-handled-backends (quote (RCS CVS SVN SCCS Bzr Hg Mtn Arch)))
  '(visible-mark-inhibit-trailing-overlay t)
  '(visible-mark-max 1)
  '(vlf-batch-size 102400)

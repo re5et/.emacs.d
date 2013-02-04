@@ -96,11 +96,7 @@
              (line-beginning-position)))
           (end-position
            (if (region-active-p)
-               (save-excursion
-                 (goto-line
-                  (line-number-at-pos
-                   (region-end)))
-                 (line-end-position))
+               (region-end)
              (line-end-position))))
       (indent-rigidly
        beginning-position

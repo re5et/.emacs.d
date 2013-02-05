@@ -78,7 +78,7 @@
 
 (global-set-key (kbd "M-j c") 'emux-term)
 (global-set-key (kbd "M-j P") 'emux-session-load-template)
-(global-set-key (kbd "M-j S") 'emux-session-switch)
+(global-set-key (kbd "M-j C-s") 'emux-session-switch)
 
 (global-set-key (kbd "C-x C-d") 'dired-default)
 (global-set-key (kbd "C-x C-b") 'ibuffer)

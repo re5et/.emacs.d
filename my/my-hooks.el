@@ -38,22 +38,19 @@
 (add-hook
  'coffee-mode-hook
  (lambda ()
-   (linum-mode)
-   (highlight-indentation-mode 1)
+   (whitespace-mode 1)
    (smart-indent-rigidly-mode)))
 
 (add-hook
  'sass-mode-hook
  (lambda ()
-   (linum-mode)
-   (highlight-indentation-mode 1)
+   (whitespace-mode 1)
    (smart-indent-rigidly-mode)))
 
 (add-hook
  'haml-mode-hook
  (lambda ()
-   (linum-mode)
-   (highlight-indentation-mode 1)
+   (whitespace-mode 1)
    (smart-indent-rigidly-mode)))
 
 (add-hook

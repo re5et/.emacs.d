@@ -28,6 +28,7 @@
    itail
    powerline
    smart-indent-rigidly
+   ;; window-face-focus
    my-advice
    my-backup
    my-package

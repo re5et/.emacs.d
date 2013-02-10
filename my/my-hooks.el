@@ -24,7 +24,6 @@
  (lambda ()
    (auto-indent-mode)
    (linum-mode)
-   (whitespace-mode 1)
    (rvm-activate-corresponding-ruby)
    (flymake-ruby-load)))
 
@@ -32,25 +31,21 @@
  'js-mode-hook
  (lambda ()
    (auto-indent-mode)
-   (whitespace-mode 1)
    (linum-mode)))
 
 (add-hook
  'coffee-mode-hook
  (lambda ()
-   (whitespace-mode 1)
    (smart-indent-rigidly-mode)))
 
 (add-hook
  'sass-mode-hook
  (lambda ()
-   (whitespace-mode 1)
    (smart-indent-rigidly-mode)))
 
 (add-hook
  'haml-mode-hook
  (lambda ()
-   (whitespace-mode 1)
    (smart-indent-rigidly-mode)))
 
 (add-hook
@@ -69,14 +64,12 @@
  'emacs-lisp-mode-hook
  (lambda ()
    (linum-mode)
-   (whitespace-mode 1)
    (paredit-mode +1)))
 
 (add-hook
  'lisp-mode-hook
  (lambda ()
    (linum-mode)
-   (whitespace-mode 1)
    (paredit-mode +1)
    (if (string-match "stumpwmrc$" buffer-file-name)
        (stumpwm-mode))))

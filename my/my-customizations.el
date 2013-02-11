@@ -105,7 +105,7 @@
  '(smartparens-global-mode t)
  '(sp-ignore-modes-list (quote (calc-mode dired-mode gnus-article-mode gnus-group-mode gnus-summary-mode ibuffer-mode magit-branch-manager-mode magit-commit-mode magit-diff-mode magit-key-mode magit-log-mode magit-reflog-mode magit-stash-mode magit-status-mode magit-wazzup-mode minibuffer-inactive-mode monky-mode sr-mode term-mode)))
  '(tab-width 2)
- '(term-buffer-maximum-size 999999)
+ '(term-buffer-maximum-size 100000)
  '(term-default-bg-color "#000000")
  '(term-default-fg-color "#FFFFFF")
  '(term-unbind-key-list (quote ("C-z" "C-x" "C-c" "C-h" "C-l" "<ESC>")))
@@ -120,8 +120,7 @@
  '(whitespace-global-modes t)
  '(whitespace-line-column 800)
  '(yank-pop-change-selection t)
- '(yas-global-mode t nil (yasnippet))
- '(yas/trigger-key ""))
+ '(yas-global-mode t nil (yasnippet)))
 
 (deftheme selwyn
   "my theme")

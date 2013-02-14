@@ -141,7 +141,7 @@
  '(ac-completion-face ((t (:foreground "#555" :underline "#F0F"))))
  '(button ((t (:underline t))))
  '(cursor ((t (:background "#FF0" :foreground "#F00"))))
- '(erc-prompt-face ((t (:background "lightBlue2" :foreground "green" :weight bold))))
+ '(erc-prompt-face ((t (:foreground "red" :weight bold))))
  '(flymake-errline ((t (:background "#600"))))
  '(font-lock-builtin-face ((t (:foreground "#F0F"))))
  '(font-lock-comment-delimiter-face ((t (:inherit font-lock-comment-face :foreground "#f90"))))

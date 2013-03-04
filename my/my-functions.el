@@ -207,13 +207,6 @@ to the location of the selected bookmark."
    ;; and default-directory, the below works around it.
    (magit-status default-directory)))
 
-(defun rgrep-supress-find-command ()
-  (interactive)
-  (save-excursion
-    (when (string-match "find.*" (buffer-substring-no-properties (point-min) (point-max)))
-      (and (toggle-read-only)
-           (replace-regexp "find.*" "" nil (point-min) (point-max))))))
-
 (defun indent-and-open-newline (&optional previous)
   "Add a newline after current line and tab to indentation.
 If PREVIOUS is non-nil, go up a line first."

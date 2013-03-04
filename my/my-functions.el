@@ -232,4 +232,17 @@ WIP on branchname: short-sha commit-message"
   (interactive)
   (magit-stash ""))
 
+(defun prettify-json ()
+  "NOTE: requires ruby in $PATH. Replace a valid json region with
+pretty printed json By default uses the jj method to print,
+uses pp if there is a prefix argument"
+  (interactive)
+  (let* ((print-method (if current-prefix-arg "pp" "jj"))
+         (cmd (format
+               "ruby -e 'require \"json\"; require \"pp\"; %s JSON.parse(gets)'" print-method)))
+    (shell-command-on-region
+     (region-beginning)
+     (region-end)
+     cmd nil t)))
+
 (provide 'my-functions)

@@ -1,7 +1,0 @@
-(emux-session-set-default-directory "~/code/thoughtstream")
-(emux-screen-create '(:name "git") "git" "git status")
-(emux-screen-create '(:name "misc") "misc" "ls")
-(emux-screen-create '(:name "tail"))
-(itail "rails-app/log/development.log")
-(itail "node-app/log/development.log")
-(emux-screen-create '(:name "guard") "guard" "be guard")

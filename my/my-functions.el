@@ -113,9 +113,6 @@ buffer read-only, so I suggest setting kill-read-only-ok to t."
          (select-window window)
          (switch-to-buffer buffer))) map)))
 
-(defun dired-default ()
-  (interactive)
-  (dired default-directory))
 
 (defun toggle-window-split ()
   (interactive)

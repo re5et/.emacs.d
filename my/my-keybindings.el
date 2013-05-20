@@ -81,7 +81,7 @@
 (global-set-key (kbd "M-j C-s") 'emux-session-switch)
 
 (global-set-key (kbd "C-x f") 'fill-region)
-(global-set-key (kbd "C-x C-d") 'dired-default)
+(global-set-key (kbd "C-x C-d") 'dired-jump)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-x C-c") 'dont-kill-emacs)
 (global-set-key (kbd "C-x C-p") 'eval-and-replace)

@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("simp"
+(("thoughtstream-browser_client"
+ (filename . "~/code/thoughtstream-browser_client/")
+ (front-context-string . "app\n  -rw-rw-r--")
+ (rear-context-string . "96 Apr  2 10:43 ")
+ (position . 236))
+("simp"
  (filename . "~/code/simp/")
  (front-context-string)
  (rear-context-string . "th-bookmarks.el\n")

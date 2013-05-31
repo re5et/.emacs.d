@@ -166,15 +166,6 @@ buffer read-only, so I suggest setting kill-read-only-ok to t."
           (message "File '%s' successfully renamed to '%s'"
                    name (file-name-nondirectory new-name)))))))
 
-(defun google-this ()
-  (interactive)
-  (let ((search-phrase
-         (if (region-active-p)
-             (buffer-substring (region-beginning) (region-end))
-           (thing-at-point 'symbol))))
-    (browse-url (concat "https://www.google.com/search?&q=" search-phrase))))
-
-
 (defmacro with-directory-from-bookmark (&rest body)
   "Run BODY with default-directory set to
 to the location of the selected bookmark."

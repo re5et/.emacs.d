@@ -1,3 +1,34 @@
+;;; isearch-symbol-at-point.el
+;; Version: 20130531.1033
+
+;; Copyright (C) 2013 @re5et
+
+;; Author: atom smith
+;; URL: https://github.com/re5et/isearch-symbol-at-point
+;; Created: 30 May 2013
+;; Keywords: isearch
+
+;; This file is NOT part of GNU Emacs.
+
+;; This file is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation; either version 3, or (at your option)
+;; any later version.
+
+;; This file is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; For a full copy of the GNU General Public License
+;; see <http://www.gnu.org/licenses/>.
+
+;;; Commentary:
+
+;; Taken / adapted from stuff in http://www.emacswiki.org/emacs/SearchAtPoint
+
+;;; Code:
+
 (defun isearch-yank-regexp (regexp)
   "Pull REGEXP into search regexp."
   (let ((isearch-regexp nil)) ;; Dynamic binding of global.
@@ -25,6 +56,7 @@
         (isearch-yank-regexp
          (regexp-quote sym))))))
 
+;;;###autoload
 (defun isearch-symbol-at-point (&optional partialp)
   "Incremental search forward with symbol under point.
 
@@ -35,6 +67,7 @@
     (isearch-forward-regexp nil 1)
     (isearch-yank-symbol partialp)))
 
+;;;###autoload
 (defun isearch-backward-symbol-at-point (&optional partialp)
   "Incremental search backward with symbol under point.
 
@@ -46,3 +79,4 @@
     (isearch-yank-symbol partialp)))
 
 (provide 'isearch-symbol-at-point)
+;;; isearch-symbol-at-point.el ends here

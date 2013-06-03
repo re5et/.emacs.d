@@ -12,16 +12,19 @@
 (setq erc-track-priority-faces-only 'all)
 
 (defun my-erc-pop-mention (&rest ignore)
-  (let ((buffer (erc-track-get-active-buffer 1)))
+  (let ((buffer (erc-track-get-active-buffer 1))
+        (active-minibuffer (active-minibuffer-window)))
     (when buffer
-      (when (active-minibuffer-window)
+      (when active-minibuffer
         (next-in-frame-window))
       (if (>= 10 (window-height))
           (window-resize (get-buffer-window) 10))
       (split-window-below -10)
       (other-window 1)
       (erc-track-switch-buffer 1)
-      (other-window -1))))
+      (if active-minibuffer
+          (switch-to-buffer active-minibuffer)
+        (other-window -1)))))
 (add-hook 'erc-track-list-changed-hook 'my-erc-pop-mention)
 
 (defun my-erc-identify ()

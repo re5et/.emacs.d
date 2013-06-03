@@ -29,6 +29,7 @@
    powerline
    smart-indent-rigidly
    ;; window-face-focus
+   my-erc
    my-advice
    my-backup
    my-package

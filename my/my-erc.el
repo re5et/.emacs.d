@@ -13,14 +13,15 @@
 
 (defun my-erc-pop-mention (&rest ignore)
   (let ((buffer (erc-track-get-active-buffer 1)))
-    (if buffer
-        (progn
-          (if (>= 10 (window-height))
-              (window-resize (get-buffer-window) 10))
-          (split-window-below -10)
-          (other-window 1)
-          (erc-track-switch-buffer 1)
-          (other-window -1)))))
+    (when buffer
+      (when (active-minibuffer-window)
+        (next-in-frame-window))
+      (if (>= 10 (window-height))
+          (window-resize (get-buffer-window) 10))
+      (split-window-below -10)
+      (other-window 1)
+      (erc-track-switch-buffer 1)
+      (other-window -1))))
 (add-hook 'erc-track-list-changed-hook 'my-erc-pop-mention)
 
 (defun my-erc-identify ()

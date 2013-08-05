@@ -233,4 +233,25 @@ uses pp if there is a prefix argument"
      (region-end)
      cmd nil t)))
 
+(defun shell-command-on-region-replace (start end command)
+  (shell-command-on-region start end command nil t))
+
+(defun shell-command-on-dwim-replace (command)
+  (interactive
+   (list
+    (read-shell-command "Shell command: " nil nil
+                        (let ((filename
+                               (cond
+                                (buffer-file-name)
+                                ((eq major-mode 'dired-mode)
+                                 (dired-get-filename nil t)))))
+                          (and filename (file-relative-name filename))))))
+  (let ((start (if (region-active-p)
+                   (region-beginning)
+                 (point-min)))
+        (end (if (region-active-p)
+                 (region-end)
+               (point-max))))
+    (shell-command-on-region-replace start end command)))
+
 (provide 'my-functions)

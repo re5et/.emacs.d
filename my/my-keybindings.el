@@ -9,6 +9,7 @@
 (global-set-key (kbd "C-,") 'indent-buffer)
 (global-set-key (kbd "C-|") 'rotate-frame-window-buffers)
 (global-set-key (kbd "C-#") 'comment-region)
+(global-set-key (kbd "C-!") 'shell-command-on-dwim-replace)
 (global-set-key (kbd "C-<return>") 'embiggen-toggler)
 (global-set-key (kbd "C-<backspace>") 'backwards-kill)
 
@@ -16,6 +17,8 @@
 (global-set-key (kbd "M-h") 'previous-in-frame-window)
 (global-set-key (kbd "M-o") 'previous-indent-and-open-newline)
 (global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-B") 'backward-to-word)
+(global-set-key (kbd "M-F") 'forward-to-word)
 (global-set-key (kbd "M-M") 'er/expand-region)
 (global-set-key (kbd "M-L")  'next-multiframe-window)
 (global-set-key (kbd "M-H") 'previous-multiframe-window)

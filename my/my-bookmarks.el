@@ -2,7 +2,17 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("thoughtstream-browser_client"
+(("thoughtstream-collaboration_service"
+ (filename . "~/code/thoughtstream-collaboration_service/")
+ (front-context-string . ".bundle\n  -rw-rw")
+ (rear-context-string . "96 Aug  5 11:00 ")
+ (position . 239))
+("thoughtstream-user_management"
+ (filename . "~/code/thoughtstream-user_management/")
+ (front-context-string . "app\n  drwxrwxr-x")
+ (rear-context-string . "96 Jul 23 10:42 ")
+ (position . 233))
+("thoughtstream-browser_client"
  (filename . "~/code/thoughtstream-browser_client/")
  (front-context-string . "app\n  -rw-rw-r--")
  (rear-context-string . "96 Apr  2 10:43 ")
@@ -22,11 +32,6 @@
  (front-context-string . "app\n  drwxr-xr-x")
  (rear-context-string . "012-02-08 18:16 ")
  (position . 241))
-("ts"
- (filename . "~/code/thoughtstream/")
- (front-context-string)
- (rear-context-string . "9-18 22:52 TODO\n")
- (position . 1398))
 (".emacs.d"
  (filename . "~/.emacs.d/")
  (front-context-string . "auto-save-list\n ")

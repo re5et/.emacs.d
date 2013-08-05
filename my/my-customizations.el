@@ -51,7 +51,7 @@
  '(grep-use-null-device nil)
  '(highlight-indentation-offset 2)
  '(highline-selected-window t)
- '(hippie-expand-try-functions-list (quote (yas/hippie-try-expand try-complete-file-name-partially try-complete-file-name try-expand-all-abbrevs try-expand-list try-expand-line try-expand-dabbrev try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill try-complete-lisp-symbol-partially try-complete-lisp-symbol)))
+ '(hippie-expand-try-functions-list (quote (try-complete-file-name-partially try-complete-file-name try-expand-all-abbrevs try-expand-list try-expand-line try-expand-dabbrev try-expand-dabbrev-all-buffers try-expand-dabbrev-from-kill try-complete-lisp-symbol-partially try-complete-lisp-symbol)))
  '(ido-auto-merge-delay-time 5)
  '(ido-decorations (quote ("
 >> " "" "
@@ -118,8 +118,7 @@
  '(wgrep-auto-save-buffer t)
  '(whitespace-global-modes t)
  '(whitespace-line-column 800)
- '(yank-pop-change-selection t)
- '(yas-global-mode t nil (yasnippet)))
+ '(yank-pop-change-selection t))
 
 (deftheme selwyn
   "my theme")
@@ -168,13 +167,13 @@
  '(magit-diff-del ((t (:foreground "#F00"))))
  '(magit-item-highlight ((t (:background "#002"))))
  '(minibuffer-prompt ((t (:foreground "#09F" :weight bold))))
- '(mode-line ((t (:background "#111" :foreground "#0F0" :weight bold))))
- '(mode-line-inactive ((t (:background "#111" :foreground "#444"))))
+ '(mode-line ((t (:background "#111111" :foreground "#0F0" :weight bold))))
+ '(mode-line-inactive ((t (:background "#111111" :foreground "#444"))))
  '(popup-face ((t (:background "#111" :foreground "#888"))))
  '(popup-menu-face ((t (:background "#111" :foreground "#0F0"))))
  '(popup-menu-selection-face ((t (:background "#111" :foreground "yellow"))))
  '(powerline-active1 ((t (:inherit mode-line :background "#1c1c1c" :foreground "#09f" :weight bold))))
- '(powerline-active2 ((t (:inherit mode-line :background "#050505" :foreground "#F0F" :weight bold))))
+ '(powerline-active2 ((t (:inherit mode-line :background "#050505" :foreground "#FF00FF" :weight bold))))
  '(powerline-inactive1 ((t (:inherit mode-line-inactive :background "#090909"))))
  '(powerline-inactive2 ((t (:inherit mode-line-inactive :background "#030303"))))
  '(regex-tool-matched-face ((t (:background "#020" :foreground "Orange" :weight bold))))

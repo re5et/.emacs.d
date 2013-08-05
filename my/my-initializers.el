@@ -8,6 +8,5 @@
 (show-paren-mode t)
 (highline-mode 1)
 (auto-compression-mode 1)
-(yas-global-mode 1)
-(powerline-default)
+(powerline-default-theme)
 (provide 'my-initializers)

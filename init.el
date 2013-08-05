@@ -13,7 +13,6 @@
    highline
    dired
    dired-efap
-   yasnippet
    stumpwm-mode
    misc
    simp
@@ -42,6 +41,3 @@
    my-hooks
    my-settings
    my-initializers))
-
-(if (featurep 'my-local)
-    (require 'my-local))

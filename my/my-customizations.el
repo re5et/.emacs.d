@@ -11,7 +11,9 @@
  '(auto-indent-kill-line-at-eol nil)
  '(auto-indent-next-pair-timer-geo-mean (quote ((default 0.0005 0))))
  '(auto-revert-verbose nil)
+ '(backup-directory-alist (quote ((".*" . "~/.emacs.d/.backups"))))
  '(bookmark-default-file "~/.emacs.d/my/my-bookmarks.el")
+ '(buffer-offer-save t)
  '(clean-buffer-list-delay-general 1)
  '(column-highlight-mode t)
  '(column-number-mode t)
@@ -19,6 +21,7 @@
  '(crosshairs-overlay-priority 100)
  '(css-indent-level 2)
  '(css-indent-offset 2)
+ '(delete-old-versions t)
  '(delete-selection-mode t)
  '(display-time-mode t)
  '(electric-pair-mode nil)
@@ -91,13 +94,6 @@
  '(proced-auto-update-flag t)
  '(proced-auto-update-interval 1)
  '(proced-format (quote long))
- '(ruby-block-delay 0.1)
- '(ruby-block-highlight-toggle t)
- '(ruby-deep-arglist nil)
- '(ruby-deep-indent-paren nil)
- '(ruby-deep-indent-paren-style nil)
- '(ruby-electric-expand-delimiters-list nil)
- '(ruby-end-insert-newline nil)
  '(save-interprogram-paste-before-kill t)
  '(save-place t nil (saveplace))
  '(sgml-basic-offset 2)
@@ -133,7 +129,6 @@
 '(default ((t (:background "#050505" :foreground "#AAA" :height 100 :width normal :foundry "unknown" :family "dejavu sans mono")))))
 
 (provide-theme 'selwyn)
-
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -192,7 +187,7 @@
  '(term-color-blue ((t (:background "royalblue" :foreground "royalblue"))))
  '(vertical-border ((((type x tty)) (:inherit mode-line-inactive :foreground "#333"))))
  '(visible-mark-face ((t (:background "#F0F"))))
- '(visible-mark-non-trailing-face0 ((t (:background "#300"))) t)
+ '(visible-mark-non-trailing-face0 ((t (:background "saddle brown" :underline t))) t)
  '(whitespace-empty ((t (:background "#100" :foreground "firebrick"))))
  '(whitespace-hspace ((t (:foreground "#222"))))
  '(whitespace-indentation ((t (:inherit nil :foreground "#400"))))

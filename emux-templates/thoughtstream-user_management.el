@@ -1,5 +1,0 @@
-(emux-session-set-default-directory "~/code/thoughtstream-user_management")
-(emux-screen-create '(:name "guard") "guard" "be guard --notify false")
-(emux-screen-create '(:name "rc") "rc" "rc")
-(emux-screen-create '(:name "tail" :no-terminal t))
-(itail "log/development.log")

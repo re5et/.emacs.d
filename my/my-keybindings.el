@@ -53,6 +53,7 @@
 (global-set-key (kbd "C-S-k") 'hungry-kill)
 
 (global-set-key (kbd "M-j") nil)
+(global-set-key (kbd "M-j '") 'toggle-string-type)
 (global-set-key (kbd "M-j j") 'newline-and-indent)
 (global-set-key (kbd "M-j J") 'bookmark-jump)
 (global-set-key (kbd "M-j f") 'flyspell-correct-word-before-point)

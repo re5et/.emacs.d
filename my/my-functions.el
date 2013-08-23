@@ -254,4 +254,20 @@ uses pp if there is a prefix argument"
                (point-max))))
     (shell-command-on-region-replace start end command)))
 
+(defun toggle-string-type ()
+  (interactive)
+  (save-excursion
+    (backward-sexp)
+    (let ((beg (point))
+          (single "'")
+          (double "\""))
+      (forward-sexp)
+      (let ((end (point)))
+        (let* ((from (if (equal (string (char-after)) single)
+                         single double))
+               (to (if (equal from single)
+                       double single)))
+          (replace-string from to nil (- 1 beg) beg)
+          (replace-string from to nil end (+ 1 end)))))))
+
 (provide 'my-functions)

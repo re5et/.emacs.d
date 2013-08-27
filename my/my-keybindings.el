@@ -89,6 +89,7 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (global-set-key (kbd "C-x C-c") 'dont-kill-emacs)
 (global-set-key (kbd "C-x C-p") 'eval-and-replace)
+(global-set-key (kbd "C-x C-s") 'force-save)
 (global-set-key (kbd "C-x C-S-f") 'find-file-other-window)
 
 (global-set-key (kbd "M-j m q") 'emms-add-directory-tree)

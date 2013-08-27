@@ -270,4 +270,9 @@ uses pp if there is a prefix argument"
           (replace-string from to nil (- 1 beg) beg)
           (replace-string from to nil end (+ 1 end)))))))
 
+(defun force-save ()
+  (interactive)
+  (not-modified 1)
+  (save-buffer))
+
 (provide 'my-functions)

@@ -254,25 +254,40 @@ uses pp if there is a prefix argument"
                (point-max))))
     (shell-command-on-region-replace start end command)))
 
-(defun toggle-string-type ()
-  (interactive)
-  (save-excursion
-    (backward-sexp)
-    (let ((beg (point))
-          (single "'")
-          (double "\""))
-      (forward-sexp)
-      (let ((end (point)))
-        (let* ((from (if (equal (string (char-after)) single)
-                         single double))
-               (to (if (equal from single)
-                       double single)))
-          (replace-string from to nil (- 1 beg) beg)
-          (replace-string from to nil end (+ 1 end)))))))
-
 (defun force-save ()
   (interactive)
   (not-modified 1)
   (save-buffer))
+
+(defun devolve-ruby-symbols ()
+  (interactive)
+  (query-replace-regexp
+   "\\([@$_A-Za-z][_A-Za-z0-9]*[!_=?A-Za-z0-9]\\): "
+   ":\\1 => "
+   nil (point-min) (point-max)))
+
+(defun toggle-quote-type ()
+  "Toggle single quoted string to double or vice versa, and
+  flip the internal quotes as well.  Best to run on the first
+  character of the string."
+  (interactive)
+  (save-excursion
+    (re-search-backward "[\"']")
+    (let* ((start (point))
+           (old-c (char-after start))
+           new-c)
+      (setq new-c
+            (case old-c
+              (?\" "'")
+              (?\' "\"")))
+      (setq old-c (char-to-string old-c))
+      (delete-char 1)
+      (insert new-c)
+      (re-search-forward old-c)
+      (backward-char 1)
+      (let ((end (point)))
+        (delete-char 1)
+        (insert new-c)
+        (replace-string new-c old-c nil (1+ start) end)))))
 
 (provide 'my-functions)

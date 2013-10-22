@@ -290,4 +290,8 @@ uses pp if there is a prefix argument"
         (insert new-c)
         (replace-string new-c old-c nil (1+ start) end)))))
 
+(defun xmodmap ()
+  (interactive)
+  (shell-command "xmodmap ~/.xmodmap && echo xmodmapped!"))
+
 (provide 'my-functions)

@@ -4,7 +4,7 @@
 
 (global-set-key (kbd "C-=") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
-(global-set-key (kbd "C-o") 'indent-and-open-newline)
+(global-set-key (kbd "C-o") 'previous-indent-and-open-newline)
 (global-set-key (kbd "C-?") 'revert-buffer)
 (global-set-key (kbd "C-,") 'indent-buffer)
 (global-set-key (kbd "C-|") 'rotate-frame-window-buffers)
@@ -15,7 +15,7 @@
 
 (global-set-key (kbd "M-l") 'next-in-frame-window)
 (global-set-key (kbd "M-h") 'previous-in-frame-window)
-(global-set-key (kbd "M-o") 'previous-indent-and-open-newline)
+(global-set-key (kbd "M-o") 'indent-and-open-newline)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-B") 'backward-to-word)
 (global-set-key (kbd "M-F") 'forward-to-word)

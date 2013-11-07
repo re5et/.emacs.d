@@ -294,4 +294,21 @@ uses pp if there is a prefix argument"
   (interactive)
   (shell-command "xmodmap ~/.xmodmap && echo xmodmapped!"))
 
+(defun simp-find-test-or-source-other-window ()
+  (interactive)
+  (let ((file-key
+         (file-name-sans-extension
+          (file-name-nondirectory
+           (buffer-file-name)))))
+    (let ((to-match
+           (if (string-match "_spec" file-key)
+               (replace-regexp-in-string "_spec" "" file-key)
+             (concat file-key "_spec"))))
+      (let ((match
+             (dolist (file-path (simp-project-files))
+               (when (string-match to-match file-path)
+                 (return file-path)))))
+        (let ((file-to-open (concat (simp-project-root) "/" match)))
+          (find-file-other-window file-to-open))))))
+
 (provide 'my-functions)

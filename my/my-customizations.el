@@ -70,7 +70,7 @@
  '(indicate-empty-lines t)
  '(inferior-lisp-program "sbcl" t)
  '(iswitchb-use-virtual-buffers t nil (recentf))
- '(itail-fancy-mode-line nil)
+ '(itail-fancy-mode-line t)
  '(itail-tail-flags "-n100 -f")
  '(js-indent-level 2)
  '(js2-auto-indent-p nil)

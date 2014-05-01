@@ -23,11 +23,9 @@
    midnight
    isearch-symbol-at-point
    multiple-cursors
-   magit-commit-training-wheels
    itail
    powerline
    smart-indent-rigidly
-   ;; window-face-focus
    my-erc
    my-advice
    my-backup

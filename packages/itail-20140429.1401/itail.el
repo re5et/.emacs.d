@@ -5,7 +5,7 @@
 ;; Author: atom smith
 ;; URL: https://github.com/re5et/itail
 ;; Created: 26 Dec 2012
-;; Version: 20140429.1157
+;; Version: 20140429.1401
 ;; X-Original-Version: 0.0.5
 ;; Keywords: tail
 
@@ -52,6 +52,7 @@
     (define-key itail-map (kbd "C-c h") 'itail-highlight)
     (define-key itail-map (kbd "C-c u") 'itail-unhighlight)
     (define-key itail-map (kbd "C-c C-k") 'itail-reload)
+    (define-key itail-map (kbd "C-c C-c") 'itail-kill)
     itail-map)
   "The keymap used in `itail-mode' buffers.")
 
@@ -117,10 +118,30 @@ clearing and filtering
 Very useful when the tail has had a great deal of information dumped
 to it and emacs can not keep up"
   (interactive)
-  (comint-kill-subjob)
-  (itail-clear)
+  (insert (concat "reloading " (buffer-name (current-buffer))))
+  (itail-kill-with-process-sentinel 'itail-internal-reload))
+
+(defun itail-internal-reload (&rest ignored)
+  ;; (itail-clear)
   (itail itail-file)
-  (end-of-buffer))
+  (comint-show-maximum-output))
+
+(defun itail-kill ()
+  "Kill the tail process and close the buffer"
+  (interactive)
+  (insert (concat "killing " (buffer-name (current-buffer))))
+  (itail-kill-with-process-sentinel 'itail-internal-kill))
+
+(defun itail-internal-kill (&rest ignored)
+  (kill-buffer (current-buffer)))
+
+(defun itail-kill-with-process-sentinel (sentinel)
+  (let ((process (get-buffer-process (current-buffer))))
+    (if process
+        (progn
+          (set-process-sentinel process sentinel)
+          (comint-quit-subjob))
+      (funcall sentinel))))
 
 (defun itail-clear ()
   "Clear out the tail buffer"

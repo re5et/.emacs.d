@@ -1,6 +1,7 @@
 (define-key key-translation-map "\C-j" "\C-x")
 
 (global-set-key (kbd "S-<backspace>") 'pop-to-mark-command)
+(global-set-key (kbd "S-<return>") 'newline-and-indent)
 
 (global-set-key (kbd "C-=") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)

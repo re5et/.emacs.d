@@ -5,6 +5,7 @@
 
 (global-set-key (kbd "C-=") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
+(global-set-key (kbd "C-0") 'text-scale-adjust)
 (global-set-key (kbd "C-o") 'previous-indent-and-open-newline)
 (global-set-key (kbd "C-?") 'revert-buffer)
 (global-set-key (kbd "C-,") 'indent-buffer)
@@ -70,6 +71,7 @@
 (global-set-key (kbd "M-j b") 'simp-project-ibuffer-files-only)
 (global-set-key (kbd "M-j B") 'simp-project-ibuffer)
 (global-set-key (kbd "M-j g") 'magit-status)
+(global-set-key (kbd "M-j G") 'git-timemachine)
 
 (global-set-key (kbd "M-j M-f") 'simp-project-with-bookmark-find-file)
 (global-set-key (kbd "M-j M-s") 'simp-project-with-bookmark-rgrep)

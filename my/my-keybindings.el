@@ -62,8 +62,6 @@
 (global-set-key (kbd "M-j k") 'copy-line)
 (global-set-key (kbd "M-j e") 'flymake-goto-next-error-and-show)
 (global-set-key (kbd "M-j M") 'rename-current-buffer-and-file)
-(global-set-key (kbd "M-j K") 'kill-focused-buffer)
-
 (global-set-key (kbd "M-j f") 'simp-project-find-file)
 (global-set-key (kbd "M-j d") 'simp-project-root-dired)
 (global-set-key (kbd "M-j s") 'simp-project-rgrep)
@@ -93,6 +91,7 @@
 (global-set-key (kbd "C-x C-c") 'dont-kill-emacs)
 (global-set-key (kbd "C-x C-p") 'eval-and-replace)
 (global-set-key (kbd "C-x C-s") 'force-save)
+(global-set-key (kbd "C-x C-k") 'kill-focused-buffer)
 (global-set-key (kbd "C-x C-S-f") 'find-file-other-window)
 
 (global-set-key (kbd "M-j m q") 'emms-add-directory-tree)

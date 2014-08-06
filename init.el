@@ -16,7 +16,7 @@
    stumpwm-mode
    misc
    simp
-   move-text
+   move-dup
    emux-session
    expand-region
    winner

@@ -43,31 +43,6 @@ buffer read-only, so I suggest setting kill-read-only-ok to t."
   (flymake-goto-next-error)
   (flymake-display-err-menu-for-current-line))
 
-(defun clone-text (direction)
-  (interactive)
-  (let* ((text
-          (progn
-            (unless (region-active-p)
-              (set-mark (line-beginning-position))
-              (goto-char (line-end-position)))
-            (buffer-substring (region-beginning) (region-end))))
-         (end (region-end)))
-    (goto-char (region-end))
-    (unless (eq (point) (line-beginning-position))
-      (open-line 1)
-      (next-line))
-    (insert text)
-    (if (eq direction 'up)
-        (goto-char end))))
-
-(defun clone-text-up ()
-  (interactive)
-  (clone-text 'up))
-
-(defun clone-text-down ()
-  (interactive)
-  (clone-text 'down))
-
 (defun kill-focused-buffer ()
   (interactive)
   (kill-buffer (current-buffer)))

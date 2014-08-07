@@ -38,4 +38,5 @@
    my-keybindings
    my-hooks
    my-settings
+   my-emux-templates
    my-initializers))

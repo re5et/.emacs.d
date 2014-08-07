@@ -1,11 +1,12 @@
 ;;; smart-indent-rigidly.el --- Smart rigid indenting
 
-;; Copyright (C) 2012 @re5et
+;; Copyright (C) 2014 @re5et
 
 ;; Author: atom smith
-;; URL: https://github.com/re5et/...
-;; Created: 04 Jan 2013
-;; Version: 0.0.1
+;; URL: https://github.com/re5et/smart-indent-rigidly
+;; Created: 07 Jul 2014
+;; Version: 20140801.1051
+;; X-Original-Version: 0.0.1
 ;; Keywords: indenting coffee-mode haml-mode sass-mode
 
 ;; This file is NOT part of GNU Emacs.
@@ -28,6 +29,26 @@
 ;; 51 Franklin Street, Fifth Floor
 ;; Boston, MA 02110-1301
 ;; USA
+
+;;; Commentary
+;;
+;; useful for indenting / undenting lines or regions of text in
+;; whitespace sensitive language modes like haml-mode, sass-mode,
+;; coffee-mode etc
+;;
+;;; Usage
+;;
+;; (require 'smart-indent-rigidly)
+;;
+;; M-x smart-indent-rigidly-mode
+;;
+;; or
+;;
+;; Add some hooks:
+;;
+;; (add-hook 'haml-mode-hook 'smart-indent-rigidly-mode)
+;; (add-hook 'coffee-mode-hook 'smart-indent-rigidly-mode)
+;; (add-hook 'sass-mode-hook 'smart-indent-rigidly-mode)
 
 (defgroup smart-indent-rigidly nil
   "Smart rigid indentation."
@@ -52,6 +73,7 @@
     map)
   "The keymap used in `smart-indent-rigidly-keymap' buffers.")
 
+;;;###autoload
 (define-minor-mode smart-indent-rigidly-mode
   "Un/Indent region if active or current line
 
@@ -88,9 +110,7 @@
            (if (region-active-p)
                (save-excursion
                  ;; indent every line in the region
-                 (goto-line
-                  (line-number-at-pos
-                   (region-beginning)))
+                 (goto-char (region-beginning))
                  (line-beginning-position))
              ;; otherwise just indent the line
              (line-beginning-position)))
@@ -104,3 +124,5 @@
        count))))
 
 (provide 'smart-indent-rigidly)
+
+;;; smart-indent-rigidly.el ends here

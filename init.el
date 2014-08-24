@@ -27,6 +27,7 @@
    powerline
    smart-indent-rigidly
    my-erc
+   my-isearch
    my-advice
    my-backup
    my-package

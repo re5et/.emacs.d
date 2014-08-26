@@ -4,6 +4,6 @@
   (kill-ring-save isearch-other-end (point))
   (message "killed: %s" (buffer-substring isearch-other-end (point))))
 
-(define-key isearch-mode-map [(control k)] 'kill-ring-save-isearch-match)
+(define-key isearch-mode-map [(meta w)] 'kill-ring-save-isearch-match)
 
 (provide 'my-isearch)

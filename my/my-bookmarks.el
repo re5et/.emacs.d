@@ -2,7 +2,22 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("thoughtstream-configuration"
+(("thoughtstream-message_bus"
+ (filename . "~/bluescape/thoughtstream-message_bus/")
+ (front-context-string . "bus.pid\n  drwxrw")
+ (rear-context-string . " 4 Oct 27 14:49 ")
+ (position . 236))
+("thoughtstream-health"
+ (filename . "~/bluescape/thoughtstream-health/")
+ (front-context-string . "app\n  drwxrwxr-x")
+ (rear-context-string . "96 Oct 27 14:35 ")
+ (position . 228))
+("thoughtstream-socket_bridge"
+ (filename . "~/bluescape/thoughtstream-socket_bridge/")
+ (front-context-string)
+ (rear-context-string . "t 27 14:35 spec\n")
+ (position . 874))
+("thoughtstream-configuration"
  (filename . "~/bluescape/thoughtstream-configuration/")
  (front-context-string . "generate-configu")
  (rear-context-string . "16 Aug 21 12:39 ")

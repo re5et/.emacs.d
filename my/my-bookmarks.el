@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("thoughtstream-message_bus"
+(("thoughtstream-health_check"
+ (filename . "~/bluescape/thoughtstream-health_check/")
+ (front-context-string)
+ (rear-context-string . "54 Nov 13 13:30 ")
+ (position . 398))
+("thoughtstream-message_bus"
  (filename . "~/bluescape/thoughtstream-message_bus/")
  (front-context-string . "bus.pid\n  drwxrw")
  (rear-context-string . " 4 Oct 27 14:49 ")

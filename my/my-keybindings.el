@@ -79,8 +79,8 @@
 (global-set-key (kbd "M-j M-b") 'simp-project-with-bookmark-ibuffer)
 (global-set-key (kbd "M-j M-g") 'magit-status-from-bookmark)
 (global-set-key (kbd "M-j M-k") 'kill-whole-line)
-(global-set-key (kbd "M-j C-S-f") 'winner-redo)
-(global-set-key (kbd "M-j C-S-b") 'winner-undo)
+(global-set-key (kbd "C-<") 'winner-undo)
+(global-set-key (kbd "C->") 'winner-redo)
 
 (global-set-key (kbd "C-x f") 'fill-region)
 (global-set-key (kbd "C-x C-d") 'dired-jump)

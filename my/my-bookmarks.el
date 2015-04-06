@@ -2,7 +2,32 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("thoughtstream-health_check"
+(("cid-travel_workers"
+ (filename . "~/.cid/cid-travel_workers/")
+ (front-context-string . "lib\n  drwxrwxr-x")
+ (rear-context-string . "96 Apr  2 11:24 ")
+ (position . 531))
+("cid-travel_booking-site"
+ (filename . "~/.cid/cid-travel_booking-site/")
+ (front-context-string . "assets\n  -rw-rw-")
+ (rear-context-string . "96 Mar 18 12:24 ")
+ (position . 229))
+("cid-demo-chef"
+ (filename . "~/code/cid-demo-chef/")
+ (front-context-string)
+ (rear-context-string . "cid-demo-chef/.\n")
+ (position . 119))
+("cid-travel_hotel-api"
+ (filename . "~/.cid/cid-travel_hotel-api/")
+ (front-context-string . "index.js\n  drwxr")
+ (rear-context-string . "81 Feb 25 12:05 ")
+ (position . 563))
+("cid-travel_cms"
+ (filename . "~/.cid/cid-travel_cms/")
+ (front-context-string . "Gemfile\n  -rw-rw")
+ (rear-context-string . "55 Feb 25 11:56 ")
+ (position . 519))
+("thoughtstream-health_check"
  (filename . "~/bluescape/thoughtstream-health_check/")
  (front-context-string)
  (rear-context-string . "54 Nov 13 13:30 ")

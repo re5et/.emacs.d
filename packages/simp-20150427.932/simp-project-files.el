@@ -1,6 +1,6 @@
 ;;; simp-project-files.el --- Find files in a simp project
 
-;; Copyright (C) 2011-2014 @re5et
+;; Copyright (C) 2011-2015 @re5et
 
 ;; Author: atom smith
 ;; URL: https://github.com/re5et/simp
@@ -67,9 +67,10 @@ Set simp-project-find-file-sort-command to the command you want to sort with"
   "Returns a list of files in a project, excluding project's
 ignored paths, using the unix find command for speedy results."
   (let ((find-command (simp-project-find-files-generate-find-command)))
-    (split-string
-     (shell-command-to-string find-command)
-     "\n" t)))
+    (delete-dups
+     (split-string
+      (shell-command-to-string find-command)
+      "\n" t))))
 
 (defun simp-project-find-files-generate-find-command ()
   (let ((project-root (expand-file-name (simp-project-root))))

@@ -1,12 +1,12 @@
-;;; simp-project-root-dired.el --- Quickly jump to project root, dired
+;;; simp.el --- Simple project definition, chiefly for file finding, and grepping
 
-;; Copyright (C) 2011-2014 @re5et
+;; Copyright (C) 2011-2015 @re5et
 
 ;; Author: atom smith
 ;; URL: https://github.com/re5et/simp
-;; Created: 01 Jan 2013
+;; Created: 22 Dec 2011
 ;; Version: 0.4.0
-;; Keywords: project dired
+;; Keywords: project grep find
 
 ;; This file is NOT part of GNU Emacs.
 
@@ -29,11 +29,21 @@
 ;; Boston, MA 02110-1301
 ;; USA
 
-(require 'simp-project)
+;;; Commentary
 
-(defun simp-project-root-dired ()
-  "Start dired at the current buffers associated simp project root"
-  (interactive)
-  (dired (simp-project-root)))
+;; If you want to use any or some of these without everything, require
+;; just the things you want.
 
-(provide 'simp-project-root-dired)
+(require 'simp-project-files)
+(require 'simp-project-rgrep)
+(require 'simp-project-root-dired)
+(require 'simp-project-ibuffer)
+(require 'simp-project-git)
+
+;; this should be required last, it generates
+;; helpers for other simp-project features
+(require 'simp-project-with-bookmarks)
+
+(provide 'simp)
+
+;;; simp.el ends here

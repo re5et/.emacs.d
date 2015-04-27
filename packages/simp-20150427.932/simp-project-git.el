@@ -1,6 +1,6 @@
 ;;; simp-project-git.el --- Plugin to leverage git power in simp
 
-;; Copyright (C) 2011-2014 @re5et
+;; Copyright (C) 2011-2015 @re5et
 
 ;; Author: atom smith
 ;; URL: https://github.com/re5et/simp
@@ -42,24 +42,24 @@
 (defun simp-project-git-grep-dwim ()
   "Use git-grep and grep mode to find matches"
   (let ((default-directory (concat (simp-project-root) "/")))
-    (simp-project-git-grep-compilation (simp-project-rgrep-dwim-thing))))
+    (simp-project-git-grep-compilation (simp-project-rgrep-dwim-thing) "*")))
 
-(defun simp-project-git-grep (&optional regexp files dir)
+(defun simp-project-git-grep (&optional regexp pathspec dir)
   "Use git-grep and grep mode to find matches"
   (let* ((regexp (grep-read-regexp))
-         (files (grep-read-files regexp))
+         (pathspec (grep-read-files pathspec))
          (default-directory (or dir (read-directory-name
                                      "Base directory: "
                                      nil default-directory t))))
-    (simp-project-git-grep-compilation regexp)))
+    (simp-project-git-grep-compilation regexp pathspec)))
 
-(defun simp-project-git-grep-compilation (regexp)
+(defun simp-project-git-grep-compilation (regexp pathspec)
   (let ((flags "-InH --untracked")
         (case-fold-search nil))
     (unless (posix-string-match "[A-Z]" regexp)
       (set 'flags (concat flags " -i")))
     (compilation-start
-     (concat "git --no-pager grep " flags " -e " (shell-quote-argument regexp))
+     (concat "git --no-pager grep " flags " -e " (shell-quote-argument regexp) " -- '" pathspec "'")
      'grep-mode)))
 
 (defadvice simp-project-find-files-generate-find-command (around simp-project-git-files activate)

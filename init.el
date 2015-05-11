@@ -26,6 +26,7 @@
    itail
    powerline
    smart-indent-rigidly
+   my-yas
    my-erc
    my-isearch
    my-advice

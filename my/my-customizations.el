@@ -24,6 +24,7 @@
  '(crosshairs-overlay-priority 100)
  '(css-indent-level 2)
  '(css-indent-offset 2)
+ '(default-frame-alist (quote ((name . "emacs-primary") (left-fringe . 1) (right-fringe . 1) (vertical-scroll-bars))))
  '(delete-old-versions t)
  '(delete-selection-mode t)
  '(display-time-mode t)

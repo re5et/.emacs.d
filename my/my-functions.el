@@ -69,7 +69,6 @@ buffer read-only, so I suggest setting kill-read-only-ok to t."
        (mapcar
         (lambda (frame) (frame-parameter frame 'name))
         (frame-list)))
-    (modify-frame-parameters nil (list (cons 'name "emacs")))
     (modify-frame-parameters (make-frame) (list (cons 'name "emux")))))
 
 (defun rotate-frame-window-buffers ()

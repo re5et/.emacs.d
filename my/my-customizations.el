@@ -99,6 +99,7 @@
  '(mumamo-chunk-coloring 10)
  '(nxml-child-indent 2)
  '(nxml-outline-child-indent 2)
+ '(org-src-fontify-natively t)
  '(package-user-dir "~/.emacs.d/packages")
  '(proced-auto-update-flag t)
  '(proced-auto-update-interval 1)

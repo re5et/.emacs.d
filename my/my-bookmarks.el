@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("cid-travel_provider-adapters"
+(("riverdale"
+ (filename . "~/.riverdale/")
+ (front-context-string . "bin\n  drwxrwxr-x")
+ (rear-context-string . "96 Jul  6 14:20 ")
+ (position . 215))
+("cid-travel_provider-adapters"
  (filename . "~/.cid/cid-travel_provider-adapters/")
  (front-context-string . "dev\n  drwxrwxr-x")
  (rear-context-string . "60 Apr  8 10:59 ")

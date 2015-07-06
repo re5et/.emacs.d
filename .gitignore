@@ -10,3 +10,8 @@
 /packages/*-readme.txt
 /.backups/
 /eshell/
+/auto-save-list
+/ido.last
+/places
+/recentf
+/smex-items

@@ -283,4 +283,14 @@ WIP on branchname: short-sha commit-message"
         (let ((file-to-open (concat (simp-project-root) "/" match)))
           (find-file-other-window file-to-open))))))
 
+(defun mongo-buffer-to-text ()
+  (inf-mongo-get-result-from-inf
+   (buffer-substring
+    (point-min)
+    (point-max))))
+
+(defun mongo-send-buffer-and-kill-result ()
+  (interactive)
+  (kill-new (mongo-buffer-to-text)))
+
 (provide 'my-functions)

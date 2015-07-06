@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("riverdale"
+(("riverdale-chef"
+ (filename . "~/code/riverdale-chef/")
+ (front-context-string . "Berksfile\n  -rw-")
+ (rear-context-string . "47 Jul  6 11:01 ")
+ (position . 221))
+("riverdale"
  (filename . "~/.riverdale/")
  (front-context-string . "bin\n  drwxrwxr-x")
  (rear-context-string . "96 Jul  6 14:20 ")

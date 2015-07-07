@@ -25,6 +25,8 @@
  (lambda ()
    (define-key magit-mode-map (kbd "Z") 'magit-quick-stash)))
 
+(add-hook 'magit-status-mode-hook  'magit-filenotify-mode)
+
 (add-hook
  'dired-mode-hook
  (lambda ()

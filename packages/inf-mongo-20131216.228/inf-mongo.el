@@ -84,7 +84,7 @@ inf-mongo-mode-hook (in that order)."
         (set-buffer (apply 'make-comint "mongo" (car cmdlist)
                            nil (cdr cmdlist)))
         (inf-mongo-mode)
-        (setq inf-mongo-command cmd) 
+        (setq inf-mongo-command cmd)
         (setq inf-mongo-buffer "*mongo*")
         (inf-mongo-setup-autocompletion))))
   (if (not dont-switch-p)
@@ -159,7 +159,7 @@ With argument, position cursor at end of buffer."
   (comint-send-string (get-buffer-process inf-mongo-buffer) "\n")
   (define-key inf-mongo-mode-map "\t" 'complete-symbol))
 
-(defvar inf-mongo-prompt "\n> " 
+(defvar inf-mongo-prompt "\n> "
   "String used to match inf-mongo prompt.")
 
 (defvar inf-mongo--shell-output-buffer "")
@@ -175,12 +175,12 @@ process in `inf-mongo--shell-output-buffer'.  It signals the function
 `inf-mongo-get-result-from-inf' that the output is ready by setting
 `inf-mongo--shell-output-filter-in-progress' to nil"
   (setq string (ansi-color-filter-apply string)
-	inf-mongo--shell-output-buffer (concat inf-mongo--shell-output-buffer string))
+  inf-mongo--shell-output-buffer (concat inf-mongo--shell-output-buffer string))
   (let ((prompt-match-index (string-match inf-mongo-prompt inf-mongo--shell-output-buffer)))
     (when prompt-match-index
       (setq inf-mongo--shell-output-buffer
-	    (substring inf-mongo--shell-output-buffer
-		       0 prompt-match-index))
+      (substring inf-mongo--shell-output-buffer
+           0 prompt-match-index))
       (setq inf-mongo--shell-output-filter-in-progress nil)))
   "")
 
@@ -206,8 +206,8 @@ Most of this is borrowed from python.el"
           (save-excursion
             (with-syntax-table js-mode-syntax-table
               (let* ((syntax-list (append (string-to-syntax ".")
-					  (string-to-syntax "_")
-					  (string-to-syntax "w"))))
+            (string-to-syntax "_")
+            (string-to-syntax "w"))))
                 (while (member
                         (car (syntax-after (1- (point)))) syntax-list)
                   (skip-syntax-backward ".w_")
@@ -223,7 +223,7 @@ Most of this is borrowed from python.el"
 
 (defun inf-mongo-get-completions-at-point (prefix)
   "Get completions for PREFIX using inf-mongo."
-  (if (equal prefix "") 
+  (if (equal prefix "")
       nil
     (split-string (inf-mongo-get-result-from-inf (concat "INFMONGO__getCompletions('" prefix "');")) ";")))
 

@@ -192,7 +192,7 @@ If PREVIOUS is non-nil, go up a line first."
 
 WIP on branchname: short-sha commit-message"
   (interactive)
-  (magit-stash ""))
+  (magit-stash (concat "WIP at " (magit-get-current-branch))))
 
 (defun prettify-json-buffer ()
   (interactive)

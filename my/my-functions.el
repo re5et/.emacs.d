@@ -283,6 +283,59 @@ WIP on branchname: short-sha commit-message"
         (let ((file-to-open (concat (simp-project-root) "/" match)))
           (find-file-other-window file-to-open))))))
 
+(defun mongo-switch-database (&optional database-name)
+  (interactive)
+  (let* ((output (inf-mongo-get-result-from-inf "show databases"))
+         (database-name (or database-name (car (split-string (ido-completing-read "database: " (split-string output "\n")))))))
+    (comint-send-string inf-mongo-buffer (concat "use " database-name "\n")))
+  (mongo-raise-inf-buffer))
+
+(defun mongo-raise-inf-buffer ()
+  (interactive)
+  (display-buffer inf-mongo-buffer))
+
+(defun mongo-send-buffer-and-raise ()
+  (interactive)
+  (mongo-send-buffer)
+  (mongo-raise-inf-buffer))
+
+(defun mongo-send-buffer-suffix (suffix)
+  (interactive)
+  (let ((command
+         (concat
+          (buffer-substring
+           (point-min)
+           (point-max))
+          suffix
+          "\n")))
+    (comint-send-string inf-mongo-buffer command)
+    (mongo-raise-inf-buffer)))
+
+(defun mongo-send-buffer-pretty ()
+  (interactive)
+  (mongo-send-buffer-suffix ".pretty()"))
+
+(defun mongo-send-buffer-explain ()
+  (interactive)
+  (mongo-send-buffer-suffix ".explain()"))
+
+(defun mongo-stats ()
+  (interactive)
+  (comint-send-string inf-mongo-buffer "db.stats()\n"))
+
+(defun mongo-work-setup ()
+  (interactive)
+  (delete-other-windows)
+  (inf-mongo "mongo 172.16.5.4")
+  (other-window 1)
+  (switch-to-buffer "*mongo-reader*")
+  (javascript-mode)
+  (local-set-key (kbd "C-c C-c") 'mongo-send-buffer-and-raise)
+  (local-set-key (kbd "C-c C-e") 'mongo-send-buffer-explain)
+  (local-set-key (kbd "C-c C-p") 'mongo-send-buffer-pretty)
+  (local-set-key (kbd "C-c C-b") 'mongo-switch-database)
+  (local-set-key (kbd "C-c C-s") 'mongo-stats))
+
 (defun mongo-buffer-to-text ()
   (inf-mongo-get-result-from-inf
    (buffer-substring

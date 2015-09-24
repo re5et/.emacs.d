@@ -53,6 +53,7 @@
 (global-set-key (kbd "C-S-r") 'isearch-backward-symbol-at-point)
 (global-set-key (kbd "C-S-m") 'mc/mark-all-like-this-dwim)
 (global-set-key (kbd "C-S-k") 'hungry-kill)
+(global-set-key (kbd "C-S-d") 'mongo-work-setup)
 
 (global-set-key (kbd "M-j") nil)
 (global-set-key (kbd "M-j '") 'toggle-quote-type)

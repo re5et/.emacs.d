@@ -25,8 +25,6 @@
  (lambda ()
    (define-key magit-mode-map (kbd "Z") 'magit-quick-stash)))
 
-(add-hook 'magit-status-mode-hook  'magit-filenotify-mode)
-
 (add-hook
  'dired-mode-hook
  (lambda ()
@@ -97,5 +95,7 @@
  'slime-repl-mode-hook
  (lambda ()
    (paredit-mode +1)))
+
+(add-hook 'inf-mongo-mode-hook 'mongo-work-setup)
 
 (provide 'my-hooks)

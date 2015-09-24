@@ -14,6 +14,8 @@
 (global-set-key (kbd "C-!") 'shell-command-on-dwim-replace)
 (global-set-key (kbd "C-<return>") 'embiggen-toggler)
 (global-set-key (kbd "C-<backspace>") 'backwards-kill)
+(global-set-key (kbd "C-<tab>") 'smart-rigid-indent)
+(global-set-key (kbd "C-<S-iso-lefttab>") 'smart-rigid-unindent)
 
 (global-set-key (kbd "M-l") 'next-in-frame-window)
 (global-set-key (kbd "M-h") 'previous-in-frame-window)

@@ -26,6 +26,11 @@
    (define-key magit-mode-map (kbd "Z") 'magit-quick-stash)))
 
 (add-hook
+ 'js2-mode-hook
+ (lambda ()
+   (local-unset-key (kbd "M-j"))))
+
+(add-hook
  'dired-mode-hook
  (lambda ()
    (define-key dired-mode-map (kbd "<backspace>") 'dired-up-directory)

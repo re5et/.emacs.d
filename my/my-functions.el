@@ -346,4 +346,16 @@ WIP on branchname: short-sha commit-message"
   (interactive)
   (kill-new (mongo-buffer-to-text)))
 
+(defun eslint-set-closest (&optional dir)
+  (interactive)
+  (let ((dir (or dir default-directory))
+        (eslintrc (concat dir "/.eslintrc")))
+    (if (file-exists-p eslintrc)
+        (progn
+          (setq flycheck-eslintrc eslintrc)
+          (setq flycheck-javascript-eslint-executable
+                (concat dir "/node_modules/.bin/eslint")))
+      (if (string= dir "/") nil
+        (eslint-set-closest (expand-file-name ".." dir))))))
+
 (provide 'my-functions)

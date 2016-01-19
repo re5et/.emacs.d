@@ -28,7 +28,9 @@
 (add-hook
  'js2-mode-hook
  (lambda ()
-   (local-unset-key (kbd "M-j"))))
+   (local-unset-key (kbd "M-j"))
+   (eslint-set-closest)
+   (flycheck-mode 1)))
 
 (add-hook
  'dired-mode-hook
@@ -41,8 +43,7 @@
  (lambda ()
    (auto-indent-mode)
    (linum-mode)
-   (rvm-activate-corresponding-ruby)
-   (flymake-ruby-load)))
+   (rvm-activate-corresponding-ruby)))
 
 (add-hook
  'js-mode-hook

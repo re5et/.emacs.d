@@ -12,7 +12,7 @@
 (defun major-mode-match-p (mode)
   (string-match mode (symbol-name major-mode)))
 
-(defun load-some-env (command)
+(defun load-shell-env (command)
   (interactive)
   (set
    (make-local-variable 'process-environment)
@@ -24,8 +24,8 @@
 (add-hook
  'find-file-hook
  (lambda ()
-   (load-some-env
-    "bash -lc 'direnv exec . env | grep -v dirent'")))
+   (load-shell-env
+    "bash -lc 'direnv exec . env 2> /dev/null'")))
 
 (hook-unless 'find-file-hook (major-mode-match-p "makefile") (untabify-all))
 (hook-unless 'find-file-hook buffer-read-only (delete-trailing-whitespace))

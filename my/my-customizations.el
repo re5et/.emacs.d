@@ -102,7 +102,7 @@
  '(magit-completing-read-function (quote ido-completing-read))
  '(magit-default-tracking-name-function (quote magit-tracking-name-unfucked-with))
  '(magit-fetch-arguments (quote ("--prune")))
- '(magit-revert-buffers 2)
+ '(magit-revert-buffers 2 t)
  '(magit-save-repository-buffers nil)
  '(magit-save-some-buffers nil)
  '(magit-set-upstream-on-push (quote askifnotset))
@@ -163,7 +163,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#000000" :foreground "#FFF" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 100 :width normal :foundry "unknown" :family "dejavu sans mono"))))
+ '(default ((t (:inherit nil :stipple nil :background "#000000" :foreground "#FFF" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 98 :width normal :foundry "unknown" :family "DejaVu Sans Mono"))))
  '(ac-completion-face ((t (:foreground "#555" :underline "#F0F"))))
  '(button ((t (:underline t))))
  '(cursor ((t (:background "#FF0" :foreground "#F00"))))

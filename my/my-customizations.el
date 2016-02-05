@@ -214,6 +214,7 @@
  '(magit-diff-context ((t (:foreground "#222"))))
  '(magit-diff-context-highlight ((t (:foreground "#444"))))
  '(magit-diff-del ((t (:foreground "#F00"))))
+ '(magit-diff-file-heading-selection ((t (:inherit magit-diff-file-heading-highlight))))
  '(magit-diff-hunk-heading ((t (:background "#111" :foreground "#333"))))
  '(magit-diff-hunk-heading-highlight ((t (:background "#111" :foreground "#444"))))
  '(magit-diff-lines-boundary ((t (:box (:line-width 1 :color "#fff" :style released-button)))))

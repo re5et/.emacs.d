@@ -3,14 +3,14 @@
 
 (mapc
  'require
- '(slime
+ '(magit
+   slime
    smex
    smartparens
    auto-complete
    ido
    ido-ubiquitous
    visible-mark
-   highline
    dired
    dired-efap
    stumpwm-mode

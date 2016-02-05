@@ -6,7 +6,6 @@
 (go-to-hell-bars)
 (recentf-mode t)
 (show-paren-mode t)
-(highline-mode 1)
 (auto-compression-mode 1)
 (powerline-default-theme)
 (provide 'my-initializers)

@@ -215,6 +215,13 @@ When passed a GIT-BRANCH, lists revisions from that branch."
   (message revision)
   (kill-new revision)))
 
+(defun git-timemachine-checkout-revision ()
+ "Checkout the current revision"
+ (interactive)
+ (let ((revision (git-timemachine-abbreviate (car git-timemachine-revision))))
+  (message "Checking out %s of %s" revision git-timemachine-file)
+  (vc-git-command nil 0 git-timemachine-file "checkout" revision "--")))
+
 (define-minor-mode git-timemachine-mode
  "Git Timemachine, feel the wings of history."
  :init-value nil
@@ -226,6 +233,7 @@ When passed a GIT-BRANCH, lists revisions from that branch."
    ("q" . git-timemachine-quit)
    ("w" . git-timemachine-kill-abbreviated-revision)
    ("W" . git-timemachine-kill-revision))
+   ("C" . git-timemachine-checkout-revision))
  :group 'git-timemachine)
 
 (defun git-timemachine-validate (file)

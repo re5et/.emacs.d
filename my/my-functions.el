@@ -88,6 +88,9 @@ buffer read-only, so I suggest setting kill-read-only-ok to t."
          (switch-to-buffer buffer))) map)))
 
 
+
+
+
 (defun toggle-window-split ()
   (interactive)
   (if (= (count-windows) 2)

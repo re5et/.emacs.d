@@ -51,7 +51,12 @@
  'dired-mode-hook
  (lambda ()
    (define-key dired-mode-map (kbd "<backspace>") 'dired-up-directory)
-   (define-key dired-mode-map (kbd "e") 'dired-efap)))
+   (define-key dired-mode-map (kbd "e") 'dired-efap)
+   (define-key dired-mode-map (kbd "c") 'dired-clean-file-name)
+   (define-key dired-mode-map (kbd "r") 'move-movie)
+   (define-key dired-mode-map (kbd "j") 'move-movie-go-up-and-delete)
+   (put 'dired-do-rename 'ido 'find-file)
+   ))
 
 (add-hook
  'ruby-mode-hook

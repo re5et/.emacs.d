@@ -19,14 +19,13 @@
 
 ;; from http://emacsblog.org/2009/05/18/copying-lines-not-killing/
 (defun copy-line (&optional arg)
-  "Do a kill-line but copy rather than kill.  This function directly calls
-kill-line, so see documentation of kill-line for how to use it including prefix
-argument and relevant variables.  This function works by temporarily making the
-buffer read-only, so I suggest setting kill-read-only-ok to t."
-  (interactive "P")
-  (toggle-read-only 1)
-  (kill-line arg)
-  (toggle-read-only 0))
+  (interactive)
+  (let ((begin (line-beginning-position)))
+    (save-excursion
+      (next-line)
+      (beginning-of-line)
+      (kill-ring-save begin (point))))
+  (message "copied line as kill"))
 
 (defun indent-buffer ()
   "Fix indentation on the entire buffer."
@@ -86,10 +85,6 @@ buffer read-only, so I suggest setting kill-read-only-ok to t."
              (buffer (cadr window-to-buffer)))
          (select-window window)
          (switch-to-buffer buffer))) map)))
-
-
-
-
 
 (defun toggle-window-split ()
   (interactive)
@@ -360,5 +355,83 @@ WIP on branchname: short-sha commit-message"
                 (concat dir "/node_modules/.bin/eslint")))
       (if (string= dir "/") nil
         (eslint-set-closest (expand-file-name ".." dir))))))
+
+(defun move-movie ()
+  (interactive)
+  (let* ((move-to (completing-read "to:" '("movies2" "movies1")))
+         (file-name (dired-get-filename))
+         (file-base-name (file-name-nondirectory file-name)))
+    (rename-file file-name (concat "/ssh:arcana:/" move-to))
+    (revert-buffer)))
+
+(defun move-movie-go-up-and-delete ()
+  (interactive)
+  (move-movie)
+  (kill-buffer)
+  (call-interactively 'dired-flag-file-deletion)
+  (dired-do-flagged-delete))
+
+(defun dired-clean-file-name ()
+  (interactive)
+  (let* ((file-name (dired-get-filename))
+         (file-name-base (file-name-base file-name))
+         (file-name-directory (file-name-directory file-name))
+         (file-name-extension (file-name-extension file-name)))
+    (setq clean-file-name (downcase file-name-base))
+    (setq clean-file-name
+          (replace-regexp-in-string
+           (string-join '("([^)]*)"
+                          "\\[[^\]]*\\]"
+                          "20\[0-9\]\[0-9\]"
+                          "19\[0-9\]\[0-9\]"
+                          "ac3-\[^.\]*"
+                          "aac-\[^.\]*"
+                          "x264-\[^.\]*"
+                          "xvid-\[^.\]*"
+                          "1080p"
+                          "720p"
+                          "limited"
+                          "internal"
+                          "extended"
+                          "repack"
+                          "dvdrip"
+                          "webrip"
+                          "bluray"
+                          "brrip"
+                          "bdrip"
+                          "hdrip"
+                          "xvid"
+                          "x264"
+                          "divx"
+                          "unrated"
+                          "uncut"
+                          "aqos-"
+                          "yify"
+                          "h264"
+                          "dvd"
+                          "ac3"
+                          "hc"
+                          ) "\\|") "" clean-file-name))
+    (setq clean-file-name (replace-regexp-in-string "\\.\\|_" " " clean-file-name))
+    (setq clean-file-name (replace-regexp-in-string " +" " " clean-file-name))
+    (setq clean-file-name (string-trim clean-file-name))
+    (when (string-match "^the " clean-file-name)
+      (setq clean-file-name (replace-regexp-in-string "^the " "" clean-file-name))
+      (setq clean-file-name (concat clean-file-name ", the")))
+    (rename-file
+     file-name
+     (message
+      "%s%s.%s"
+      file-name-directory
+      clean-file-name
+      (downcase file-name-extension))))
+  (revert-buffer))
+
+(defun unrar ()
+  (interactive)
+  (if (eq 0 (shell-command "unrar x *.r00"))
+      (message "success")
+    (message "failure"))
+  (revert-buffer))
 
 (provide 'my-functions)

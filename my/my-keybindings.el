@@ -50,12 +50,12 @@
 (global-set-key (kbd "C-S-b") 'bury-buffer)
 (global-set-key (kbd "C-S-f") 'unbury-buffer)
 (global-set-key (kbd "C-S-SPC") 'exchange-point-and-mark)
-
 (global-set-key (kbd "C-S-s") 'isearch-symbol-at-point)
 (global-set-key (kbd "C-S-r") 'isearch-backward-symbol-at-point)
 (global-set-key (kbd "C-S-m") 'mc/mark-all-like-this-dwim)
-(global-set-key (kbd "C-S-k") 'hungry-kill)
 (global-set-key (kbd "C-S-d") 'mongo-work-setup)
+
+(global-set-key (kbd "C-M-k") 'copy-line)
 
 (global-set-key (kbd "M-j") nil)
 (global-set-key (kbd "M-j '") 'toggle-quote-type)

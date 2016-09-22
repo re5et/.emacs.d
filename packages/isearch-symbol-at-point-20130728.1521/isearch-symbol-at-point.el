@@ -1,10 +1,10 @@
 ;;; isearch-symbol-at-point.el --- Use isearch to search for the symbol at point
-;; Version: 20130728.1521
 
 ;; Copyright (C) 2013 @re5et
 
 ;; Author: atom smith
 ;; URL: https://github.com/re5et/isearch-symbol-at-point
+;; Package-Version: 20130728.1521
 ;; Created: 30 May 2013
 ;; Keywords: isearch
 

@@ -3,9 +3,8 @@
 ;;; Code:
 
 
-;;;### (autoloads (isearch-backward-symbol-at-point isearch-symbol-at-point)
-;;;;;;  "isearch-symbol-at-point" "isearch-symbol-at-point.el" (21159
-;;;;;;  41216 309448 864000))
+;;;### (autoloads nil "isearch-symbol-at-point" "isearch-symbol-at-point.el"
+;;;;;;  (22500 4613 718180 117000))
 ;;; Generated autoloads from isearch-symbol-at-point.el
 
 (autoload 'isearch-symbol-at-point "isearch-symbol-at-point" "\
@@ -26,8 +25,8 @@ Incremental search backward with symbol under point.
 
 ;;;***
 
-;;;### (autoloads nil nil ("isearch-symbol-at-point-pkg.el") (21159
-;;;;;;  41216 325974 768000))
+;;;### (autoloads nil nil ("isearch-symbol-at-point-pkg.el") (21445
+;;;;;;  38900 845560 911000))
 
 ;;;***
 

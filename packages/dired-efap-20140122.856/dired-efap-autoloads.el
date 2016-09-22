@@ -3,8 +3,8 @@
 ;;; Code:
 
 
-;;;### (autoloads (dired-efap dired-efap-click) "dired-efap" "dired-efap.el"
-;;;;;;  (21234 44495 12204 3000))
+;;;### (autoloads nil "dired-efap" "dired-efap.el" (22500 4617 514180
+;;;;;;  157000))
 ;;; Generated autoloads from dired-efap.el
 
 (autoload 'dired-efap-click "dired-efap" "\
@@ -29,8 +29,8 @@ If FROM-MOUSE is not nil, the mode is being set because of a mouse event.
 
 ;;;***
 
-;;;### (autoloads nil nil ("dired-efap-pkg.el") (21234 44495 35886
-;;;;;;  95000))
+;;;### (autoloads nil nil ("dired-efap-pkg.el") (21445 38900 729560
+;;;;;;  916000))
 
 ;;;***
 

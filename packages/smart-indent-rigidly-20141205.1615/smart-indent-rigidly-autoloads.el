@@ -3,8 +3,8 @@
 ;;; Code:
 
 
-;;;### (autoloads (smart-indent-rigidly-mode) "smart-indent-rigidly"
-;;;;;;  "smart-indent-rigidly.el" (21853 36289 700714 500000))
+;;;### (autoloads nil "smart-indent-rigidly" "smart-indent-rigidly.el"
+;;;;;;  (22500 4593 214179 903000))
 ;;; Generated autoloads from smart-indent-rigidly.el
 
 (autoload 'smart-indent-rigidly-mode "smart-indent-rigidly" "\
@@ -16,8 +16,8 @@ Un/Indent region if active or current line
 
 ;;;***
 
-;;;### (autoloads nil nil ("smart-indent-rigidly-pkg.el") (21853
-;;;;;;  36289 769785 930000))
+;;;### (autoloads nil nil ("smart-indent-rigidly-pkg.el") (21863
+;;;;;;  26881 593346 327000))
 
 ;;;***
 

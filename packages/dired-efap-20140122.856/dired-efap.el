@@ -4,8 +4,8 @@
 
 ;; Filename: dired-efap.el
 ;; Author: Juan-Leon Lahoz <juanleon1@gmail.com>
-;; Version: 20140122.856
-;; X-Original-Version: 0.8
+;; Version: 0.8
+;; Package-Version: 20140122.856
 ;; URL: https://github.com/juan-leon/dired-efap
 ;; Keywords: dired, environment, files, renaming
 

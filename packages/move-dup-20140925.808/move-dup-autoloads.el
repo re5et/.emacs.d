@@ -3,10 +3,8 @@
 ;;; Code:
 
 
-;;;### (autoloads (global-move-dup-mode move-dup-mode md/duplicate-down
-;;;;;;  md/duplicate-up md/move-lines-down md/move-lines-up md/move-line
-;;;;;;  md/move-region) "move-dup" "move-dup.el" (21593 6730 60075
-;;;;;;  39000))
+;;;### (autoloads nil "move-dup" "move-dup.el" (22500 4603 142180
+;;;;;;  7000))
 ;;; Generated autoloads from move-dup.el
 
 (autoload 'md/move-region "move-dup" "\
@@ -76,8 +74,9 @@ The default key bindings are:
 \(fn &optional ARG)" t nil)
 
 (defvar global-move-dup-mode nil "\
-Non-nil if Global-Move-Dup mode is enabled.
-See the command `global-move-dup-mode' for a description of this minor mode.
+Non-nil if Global Move-Dup mode is enabled.
+See the `global-move-dup-mode' command
+for a description of this minor mode.
 Setting this variable directly does not take effect;
 either customize it (see the info node `Easy Customization')
 or call the function `global-move-dup-mode'.")
@@ -86,7 +85,7 @@ or call the function `global-move-dup-mode'.")
 
 (autoload 'global-move-dup-mode "move-dup" "\
 Toggle Move-Dup mode in all buffers.
-With prefix ARG, enable Global-Move-Dup mode if ARG is positive;
+With prefix ARG, enable Global Move-Dup mode if ARG is positive;
 otherwise, disable it.  If called from Lisp, enable the mode if
 ARG is omitted or nil.
 

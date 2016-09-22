@@ -1,10 +1,10 @@
 ;;; stumpwm-mode.el --- special lisp mode for evaluating code into running stumpwm
-;; Version: 20140130.1816
 
 ;; Copyright (C) 2007  Shawn Betts
 
 ;; Maintainer: Shawn Betts
 ;; Keywords: comm, lisp, tools
+;; Package-Version: 20140130.1816
 
 ;; This file is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by

@@ -27,6 +27,12 @@
    (load-shell-env
     "bash -lc 'direnv exec . env 2> /dev/null'")))
 
+(defun balance-after (&rest args)
+  (balance-windows))
+
+(advice-add 'split-window :after 'balance-after)
+(advice-add 'delete-window :after 'balance-after)
+
 (hook-unless 'find-file-hook (major-mode-match-p "makefile") (untabify-all))
 (hook-unless 'find-file-hook buffer-read-only (delete-trailing-whitespace))
 (hook-unless 'before-save-hook (major-mode-match-p "makefile") (untabify-all))

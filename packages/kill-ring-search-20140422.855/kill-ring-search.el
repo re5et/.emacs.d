@@ -3,8 +3,8 @@
 ;; Copyright (C) 2006-2008 Nikolaj Schumacher
 ;;
 ;; Author: Nikolaj Schumacher <bugs * nschum de>
-;; Version: 20140422.855
-;; X-Original-Version: 1.1
+;; Version: 1.1
+;; Package-Version: 20140422.855
 ;; Keywords: convenience, matching
 ;; URL: http://nschum.de/src/emacs/kill-ring-search/
 ;; Compatibility: GNU Emacs 21.x, GNU Emacs 22.x, GNU Emacs 23.x, GNU Emacs 24.x

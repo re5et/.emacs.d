@@ -6,28 +6,30 @@
 (mapc
  'require
  '(magit
-   slime
-   smex
-   smartparens
    auto-complete
-   ido
-   ido-ubiquitous
-   visible-mark
    dired
    dired-efap
-   stumpwm-mode
-   misc
-   simp
-   move-dup
    emux-session
    expand-region
-   winner
-   midnight
+   ido
+   ido-ubiquitous
    isearch-symbol-at-point
-   multiple-cursors
    itail
+   js2-mode
+   kill-ring-search
+   midnight
+   misc
+   move-dup
+   multiple-cursors
    powerline
+   simp
+   slime
    smart-indent-rigidly
+   smartparens
+   smex
+   stumpwm-mode
+   visible-mark
+   winner
    my-yas
    my-erc
    my-isearch

@@ -47,7 +47,7 @@
    (define-key magit-mode-map (kbd "Z") 'magit-quick-stash)))
 
 (add-hook
- 'js2-mode-hook
+ 'js2-init-hook
  (lambda ()
    (local-unset-key (kbd "M-j"))
    (eslint-set-closest)

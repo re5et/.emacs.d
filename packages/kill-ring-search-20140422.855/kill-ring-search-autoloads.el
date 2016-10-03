@@ -3,8 +3,8 @@
 ;;; Code:
 
 
-;;;### (autoloads (kill-ring-search) "kill-ring-search" "kill-ring-search.el"
-;;;;;;  (21344 2181 147857 249000))
+;;;### (autoloads nil "kill-ring-search" "kill-ring-search.el" (22513
+;;;;;;  43369 778515 784000))
 ;;; Generated autoloads from kill-ring-search.el
 
 (autoload 'kill-ring-search "kill-ring-search" "\
@@ -14,8 +14,8 @@ Search the kill ring in the minibuffer.
 
 ;;;***
 
-;;;### (autoloads nil nil ("kill-ring-search-pkg.el") (21344 2181
-;;;;;;  158566 500000))
+;;;### (autoloads nil nil ("kill-ring-search-pkg.el") (21445 38900
+;;;;;;  853560 910000))
 
 ;;;***
 

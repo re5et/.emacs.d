@@ -434,4 +434,7 @@ WIP on branchname: short-sha commit-message"
     (message "failure"))
   (revert-buffer))
 
+(defun comint-shell-run (command &optional name)
+  (make-comint-in-buffer (or name command) nil (getenv "SHELL") nil "-i" "-l" "-c" command))
+
 (provide 'my-functions)

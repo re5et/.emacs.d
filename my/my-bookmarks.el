@@ -2,7 +2,14 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("poc-oliver"
+(("downloads"
+ (filename .
+           #("/ssh:arcana:/other/downloads/" 1 4
+             (tramp-default t)))
+ (front-context-string . "US-33262 - TagTe")
+ (rear-context-string . "96 Feb 16 18:24 ")
+ (position . 1623))
+("poc-oliver"
  (filename . "~/code/poc-oliver/")
  (front-context-string . "api\n  drwxrwxr-x")
  (rear-context-string . "96 Dec  8 10:44 ")

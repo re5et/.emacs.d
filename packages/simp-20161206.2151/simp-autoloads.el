@@ -6,7 +6,7 @@
 ;;;### (autoloads nil nil ("simp-pkg.el" "simp-project-files.el"
 ;;;;;;  "simp-project-git.el" "simp-project-ibuffer.el" "simp-project-rgrep.el"
 ;;;;;;  "simp-project-root-dired.el" "simp-project-with-bookmarks.el"
-;;;;;;  "simp-project.el" "simp.el") (22599 40007 548436 319000))
+;;;;;;  "simp-project.el" "simp.el") (22600 19768 854429 569000))
 
 ;;;***
 

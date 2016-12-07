@@ -67,7 +67,8 @@ bookmark system to set the project context to use"
 (progn
   (simp-project-feature-with-bookmark rgrep)
   (simp-project-feature-with-bookmark find-file)
-  (simp-project-feature-with-bookmark ibuffer))
+  (simp-project-feature-with-bookmark ibuffer)
+  (simp-project-feature-with-bookmark root-dired))
 
 (provide 'simp-project-with-bookmarks)
 

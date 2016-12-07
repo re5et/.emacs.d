@@ -40,7 +40,7 @@
  '(electric-pair-skip-self nil)
  '(elscreen-display-tab nil)
  '(emms-playlist-default-major-mode (quote emms-playlist-mode))
- '(emms-source-file-default-directory "~/music/")
+ '(emms-source-file-default-directory "~/music/" t)
  '(emux-completing-read-command (quote ido-completing-read))
  '(emux-term-program "/bin/zsh")
  '(eshell-cd-shows-directory nil)
@@ -128,7 +128,7 @@
  '(package-enable-at-startup t)
  '(package-selected-packages
    (quote
-    (paredit org-tree-slide rjsx-mode git-timemachine kill-ring-search wgrep js2-mode auto-complete dired-efap expand-region ido-ubiquitous isearch-symbol-at-point itail magit magit-filenotify move-dup multiple-cursors powerline slime smart-indent-rigidly smartparens smex stumpwm-mode visible-mark simp)))
+    (emms yasnippet docker dockerfile-mode paredit org-tree-slide rjsx-mode git-timemachine kill-ring-search wgrep js2-mode auto-complete dired-efap expand-region ido-ubiquitous isearch-symbol-at-point itail magit magit-filenotify move-dup multiple-cursors powerline slime smart-indent-rigidly smartparens smex stumpwm-mode visible-mark simp)))
  '(package-user-dir "~/.emacs.d/packages")
  '(proced-auto-update-flag t)
  '(proced-auto-update-interval 1)

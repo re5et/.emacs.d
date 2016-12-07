@@ -42,7 +42,7 @@
    my-isearch
    my-advice
    my-backup
-   my-package
+   ;; my-package
    my-emms
    my-autoloads
    my-add-to-lists

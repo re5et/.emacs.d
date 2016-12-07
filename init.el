@@ -11,11 +11,14 @@
    dired-efap
    emux-session
    expand-region
+   org-tree-slide
    ido
    ido-ubiquitous
    isearch-symbol-at-point
    itail
    js2-mode
+   rjsx-mode
+   yaml-mode
    kill-ring-search
    midnight
    misc
@@ -30,6 +33,7 @@
    stumpwm-mode
    visible-mark
    winner
+   wgrep
    my-yas
    my-erc
    my-isearch

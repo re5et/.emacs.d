@@ -15,7 +15,9 @@
       column-number-mode t
       ido-max-directory-size 100000
       magit-completing-read 'ido-completing-read
-      font-lock-maximum-decoration t)
+      font-lock-maximum-decoration t
+      sh-basic-offset 2
+      )
 
 (setq emms-show-format "now playing: %s"
       emms-source-file-default-directory "~/music/"

@@ -8,5 +8,5 @@
 (add-to-list 'auto-mode-alist '("\\.hamlbars'" . haml-mode))
 (add-to-list 'auto-mode-alist '("\\.hamlc'" . haml-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-(add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))
 (provide 'my-add-to-lists)

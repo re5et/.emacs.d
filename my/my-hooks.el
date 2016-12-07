@@ -33,10 +33,33 @@
 (advice-add 'split-window :after 'balance-after)
 (advice-add 'delete-window :after 'balance-after)
 
-(hook-unless 'find-file-hook (major-mode-match-p "makefile") (untabify-all))
-(hook-unless 'find-file-hook buffer-read-only (delete-trailing-whitespace))
-(hook-unless 'before-save-hook (major-mode-match-p "makefile") (untabify-all))
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(defun cleanup-buffer-p ()
+  (not
+   (or
+    buffer-read-only
+    (major-mode-match-p "image")
+    (major-mode-match-p "makefile"))))
+
+(hook-if
+ 'find-file-hook
+ (cleanup-buffer-p)
+ (untabify-all))
+
+(hook-if
+ 'find-file-hook
+ (cleanup-buffer-p)
+ (delete-trailing-whitespace))
+
+(hook-if
+ 'before-save-hook
+ (cleanup-buffer-p)
+ (untabify-all))
+
+(hook-if
+ 'before-save-hook
+ (cleanup-buffer-p)
+ (delete-trailing-whitespace))
+
 (add-hook 'before-save-hook 'auto-make-directory)
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 (add-hook 'emms-player-started-hook 'emms-show)
@@ -129,5 +152,10 @@
    (paredit-mode +1)))
 
 (add-hook 'inf-mongo-mode-hook 'mongo-work-setup)
+
+(add-hook 'org-tree-slide-mode-hook
+          (lambda ()
+            (define-key org-tree-slide-mode-map (kbd "<right>") 'org-tree-slide-move-next-tree)
+            (define-key org-tree-slide-mode-map (kbd "<left>") 'org-tree-slide-move-previous-tree)))
 
 (provide 'my-hooks)

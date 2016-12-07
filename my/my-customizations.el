@@ -125,9 +125,10 @@
  '(org-tree-slide-fold-subtrees-skipped t)
  '(org-tree-slide-header t)
  '(org-tree-slide-skip-outline-level 0)
+ '(package-enable-at-startup t)
  '(package-selected-packages
    (quote
-    (org-tree-slide org-present rjsx-mode git-timemachine kill-ring-search wgrep js2-mode auto-complete dired-efap expand-region ido-ubiquitous isearch-symbol-at-point itail magit magit-filenotify move-dup multiple-cursors powerline slime smart-indent-rigidly smartparens smex stumpwm-mode visible-mark simp)))
+    (paredit org-tree-slide rjsx-mode git-timemachine kill-ring-search wgrep js2-mode auto-complete dired-efap expand-region ido-ubiquitous isearch-symbol-at-point itail magit magit-filenotify move-dup multiple-cursors powerline slime smart-indent-rigidly smartparens smex stumpwm-mode visible-mark simp)))
  '(package-user-dir "~/.emacs.d/packages")
  '(proced-auto-update-flag t)
  '(proced-auto-update-interval 1)

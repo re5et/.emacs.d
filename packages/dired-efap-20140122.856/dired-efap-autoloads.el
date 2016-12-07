@@ -1,10 +1,10 @@
 ;;; dired-efap-autoloads.el --- automatically extracted autoloads
 ;;
 ;;; Code:
-
+(add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil "dired-efap" "dired-efap.el" (22500 4617 514180
-;;;;;;  157000))
+;;;### (autoloads nil "dired-efap" "dired-efap.el" (22599 39988 276435
+;;;;;;  471000))
 ;;; Generated autoloads from dired-efap.el
 
 (autoload 'dired-efap-click "dired-efap" "\
@@ -29,16 +29,9 @@ If FROM-MOUSE is not nil, the mode is being set because of a mouse event.
 
 ;;;***
 
-;;;### (autoloads nil nil ("dired-efap-pkg.el") (21445 38900 729560
-;;;;;;  916000))
-
-;;;***
-
-(provide 'dired-efap-autoloads)
 ;; Local Variables:
 ;; version-control: never
 ;; no-byte-compile: t
 ;; no-update-autoloads: t
-;; coding: utf-8
 ;; End:
 ;;; dired-efap-autoloads.el ends here

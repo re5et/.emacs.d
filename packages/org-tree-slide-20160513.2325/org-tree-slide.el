@@ -75,7 +75,7 @@
 
 (require 'org)
 (require 'org-timer)
-;;(require 'org-clock)      ; org-clock-in, -out, -clocking-p
+;;(require 'org-clock)			; org-clock-in, -out, -clocking-p
 
 (defconst org-tree-slide "2.8.5"
   "The version number of the org-tree-slide.el")
@@ -443,7 +443,7 @@ Profiles:
   (when (org-tree-slide--active-p)
     (unless (equal org-tree-slide-modeline-display 'outside)
       (message "<< Previous"))
-    (org-tree-slide--hide-slide-header)   ; for at the first heading
+    (org-tree-slide--hide-slide-header)		; for at the first heading
     (run-hooks 'org-tree-slide-before-move-previous-hook)
     (widen)
     (cond
@@ -552,7 +552,7 @@ This is displayed by default if `org-tree-slide-modeline-display' is `nil'.")
     (setq org-tree-slide--previous-line (org-tree-slide--line-number-at-pos)))
   (goto-char (point-at-bol))
   (unless (org-tree-slide--before-first-heading-p)
-    (hide-subtree)  ; support CONTENT (subtrees are shown)
+    (hide-subtree)	; support CONTENT (subtrees are shown)
     (org-show-entry)
     ;; If this is the last level to be displayed, show the full content
     (if (and (not org-tree-slide-fold-subtrees-skipped)

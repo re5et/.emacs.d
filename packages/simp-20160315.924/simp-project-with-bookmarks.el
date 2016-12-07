@@ -64,11 +64,10 @@ bookmark system to set the project context to use"
 ;; Make simp-project-with-bookmark convenience methods
 ;; for included simp project features
 
-(eval-and-compile
-  (progn
-    (simp-project-feature-with-bookmark rgrep)
-    (simp-project-feature-with-bookmark find-file)
-    (simp-project-feature-with-bookmark ibuffer )))
+(progn
+  (simp-project-feature-with-bookmark rgrep)
+  (simp-project-feature-with-bookmark find-file)
+  (simp-project-feature-with-bookmark ibuffer))
 
 (provide 'simp-project-with-bookmarks)
 

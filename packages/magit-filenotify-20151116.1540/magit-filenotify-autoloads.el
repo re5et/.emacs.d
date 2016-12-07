@@ -1,21 +1,16 @@
 ;;; magit-filenotify-autoloads.el --- automatically extracted autoloads
 ;;
 ;;; Code:
-(add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
+(add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil "magit-filenotify" "magit-filenotify.el" (22500
-;;;;;;  4609 462180 73000))
+;;;### (autoloads nil "magit-filenotify" "magit-filenotify.el" (22599
+;;;;;;  39995 552435 791000))
 ;;; Generated autoloads from magit-filenotify.el
 
 (autoload 'magit-filenotify-mode "magit-filenotify" "\
 Refresh status buffer if source tree changes.
 
 \(fn &optional ARG)" t nil)
-
-;;;***
-
-;;;### (autoloads nil nil ("magit-filenotify-pkg.el") (22120 30434
-;;;;;;  14271 349000))
 
 ;;;***
 

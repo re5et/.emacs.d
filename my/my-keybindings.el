@@ -80,6 +80,7 @@
 (global-set-key (kbd "M-j M-f") 'simp-project-with-bookmark-find-file)
 (global-set-key (kbd "M-j M-s") 'simp-project-with-bookmark-rgrep)
 (global-set-key (kbd "M-j M-b") 'simp-project-with-bookmark-ibuffer)
+(global-set-key (kbd "M-j M-d") 'simp-project-with-bookmark-root-dired)
 (global-set-key (kbd "M-j M-g") 'magit-status-from-bookmark)
 (global-set-key (kbd "M-j M-k") 'kill-whole-line)
 (global-set-key (kbd "C-<") 'winner-undo)

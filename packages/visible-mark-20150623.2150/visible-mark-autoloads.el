@@ -1,10 +1,10 @@
 ;;; visible-mark-autoloads.el --- automatically extracted autoloads
 ;;
 ;;; Code:
-(add-to-list 'load-path (or (file-name-directory #$) (car load-path)))
+(add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
-;;;### (autoloads nil "visible-mark" "visible-mark.el" (22500 4587
-;;;;;;  906179 847000))
+;;;### (autoloads nil "visible-mark" "visible-mark.el" (22599 40006
+;;;;;;  984436 294000))
 ;;; Generated autoloads from visible-mark.el
 
 (autoload 'visible-mark-mode "visible-mark" "\
@@ -33,11 +33,6 @@ Visible-Mark mode is enabled in all buffers where
 See `visible-mark-mode' for more information on Visible-Mark mode.
 
 \(fn &optional ARG)" t nil)
-
-;;;***
-
-;;;### (autoloads nil nil ("visible-mark-pkg.el") (21914 58551 537265
-;;;;;;  103000))
 
 ;;;***
 

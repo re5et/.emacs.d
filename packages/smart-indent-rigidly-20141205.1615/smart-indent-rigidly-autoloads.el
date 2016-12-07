@@ -1,10 +1,10 @@
 ;;; smart-indent-rigidly-autoloads.el --- automatically extracted autoloads
 ;;
 ;;; Code:
-
+(add-to-list 'load-path (directory-file-name (or (file-name-directory #$) (car load-path))))
 
 ;;;### (autoloads nil "smart-indent-rigidly" "smart-indent-rigidly.el"
-;;;;;;  (22500 4593 214179 903000))
+;;;;;;  (22599 40003 248436 129000))
 ;;; Generated autoloads from smart-indent-rigidly.el
 
 (autoload 'smart-indent-rigidly-mode "smart-indent-rigidly" "\
@@ -16,16 +16,9 @@ Un/Indent region if active or current line
 
 ;;;***
 
-;;;### (autoloads nil nil ("smart-indent-rigidly-pkg.el") (21863
-;;;;;;  26881 593346 327000))
-
-;;;***
-
-(provide 'smart-indent-rigidly-autoloads)
 ;; Local Variables:
 ;; version-control: never
 ;; no-byte-compile: t
 ;; no-update-autoloads: t
-;; coding: utf-8
 ;; End:
 ;;; smart-indent-rigidly-autoloads.el ends here

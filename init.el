@@ -37,6 +37,7 @@
    ;; visible-mark
    ;; winner
    ;; wgrep
+   my-env
    my-yas
    my-erc
    my-isearch

@@ -88,7 +88,7 @@
    ))
 
 (add-hook
- 'ruby-mode-hook
+ 'enh-ruby-mode-hook
  (lambda ()
    (auto-indent-mode)
    (linum-mode)

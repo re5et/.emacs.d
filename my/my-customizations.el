@@ -123,6 +123,7 @@
  '(mumamo-chunk-coloring 10)
  '(nxml-child-indent 2)
  '(nxml-outline-child-indent 2)
+ '(org-babel-load-languages (quote ((emacs-lisp . t) (awk . t) (awk . t))))
  '(org-src-fontify-natively t)
  '(org-tree-slide-fold-subtrees-skipped t)
  '(org-tree-slide-header t)
@@ -131,7 +132,7 @@
  '(package-enable-at-startup t)
  '(package-selected-packages
    (quote
-    (enh-ruby-mode rvm exec-path-from-shell xterm-color eros autopair scratch auto-indent-mode flycheck emms yasnippet docker dockerfile-mode paredit org-tree-slide rjsx-mode git-timemachine kill-ring-search wgrep js2-mode auto-complete dired-efap expand-region ido-ubiquitous isearch-symbol-at-point itail magit magit-filenotify move-dup multiple-cursors powerline slime smart-indent-rigidly smartparens smex stumpwm-mode visible-mark simp)))
+    (markdown-mode markdown-mode+ ivy es-mode yaml-mode vlf enh-ruby-mode rvm exec-path-from-shell xterm-color eros autopair scratch auto-indent-mode flycheck emms yasnippet docker dockerfile-mode paredit org-tree-slide rjsx-mode git-timemachine kill-ring-search wgrep js2-mode auto-complete dired-efap expand-region ido-ubiquitous isearch-symbol-at-point itail magit magit-filenotify move-dup multiple-cursors powerline slime smart-indent-rigidly smartparens smex stumpwm-mode visible-mark simp)))
  '(package-user-dir "~/.emacs.d/packages")
  '(proced-auto-update-flag t)
  '(proced-auto-update-interval 1)
@@ -142,7 +143,7 @@
  '(ruby-deep-indent-paren nil)
  '(save-interprogram-paste-before-kill t)
  '(save-place t nil (saveplace))
- '(sgml-basic-offset 2 t)
+ '(sgml-basic-offset 2)
  '(sh-indentation 2)
  '(show-paren-mode nil)
  '(show-smartparens-global-mode t)

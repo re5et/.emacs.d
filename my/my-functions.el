@@ -418,6 +418,9 @@ WIP on branchname: short-sha commit-message"
     (when (string-match "^the " clean-file-name)
       (setq clean-file-name (replace-regexp-in-string "^the " "" clean-file-name))
       (setq clean-file-name (concat clean-file-name ", the")))
+    (when (string-match "^a " clean-file-name)
+      (setq clean-file-name (replace-regexp-in-string "^a " "" clean-file-name))
+      (setq clean-file-name (concat clean-file-name ", a")))
     (rename-file
      file-name
      (message
@@ -436,5 +439,12 @@ WIP on branchname: short-sha commit-message"
 
 (defun comint-shell-run (command &optional name)
   (make-comint-in-buffer (or name command) nil (getenv "SHELL") nil "-i" "-l" "-c" command))
+
+(defun dired-copy-whole-filename-as-kill (arg)
+  (interactive "P")
+  (if arg (dired-copy-filename-as-kill)
+    (let ((whole-path (dired-get-file-for-visit)))
+      (kill-new whole-path)
+      (message whole-path))))
 
 (provide 'my-functions)

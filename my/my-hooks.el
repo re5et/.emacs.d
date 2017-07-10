@@ -80,6 +80,7 @@
  'dired-mode-hook
  (lambda ()
    (define-key dired-mode-map (kbd "<backspace>") 'dired-up-directory)
+   (define-key dired-mode-map (kbd "w") 'dired-copy-whole-filename-as-kill)
    (define-key dired-mode-map (kbd "e") 'dired-efap)
    (define-key dired-mode-map (kbd "c") 'dired-clean-file-name)
    (define-key dired-mode-map (kbd "r") 'move-movie)

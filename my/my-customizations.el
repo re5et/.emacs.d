@@ -160,6 +160,8 @@
  '(term-default-fg-color "#FFFFFF")
  '(term-unbind-key-list (quote ("C-z" "C-x" "C-c" "C-h" "C-l" "<ESC>")))
  '(text-mode-hook (quote (turn-on-auto-fill text-mode-hook-identify)))
+ '(tramp-default-method "ssh")
+ '(tramp-verbose 9)
  '(transient-mark-mode t)
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))
  '(url-debug t)

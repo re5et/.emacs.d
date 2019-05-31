@@ -190,7 +190,7 @@ If PREVIOUS is non-nil, go up a line first."
 
 WIP on branchname: short-sha commit-message"
   (interactive)
-  (magit-stash (concat "WIP at " (magit-get-current-branch))))
+  (magit-stash-both (concat "WIP at " (magit-get-current-branch))))
 
 (defun prettify-json-buffer ()
   (interactive)
@@ -344,32 +344,22 @@ WIP on branchname: short-sha commit-message"
   (interactive)
   (kill-new (mongo-buffer-to-text)))
 
-(defun eslint-set-closest (&optional dir)
-  (interactive)
-  (let ((dir (or dir default-directory))
-        (eslintrc (concat dir "/.eslintrc")))
-    (if (file-exists-p eslintrc)
-        (progn
-          (setq flycheck-eslintrc eslintrc)
-          (setq flycheck-javascript-eslint-executable
-                (concat dir "/node_modules/.bin/eslint")))
-      (if (string= dir "/") nil
-        (eslint-set-closest (expand-file-name ".." dir))))))
-
 (defun move-movie ()
   (interactive)
   (let* ((move-to (completing-read "to:" '("movies2" "movies1")))
-         (file-name (dired-get-filename))
-         (file-base-name (file-name-nondirectory file-name)))
-    (rename-file file-name (concat "/ssh:arcana:/" move-to))
-    (revert-buffer)))
+         (files (dired-get-marked-files)))
+    (dolist (file files)
+      (let ((file-base-name (file-name-nondirectory file)))
+        (rename-file file (concat "/ssh:arcana:/" move-to))
+        (revert-buffer)))))
 
 (defun move-movie-go-up-and-delete ()
   (interactive)
   (move-movie)
-  (kill-buffer)
-  (call-interactively 'dired-flag-file-deletion)
-  (dired-do-flagged-delete))
+  (when (not (string= "/ssh:arcana:/other/downloads/" default-directory))
+    (kill-buffer)
+    (call-interactively 'dired-flag-file-deletion)
+    (dired-do-flagged-delete)))
 
 (defun dired-clean-file-name ()
   (interactive)
@@ -390,6 +380,7 @@ WIP on branchname: short-sha commit-message"
                           "xvid-\[^.\]*"
                           "1080p"
                           "720p"
+                          "web-dl"
                           "limited"
                           "internal"
                           "extended"
@@ -411,6 +402,10 @@ WIP on branchname: short-sha commit-message"
                           "dvd"
                           "ac3"
                           "hc"
+                          "webhd"
+                          "aac"
+                          "-cg"
+                          "hdtvrip"
                           ) "\\|") "" clean-file-name))
     (setq clean-file-name (replace-regexp-in-string "\\.\\|_" " " clean-file-name))
     (setq clean-file-name (replace-regexp-in-string " +" " " clean-file-name))
@@ -427,8 +422,13 @@ WIP on branchname: short-sha commit-message"
       "%s%s.%s"
       file-name-directory
       clean-file-name
-      (downcase file-name-extension))))
-  (revert-buffer))
+      (downcase file-name-extension)))
+    (revert-buffer)
+    (goto-char
+     (or
+      (search-forward clean-file-name nil t)
+      (search-backward clean-file-name)))
+    (dired-move-to-filename)))
 
 (defun unrar ()
   (interactive)
@@ -458,5 +458,103 @@ WIP on branchname: short-sha commit-message"
       (erase-buffer)
       (insert (nth 1 kill-ring)))
     (ediff-buffers buffer-a buffer-b)))
+
+(defun rubocop-set-flycheck-executable ()
+  (interactive)
+  (let* ((dir (locate-dominating-file buffer-file-name "bin/rubocop"))
+         (executable (if dir
+                         (concat dir "bin/rubocop")
+                       (executable-find "rubocop"))))
+    (when executable
+      (setq-local flycheck-ruby-rubocop-executable executable))))
+
+(defun locate-npm-executable (name)
+  (let* ((node-module-path (concat "node_modules/.bin/" name))
+         (dir (locate-dominating-file buffer-file-name node-module-path)))
+    (if dir
+        (concat dir node-module-path)
+      (executable-find name))))
+
+(defun set-eslint-executable ()
+  (interactive)
+  (let ((executable (or (locate-npm-executable "eslint_d") (locate-npm-executable "eslint"))))
+    (when executable (setq-local flycheck-javascript-eslint-executable (expand-file-name executable)))))
+
+(defun set-tslint-executable ()
+  (interactive)
+  (let ((executable (locate-npm-executable "tslint")))
+    (when executable
+      (setq-local flycheck-typescript-tslint-executable executable))))
+
+(defun set-eslintd-fix-executable ()
+  (interactive)
+  (let ((executable (locate-npm-executable "eslint_d")))
+    (when executable (setq-local eslintd-fix-executable executable))))
+
+(defun set-prettier-executable ()
+  (interactive)
+  (let ((executable (locate-npm-executable "prettier")))
+    (when executable (setq-local prettier-js-command executable))))
+
+(defun flycheck-eslint-disable-prettier (oldfun checker &rest args)
+  (let ((arguments (apply oldfun checker args)))
+    (if (eq checker 'javascript-eslint)
+        (cons "--rule=prettier/prettier:off" arguments)
+      arguments)))
+
+(defun flycheck-toggle-list-errors ()
+  (interactive)
+  (get-buffer-window-list)
+  (if (get-buffer-window flycheck-error-list-buffer)
+      (delete-window (get-buffer-window flycheck-error-list-buffer))
+    (flycheck-list-errors)))
+
+(defun ctags-setup-buffer-tags-table ()
+  (interactive)
+  (let* ((dir (locate-dominating-file buffer-file-name "generate-tags"))
+         (tags-file (concat dir "TAGS"))
+         (large-file-warning-threshold nil))
+    (when (file-exists-p tags-file)
+      (visit-tags-table tags-file t))))
+
+(defun ctags-generate-tags ()
+  (interactive)
+  (let ((dir (locate-dominating-file buffer-file-name "generate-tags")))
+    (when dir
+      (let ((default-directory dir)
+            (exec-path `(,dir)))
+        (let* ((taggable-last-modified
+                (shell-command-to-string "find -L .taggable/ -type f -print0 | xargs -0 stat --format '%Y' | sort -nr | cut -d: -f2- | head -n1"))
+               (tags-last-modified
+                (shell-command-to-string "stat TAGS --format '%Y'"))
+               (update-taggable
+                (> (string-to-number taggable-last-modified) (string-to-number tags-last-modified)))
+               (process-name (concat "generate-tags-" (buffer-file-name))))
+          (when (string-equal (process-status process-name) "run")
+            (message "killing process %s" process-name)
+            (kill-process process-name))
+          (start-process
+           process-name
+           "*generate-tags*"
+           "generate-tags"
+           (string-join
+            (remove
+             nil
+             `(
+               "-f TAGS"
+               ,(unless update-taggable "--exclude=.taggable")
+               ,(if update-taggable "--append=no" "--append=yes")
+               )) " ")))))))
+
+(defun flycheck-google-this-error-at-point ()
+  (interactive)
+  (let ((messages (delq nil (seq-map 'flycheck-error-message
+                                     (flycheck-overlay-errors-at (point))))))
+    (google-this-string nil (string-join messages "\n") t)))
+
+
+;; (with-eval-after-load 'flycheck
+;;   (advice-add 'flycheck-checker-substituted-arguments :around
+;;               'flycheck-eslint-disable-prettier))
 
 (provide 'my-functions)

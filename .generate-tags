@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+cmd="time ctags --links -e -R --languages=Lisp,C --exclude=.git --exclude=log $1 ."
+echo $cmd
+echo $cmd | /usr/bin/env bash

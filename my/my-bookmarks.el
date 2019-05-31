@@ -2,7 +2,77 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("downloads"
+(("source"
+ (filename . "~/code/source/")
+ (front-context-string . "app\n  drwxr-xr-x")
+ (rear-context-string . "96 Feb 28 14:03 ")
+ (position . 217))
+("hello-kit-components"
+ (filename . "~/code/hello-kit-components/")
+ (front-context-string . "babel.config.js\n")
+ (rear-context-string . "48 Feb  8 16:45 ")
+ (position . 241))
+("brier"
+ (filename . "~/code/brier/")
+ (front-context-string . "power-up\n  -rw-r")
+ (rear-context-string . "96 Feb  1 11:13 ")
+ (position . 1232))
+("photobooth-service"
+ (filename . "~/code/photobooth-service/")
+ (front-context-string . "db\n  -rw-rw-r-- ")
+ (rear-context-string . "96 Jan  8 14:01 ")
+ (position . 434))
+("photobooth-gallery-redux"
+ (filename . "~/code/photobooth-gallery-redux/")
+ (front-context-string . "README.md\n  drwx")
+ (rear-context-string . "12 Jan  9 11:19 ")
+ (position . 1297))
+("sso-profile"
+ (filename . "~/code/sso-profile/")
+ (front-context-string . "app\n  drwxrwxr-x")
+ (rear-context-string . "96 Dec  4 12:23 ")
+ (position . 222))
+("shape"
+ (filename . "~/code/shape/")
+ (front-context-string . "app\n  -rw-rw-r--")
+ (rear-context-string . "96 Aug 24 10:26 ")
+ (position . 225))
+("c-delta"
+ (filename . "~/code/c-delta/")
+ (front-context-string . "app\n  -rw-r--r--")
+ (rear-context-string . "96 Apr 11 10:23 ")
+ (position . 218))
+("hello-epics"
+ (filename . "~/code/hello-epics/")
+ (front-context-string . "chargebee-theme\n")
+ (rear-context-string . "96 Feb 27 10:12 ")
+ (position . 225))
+("floobits-aaronjensen-302488"
+ (filename . "/tmp/foo/Gemfile")
+ (front-context-string)
+ (rear-context-string . " require: false\n")
+ (position . 93))
+("agent-console-template"
+ (filename . "~/code/agent-console-template/")
+ (front-context-string . "bin\n  drwxrwxr-x")
+ (rear-context-string . "96 Nov 29 15:06 ")
+ (position . 331))
+("bru-agent-console"
+ (filename . "~/code/bru-agent-console/")
+ (front-context-string . "app\n  -rw-rw-r--")
+ (rear-context-string . "96 Nov 14 08:56 ")
+ (position . 234))
+("swiggy-agent-workbench"
+ (filename . "~/code/swiggy-agent-workbench/")
+ (front-context-string . "app\n  drwxrwxr-x")
+ (rear-context-string . "96 Sep 12 15:48 ")
+ (position . 230))
+("agent-xdk"
+ (filename . "~/code/agent-xdk/")
+ (front-context-string . "DECISIONS.org\n  ")
+ (rear-context-string . "01 Sep 12 12:55 ")
+ (position . 223))
+("downloads"
  (filename .
            #("/ssh:arcana:/other/downloads/" 1 4
              (tramp-default t)))

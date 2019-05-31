@@ -1,9 +1,9 @@
+(let ((default-directory "~/.emacs.d/"))
+  (normal-top-level-add-subdirs-to-load-path))
+
 (package-initialize)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/") t)
-
-(let ((default-directory "~/.emacs.d/"))
-  (normal-top-level-add-subdirs-to-load-path))
 
 (mapc
  'require
@@ -16,7 +16,7 @@
    ;; expand-region
    ;; org-tree-slide
    ;; ido
-   ido-ubiquitous
+   ido-completing-read+
    ;; isearch-symbol-at-point
    ;; itail
    ;; js2-mode
@@ -27,18 +27,24 @@
    ;; misc
    ;; move-dup
    ;; multiple-cursors
+   add-node-modules-path
    powerline
+   flycheck
+   flycheck-color-mode-line
    simp
+   nvm
+   ruby-test-mode
    ;; slime
    ;; smart-indent-rigidly
    ;; smartparens
    smex
+   ;; flow-minor-mode
    ;; stumpwm-mode
    ;; visible-mark
    ;; winner
    ;; wgrep
    my-env
-   my-yas
+   ;; my-yas
    my-erc
    my-isearch
    my-advice
@@ -54,3 +60,13 @@
    my-settings
    my-emux-templates
    my-initializers))
+
+
+(require 'flycheck-flow)
+(with-eval-after-load 'flycheck
+  (flycheck-add-next-checker
+   'javascript-flow
+   'javascript-eslint))
+
+(setq flycheck-popup-tip-error-prefix "* ")
+(add-hook 'flycheck-mode-hook 'flycheck-popup-tip-mode)

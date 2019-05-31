@@ -21,11 +21,16 @@
      command)
     "\n")))
 
+(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)
+
 (add-hook
  'find-file-hook
  (lambda ()
    (load-shell-env
     "bash -lc 'direnv exec . env 2> /dev/null'")))
+
+(add-hook 'find-file-hook 'ctags-setup-buffer-tags-table)
+(add-hook 'after-save-hook 'ctags-generate-tags)
 
 (defun balance-after (&rest args)
   (balance-windows))
@@ -42,7 +47,8 @@
 
 (hook-if
  'find-file-hook
- (cleanup-buffer-p)
+ (and (not (major-mode-match-p "go-"))
+      (cleanup-buffer-p))
  (untabify-all))
 
 (hook-if
@@ -52,7 +58,8 @@
 
 (hook-if
  'before-save-hook
- (cleanup-buffer-p)
+ (and (not (major-mode-match-p "go-"))
+      (cleanup-buffer-p))
  (untabify-all))
 
 (hook-if
@@ -70,11 +77,60 @@
    (define-key magit-mode-map (kbd "Z") 'magit-quick-stash)))
 
 (add-hook
+ 'shell-script-mode
+ (lambda ()
+   (flycheck-mode 1)
+   ))
+
+(add-hook
  'js2-init-hook
  (lambda ()
    (local-unset-key (kbd "M-j"))
-   (eslint-set-closest)
-   (flycheck-mode 1)))
+   ;; (add-node-modules-path)
+   ;; (prettier-js-mode 1)
+   ;; (set-eslint-executable)
+   ;; (set-eslintd-fix-executable)
+   ;; (eslintd-fix-mode 1)
+   ;; (set-flow-executable)
+   ;; (flow-minor-enable-automatically)
+   (flycheck-mode 1)
+   ))
+
+(add-hook
+ 'rjsx-mode-hook
+ (lambda ()
+   (set-prettier-executable)
+   (set-eslint-executable)
+   (prettier-js-mode)
+   ))
+
+(add-hook
+ 'typescript-mode-hook
+ (lambda ()
+   (tide-setup)
+   (set-tslint-executable)
+   (set-prettier-executable)
+   (set-eslint-executable)
+   (prettier-js-mode 1)
+   (flycheck-add-mode 'javascript-eslint 'typescript-mode)
+   (flycheck-mode 1)
+   (eldoc-mode 1)
+   ))
+
+(add-hook
+ 'typescript-tsx-mode-hook
+ (lambda ()
+   (flycheck-add-mode 'typescript-tslint 'typescript-tsx-mode)
+   (flycheck-add-mode 'typescript-tide 'typescript-tsx-mode)
+   (flycheck-add-mode 'javascript-eslint 'typescript-tsx-mode)
+   (tide-setup)
+   (set-eslint-executable)
+   (set-tslint-executable)
+   (set-prettier-executable)
+   (prettier-js-mode 1)
+   (flycheck-mode 1)
+   (eldoc-mode 1)
+   ))
 
 (add-hook
  'dired-mode-hook
@@ -91,9 +147,11 @@
 (add-hook
  'enh-ruby-mode-hook
  (lambda ()
+   (rubocopfmt-mode 1)
    (auto-indent-mode)
    (linum-mode)
-   (rvm-activate-corresponding-ruby)))
+   (flycheck-mode 1)
+   (rubocop-set-flycheck-executable)))
 
 (add-hook
  'js-mode-hook
@@ -151,6 +209,14 @@
  'slime-repl-mode-hook
  (lambda ()
    (paredit-mode +1)))
+
+(hook-if  'before-save-hook
+          (major-mode-match-p "go-")
+          (gofmt-before-save))
+(add-hook
+ 'go-mode-hook
+ (lambda ()
+   (local-set-key (kbd "M-.") #'godef-jump)))
 
 (add-hook 'inf-mongo-mode-hook 'mongo-work-setup)
 

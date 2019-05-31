@@ -1,0 +1,2 @@
+;;; -*- no-byte-compile: t -*-
+(define-package "ruby-test-mode" "20190313.1505" "Minor mode for Behaviour and Test Driven" '((ruby-mode "1.0") (pcre2el "1.8")) :commit "aa11267824561eb2b6a40b3dc5e2ad1cfb800f84" :keywords '("ruby" "unit" "test" "rspec" "tools") :authors '(("Roman Scherer" . "roman.scherer@gmx.de") ("Caspar Florian Ebeling" . "florian.ebeling@gmail.com")) :maintainer '("Roman Scherer" . "roman.scherer@burningswell.com") :url "https://github.com/ruby-test-mode/ruby-test-mode")

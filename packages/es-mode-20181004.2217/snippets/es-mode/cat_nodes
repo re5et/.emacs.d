@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: Cat Nodes
-# key: cat_nodes
-# group: cat
-# --
-GET /_cat/nodes?v

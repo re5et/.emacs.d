@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: Delete Index
-# key: delete_index
-# group: index
-# --
-DELETE /${1:my_index}

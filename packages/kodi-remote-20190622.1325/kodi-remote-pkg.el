@@ -1,0 +1,2 @@
+;;; -*- no-byte-compile: t -*-
+(define-package "kodi-remote" "20190622.1325" "Remote Control for Kodi" '((request "0.2.0") (let-alist "1.0.4") (json "1.4") (cl-lib "0.5") (f "20190109.906")) :commit "f5e932036c16e2b61a63020e006fc601e38d181e" :keywords '("kodi" "tools" "convinience") :authors '(("Stefan Huchler" . "stefan.huchler@mail.de")) :maintainer '("Stefan Huchler" . "stefan.huchler@mail.de") :url "http://github.com/spiderbit/kodi-remote.el")

@@ -11,13 +11,14 @@
    ;; magit
    ;; auto-complete
    ;; dired
-   ;; dired-efap
+   dired-efap
    emux-session
    ;; expand-region
    ;; org-tree-slide
    ;; ido
+;;   ido-vertical-mode
    ido-completing-read+
-   ;; isearch-symbol-at-point
+   isearch-symbol-at-point
    ;; itail
    ;; js2-mode
    ;; rjsx-mode
@@ -31,6 +32,7 @@
    powerline
    flycheck
    flycheck-color-mode-line
+   flycheck-popup-tip
    simp
    nvm
    ruby-test-mode
@@ -59,14 +61,10 @@
    my-hooks
    my-settings
    my-emux-templates
-   my-initializers))
+   my-initializers
+   my-exwm))
 
-
-(require 'flycheck-flow)
-(with-eval-after-load 'flycheck
-  (flycheck-add-next-checker
-   'javascript-flow
-   'javascript-eslint))
 
 (setq flycheck-popup-tip-error-prefix "* ")
 (add-hook 'flycheck-mode-hook 'flycheck-popup-tip-mode)
+(my-exwm-config)

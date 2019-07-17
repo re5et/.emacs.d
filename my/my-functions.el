@@ -496,6 +496,25 @@ WIP on branchname: short-sha commit-message"
   (let ((executable (locate-npm-executable "prettier")))
     (when executable (setq-local prettier-js-command executable))))
 
+(defun set-eslintd-fix-executable ()
+  (interactive)
+  (when-let ((executable (locate-npm-executable "eslint_d")))
+    (setq-local eslintd-fix-executable executable)))
+
+(defun set-flow-executable ()
+  (interactive)
+  (let* ((os (pcase system-type
+               ('darwin "osx")
+               ('gnu/linux "linux64")
+               (_ nil)))
+         (root (locate-dominating-file  buffer-file-name  "node_modules/flow-bin"))
+         (executable (car (file-expand-wildcards
+                           (concat root "node_modules/flow-bin/*" os "*/flow")))))
+    (setq-local flow-minor-default-binary executable)
+    (setq-local company-flow-executable executable)
+    (setq-local flycheck-javascript-flow-executable executable)))
+
+
 (defun flycheck-eslint-disable-prettier (oldfun checker &rest args)
   (let ((arguments (apply oldfun checker args)))
     (if (eq checker 'javascript-eslint)
@@ -546,15 +565,33 @@ WIP on branchname: short-sha commit-message"
                ,(if update-taggable "--append=no" "--append=yes")
                )) " ")))))))
 
+(defun embiggen-toggler ()
+  (interactive)
+  (if (= (length (window-list)) 1)
+      (when embiggen-toggler-window-configuration
+        (set-window-configuration embiggen-toggler-window-configuration))
+    (progn
+      (setq embiggen-toggler-window-configuration (current-window-configuration))
+      (delete-other-windows))))
+
 (defun flycheck-google-this-error-at-point ()
   (interactive)
   (let ((messages (delq nil (seq-map 'flycheck-error-message
                                      (flycheck-overlay-errors-at (point))))))
     (google-this-string nil (string-join messages "\n") t)))
 
+(defun switch-to-previous-buffer ()
+  (interactive)
+  (switch-to-buffer (other-buffer (current-buffer) 1)))
+
+(defun arcana ()
+  (interactive)
+  (let ((buffer-name "default/arcana"))
+    (if (get-buffer buffer-name)
+      (switch-to-buffer buffer-name)
+    (emux-term-create "arcana" "ssh arcana"))))
 
 ;; (with-eval-after-load 'flycheck
 ;;   (advice-add 'flycheck-checker-substituted-arguments :around
 ;;               'flycheck-eslint-disable-prettier))
-
 (provide 'my-functions)

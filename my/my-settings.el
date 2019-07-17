@@ -31,10 +31,6 @@
 (setq-default kill-read-only-ok t
               indent-tabs-mode nil)
 
-(set-default 'tramp-default-proxies-alist (quote ((".*" "\\`root\\'" "/ssh:%h:"))))
-;; allows files to be opened like:
-;; /sudo:root@host:
-
 (fset 'yes-or-no-p 'y-or-n-p)
 (put 'narrow-to-region 'disabled nil)
 (put 'downcase-region 'disabled nil)

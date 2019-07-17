@@ -153,12 +153,14 @@
  '(save-interprogram-paste-before-kill t)
  '(save-place t nil (saveplace))
  '(sgml-basic-offset 2)
+ '(sh-basic-offset 2)
  '(sh-indentation 2)
  '(show-paren-mode nil)
  '(show-smartparens-global-mode t)
  '(simp-completing-read-command (quote ido-completing-read))
  '(size-indication-mode t)
  '(smartparens-global-mode t)
+ '(smex-save-file "/home/atom/.emacs.d/smex-items")
  '(sp-autoescape-string-quote nil)
  '(sp-ignore-modes-list
    (quote
@@ -171,7 +173,7 @@
  '(term-unbind-key-list (quote ("C-z" "C-x" "C-c" "C-h" "C-l" "<ESC>")))
  '(text-mode-hook (quote (turn-on-auto-fill text-mode-hook-identify)))
  '(tramp-default-method "ssh")
- '(tramp-verbose 9)
+ '(tramp-mode t)
  '(transient-mark-mode t)
  '(typescript-indent-level 2)
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))
@@ -202,7 +204,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#000000" :foreground "#FFF" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :foundry "PfEd" :family "DejaVu Sans Mono"))))
+ '(default ((t (:inherit nil :stipple nil :background "#000000" :foreground "#FFF" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :foundry "Ubuntu" :family "Ubuntu Mono"))))
  '(ac-completion-face ((t (:foreground "#555" :underline "#F0F"))))
  '(button ((t (:underline t))))
  '(cursor ((t (:background "#FF0" :foreground "#F00"))))

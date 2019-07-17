@@ -26,6 +26,8 @@
 (add-hook
  'find-file-hook
  (lambda ()
+   (when (not (executable-find "direnv"))
+     (error "CAN'T FIND DIRENV! MUST HAVE IT!"))
    (load-shell-env
     "bash -lc 'direnv exec . env 2> /dev/null'")))
 
@@ -89,6 +91,9 @@
    ;; (add-node-modules-path)
    ;; (prettier-js-mode 1)
    ;; (set-eslint-executable)
+   (set-eslint-executable)
+   (set-prettier-executable)
+   (prettier-js-mode)
    ;; (set-eslintd-fix-executable)
    ;; (eslintd-fix-mode 1)
    ;; (set-flow-executable)
@@ -96,13 +101,13 @@
    (flycheck-mode 1)
    ))
 
-(add-hook
- 'rjsx-mode-hook
- (lambda ()
-   (set-prettier-executable)
-   (set-eslint-executable)
-   (prettier-js-mode)
-   ))
+;; (add-hook
+;;  'rjsx-mode-hook
+;;  (lambda ()
+;;    (set-prettier-executable)
+;;    (set-eslint-executable)
+;;    (prettier-js-mode)
+;;    ))
 
 (add-hook
  'typescript-mode-hook
@@ -129,7 +134,22 @@
    (set-prettier-executable)
    (prettier-js-mode 1)
    (flycheck-mode 1)
-   (eldoc-mode 1)
+   (eldoc-mode 1)))
+
+(add-hook
+ 'typescript-mode-hook
+ (lambda ()
+   (set-prettier-command)
+   (flycheck-mode 1)
+   (tide-mode 1)
+   ))
+
+(add-hook
+ 'typescript-tsx-mode
+ (lambda ()
+   (set-prettier-command)
+   (prettier-js-mode 1)
+   (tide-mode 1)
    ))
 
 (add-hook
@@ -157,7 +177,7 @@
  'js-mode-hook
  (lambda ()
    (auto-indent-mode)
-   (linum-mode)))
+   ))
 
 (add-hook
  'coffee-mode-hook
@@ -189,13 +209,11 @@
 (add-hook
  'emacs-lisp-mode-hook
  (lambda ()
-   (linum-mode)
    (paredit-mode +1)))
 
 (add-hook
  'lisp-mode-hook
  (lambda ()
-   (linum-mode)
    (paredit-mode +1)
    (if (string-match "stumpwmrc$" buffer-file-name)
        (stumpwm-mode))))
@@ -224,5 +242,9 @@
           (lambda ()
             (define-key org-tree-slide-mode-map (kbd "<right>") 'org-tree-slide-move-next-tree)
             (define-key org-tree-slide-mode-map (kbd "<left>") 'org-tree-slide-move-previous-tree)))
+
+(add-hook 'term-mode-hook
+          (lambda ()
+            (setq bidi-paragraph-direction 'left-to-right)))
 
 (provide 'my-hooks)

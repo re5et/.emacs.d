@@ -20,7 +20,7 @@
   (my-exwm-switch-to-workspace (my-exwm-get-workspace-name
                                 my-exwm-last-workspace)))
 
-(defun my-exwm-set-browser-simulation-keys ()
+(defun my-exwm-set-generic-simulation-keys ()
   (exwm-input-set-local-simulation-keys '(([?\C-b] . [left])
                                           ([?\C-f] . [right])
                                           ([?\C-p] . [up])
@@ -28,6 +28,8 @@
                                           ([?\C-a] . [home])
                                           ([?\C-e] . [end])
                                           ([?\C-d] . [delete])
+                                          ([?\C-i] . [tab])
+                                          ([?\C-m] . [return])
                                           ([?\M-b] . [C-left])
                                           ([?\M-f] . [C-right])
                                           ([?\M-v] . [prior])
@@ -40,18 +42,21 @@
                                           ([?\C-/] . [C-z])
                                           ([?\C-k] . [S-end delete]))))
 
-(defun my-exwm-browser-hook (class-name)
+(defun my-exwm-generic-simulation-hook (class-name)
   (interactive)
   (when (and exwm-class-name
              (string= exwm-class-name class-name))
     (exwm-layout-hide-mode-line)
-    (my-exwm-set-browser-simulation-keys)))
+    (my-exwm-set-generic-simulation-keys)))
 
 (add-hook 'exwm-manage-finish-hook (lambda ()
-                                     (my-exwm-browser-hook "Firefox")))
+                                     (my-exwm-generic-simulation-hook "Firefox")))
 
 (add-hook 'exwm-manage-finish-hook (lambda ()
-                                     (my-exwm-browser-hook "Google-chrome")))
+                                     (my-exwm-generic-simulation-hook "Google-chrome")))
+
+(add-hook 'exwm-manage-finish-hook (lambda ()
+                                     (my-exwm-generic-simulation-hook "Kodi")))
 
 (defun my-exwm-run-gui-program (command)
   (interactive)
@@ -99,8 +104,7 @@
       (setf retry-attempts (+ retry-attempts 1))))
   (if (get-buffer buffer)
       (progn (switch-to-buffer (my-exwm-cycle-application-windows-get-buffer
-                                buffer))
-             (delete-other-windows))
+                                buffer)))
     (message (concat "Timed out waiting for " command " to start!"))))
 
 (defun my-exwm-emacs-primary ()
@@ -132,6 +136,7 @@
   (let ((buffer-name (concat "*^" command "^*")))
     (when (get-buffer buffer-name)
       (kill-buffer (get-buffer buffer-name)))
+    (message command)
     (let ((process (apply #'start-process command buffer-name (split-string
                                                                command))))
       (set-process-sentinel process 'my-exwm-async-shell-command-sentinel))))
@@ -146,6 +151,11 @@
                 (lambda ()
                   (interactive)
                   (my-exwm-run-or-raise "Firefox" "firefox")))
+
+(global-set-key (kbd "C-h z")
+                (lambda ()
+                  (interactive)
+                  (my-exwm-run-or-raise "zoom" "zoom")))
 
 (global-set-key (kbd "C-h c")
                 (lambda ()
@@ -162,7 +172,7 @@
 (global-set-key (kbd "C-h p")
                 (lambda ()
                   (interactive)
-                  (shell-command "kodi-pause-play")))
+                  (my-exwm-async-shell-command "media-center-pause-play")))
 
 (global-set-key (kbd "C-h k") 'kill-focused-buffer)
 
@@ -172,6 +182,16 @@
                 (lambda ()
                   (interactive)
                   (message (current-time-string))))
+
+(global-set-key (kbd "C-h A d")
+                (lambda ()
+                  (interactive)
+                  (shell-command "ssh arcana 'DETACH=1 ~/bin/s d'")))
+
+(global-set-key (kbd "C-h A b")
+                (lambda ()
+                  (interactive)
+                  (shell-command "ssh arcana 'DETACH=1 ~/bin/s b'")))
 
 (global-set-key (kbd "C-h b")
                 (lambda ()
@@ -183,10 +203,8 @@
                   (interactive)
                   (shell-command "toggle-mute")))
 
-(global-set-key (kbd "C-h s")
-                (lambda ()
-                  (interactive)
-                  (my-exwm-async-shell-command "system-status-short")))
+(global-set-key (kbd "C-h s") 'top)
+(global-set-key (kbd "C-h S") 'proced)
 
 (global-set-key (kbd "C-h l") 'exwm-reset)
 
@@ -197,7 +215,6 @@
 
 (global-set-key (kbd "C-h r") 'my-exwm-fix-minibuffer)
 
-(global-set-key (kbd "C-h P") 'proced)
 
 ;; (global-set-key (kbd "C-h C-h") 'my-exwm-switch-to-last-workspace)
 (global-set-key (kbd "C-h C-h") 'switch-to-previous-buffer)
@@ -232,12 +249,33 @@
   (interactive)
   (exwm-layout--refresh))
 
+(defun my-exwm-screen-sharing-screen-config ()
+  (interactive)
+  (setq exwm-randr-workspace-output-plist '(0 "DP-2" 1 "DP-2" 2 "DP-2"))
+  (exwm-randr-refresh))
+
+(defun my-exwm-normal-screen-config ()
+  (interactive)
+  (setq exwm-randr-workspace-output-plist '(0 "DP-2" 1 "HDMI-1" 2 "DP-2"))
+  (exwm-randr-refresh))
+
+(start-process-shell-command
+                   "xrandr" nil "xrandr --output HDMI-1 --mode 1920x1080 --scale 1x1 --pos 0x0 --primary --output DP-2 --mode 1920x1080 --scale 1x1 --pos 1920x0  --output eDP-1 --off")
+
 (require 'exwm-randr)
-(setq exwm-randr-workspace-output-plist '(1 "eDP-1"))
 (add-hook 'exwm-randr-screen-change-hook
           (lambda ()
-            (start-process-shell-command
-             "xrandr" nil "xrandr --output eDP-1 --scale 1.4x1.4")))
+            (if (eq 0 (shell-command "is-docked"))
+                (progn
+                  (setq exwm-randr-workspace-output-plist '(0 "DP-2" 1 "HDMI-1" 2 "DP-2"))
+                  (start-process-shell-command
+                   "xrandr" nil "xrandr --output HDMI-1 --mode 1920x1080 --scale 1.7x1.7 --pos 0x0 --primary --output DP-2 --mode 1920x1080 --scale 1.7x1.7 --pos 3264x0  --output eDP-1 --off")
+                  )
+              (progn
+                (setq exwm-randr-workspace-output-plist '())
+                (start-process-shell-command
+                 "xrandr" nil "xrandr --output eDP-1 --scale 1.4x1.4")))))
+
 (exwm-randr-enable)
 
 (start-process-shell-command "xmodmap" nil "xmodmap ~/.xmodmap")

@@ -344,22 +344,43 @@ WIP on branchname: short-sha commit-message"
   (interactive)
   (kill-new (mongo-buffer-to-text)))
 
+(defun get-movie-completing-read ()
+  (interactive)
+  (if (string-match "^[k-z]" (file-name-nondirectory (first (dired-get-marked-files))))
+      '("movies2" "movies1")
+    '("movies1" "movies2")))
+
 (defun move-movie ()
   (interactive)
-  (let* ((move-to (completing-read "to:" '("movies2" "movies1")))
-         (files (dired-get-marked-files)))
-    (dolist (file files)
+  (let* ((move-movie-files (dired-get-marked-files))
+         (move-movie-move-to (completing-read "to:" (get-movie-completing-read)))
+         (move-movie-message-string (concat (mapconcat 'identity move-movie-files " ") " to " move-movie-move-to))
+         (move-movie-buffer-name (buffer-name)))
+    (dolist (file move-movie-files)
       (let ((file-base-name (file-name-nondirectory file)))
-        (rename-file file (concat "/ssh:arcana:/" move-to))
-        (revert-buffer)))))
+        (when (file-exists-p (concat "/ssh:arcana:/" move-movie-move-to "/" file-base-name))
+          (error (concat "FILE EXISTS! " (concat "/ssh:arcana:/" move-movie-move-to "/" file-base-name))))))
 
-(defun move-movie-go-up-and-delete ()
-  (interactive)
-  (move-movie)
-  (when (not (string= "/ssh:arcana:/other/downloads/" default-directory))
-    (kill-buffer)
-    (call-interactively 'dired-flag-file-deletion)
-    (dired-do-flagged-delete)))
+    (message (concat "async moving: " move-movie-message-string))
+    (async-start
+     `(lambda ()
+        ,(async-inject-variables "move-movie-")
+        (dolist (file move-movie-files)
+          (let ((file-base-name (file-name-nondirectory file)))
+            (rename-file file (concat "/ssh:arcana:/" move-movie-move-to "/" file-base-name)))))
+     `(lambda (result)
+        ,(async-inject-variables "move-movie-")
+        (message (concat "finished moving: " move-movie-message-string))
+        (with-current-buffer (get-buffer move-movie-buffer-name)
+          (revert-buffer)
+          (when (string-match "/ssh:arcana:/other/downloads/.+" default-directory)
+            (if (yes-or-no-p (concat "delete " default-directory))
+                (progn
+                  (delete-directory default-directory t)
+                  (kill-buffer))
+              (kill-buffer))
+            (with-current-buffer (get-buffer "downloads")
+              (revert-buffer))))))))
 
 (defun dired-clean-file-name ()
   (interactive)
@@ -378,6 +399,7 @@ WIP on branchname: short-sha commit-message"
                           "aac-\[^.\]*"
                           "x264-\[^.\]*"
                           "xvid-\[^.\]*"
+                          "mp3-\[^.\]*"
                           "1080p"
                           "720p"
                           "web-dl"
@@ -568,7 +590,7 @@ WIP on branchname: short-sha commit-message"
 (defun embiggen-toggler ()
   (interactive)
   (if (= (length (window-list)) 1)
-      (when embiggen-toggler-window-configuration
+      (when (boundp 'embiggen-toggler-window-configuration)
         (set-window-configuration embiggen-toggler-window-configuration))
     (progn
       (setq embiggen-toggler-window-configuration (current-window-configuration))
@@ -588,8 +610,26 @@ WIP on branchname: short-sha commit-message"
   (interactive)
   (let ((buffer-name "default/arcana"))
     (if (get-buffer buffer-name)
-      (switch-to-buffer buffer-name)
-    (emux-term-create "arcana" "ssh arcana"))))
+        (switch-to-buffer buffer-name)
+      (emux-term-create "arcana" "ssh arcana"))))
+
+(defun top ()
+  (interactive)
+  (my-exwm-switch-to-workspace "terminals")
+  (let ((buffer (get-buffer "default/top")))
+    (if buffer
+        (pop-to-buffer buffer)
+      (emux-term-create "top" "top -o %MEM -c"))))
+
+(defun lastpass-getpsass-send-to-term (lastpass-account-name)
+  (interactive)
+  (condition-case nil
+      (emux-term-send-raw (concat (lastpass-getpass lastpass-account-name) ""))
+    (error (lastpass-login))))
+
+(defun ldap-term-send ()
+  (interactive)
+  (lastpass-getpsass-send-to-term "flipboard ldap / vpn / jira"))
 
 ;; (with-eval-after-load 'flycheck
 ;;   (advice-add 'flycheck-checker-substituted-arguments :around

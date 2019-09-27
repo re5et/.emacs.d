@@ -110,6 +110,7 @@
  '(keyboard-coding-system (quote utf-8-unix))
  '(kill-ring-max 1000)
  '(kill-whole-line t)
+ '(lastpass-user "re5etsmyth@gmail.com")
  '(linum-delay t)
  '(linum-eager t)
  '(magit-branch-arguments nil)
@@ -131,7 +132,7 @@
  '(mumamo-chunk-coloring 10)
  '(nxml-child-indent 2)
  '(nxml-outline-child-indent 2)
- '(org-agenda-files (quote ("~/notes/todo.org")) t)
+ '(org-agenda-files (quote ("~/notes/todo.org")))
  '(org-babel-load-languages (quote ((emacs-lisp . t) (awk . t) (awk . t))))
  '(org-hide-leading-stars t)
  '(org-src-fontify-natively t)
@@ -141,7 +142,7 @@
  '(package-enable-at-startup t)
  '(package-selected-packages
    (quote
-    (groovy-mode flycheck-color-mode-line graphql-mode graphql tide web-mode inf-mongo csv-mode google-this flycheck-golangci-lint go-playground go-mode epresent chess kodi-remote haml-mode floobits exwm restclient image+ eslintd-fix ruby-test-mode flow-minor-mode ido-completing-read+ magit-gh-pulls flycheck-popup-tip flycheck-flow nvm add-node-modules-path prettier-js markdown-mode markdown-mode+ ivy es-mode enh-ruby-mode rvm exec-path-from-shell eros autopair scratch auto-indent-mode flycheck emms docker dockerfile-mode paredit org-tree-slide rjsx-mode git-timemachine kill-ring-search js2-mode auto-complete dired-efap expand-region isearch-symbol-at-point itail magit magit-filenotify move-dup multiple-cursors powerline slime smart-indent-rigidly smartparens smex simp)))
+    (wgrep with-editor coffee-mode lastpass tern-auto-complete tern company ac-geiser geiser racket-mode groovy-mode flycheck-color-mode-line graphql-mode graphql tide web-mode inf-mongo csv-mode google-this flycheck-golangci-lint go-playground go-mode epresent chess kodi-remote haml-mode floobits exwm restclient image+ eslintd-fix ruby-test-mode flow-minor-mode ido-completing-read+ magit-gh-pulls flycheck-popup-tip flycheck-flow nvm add-node-modules-path prettier-js markdown-mode markdown-mode+ ivy es-mode enh-ruby-mode rvm exec-path-from-shell eros autopair scratch auto-indent-mode flycheck emms docker dockerfile-mode paredit org-tree-slide rjsx-mode git-timemachine kill-ring-search js2-mode auto-complete dired-efap expand-region isearch-symbol-at-point itail magit magit-filenotify move-dup multiple-cursors powerline slime smart-indent-rigidly smartparens smex simp)))
  '(package-user-dir "~/.emacs.d/packages")
  '(proced-auto-update-flag t)
  '(proced-auto-update-interval 1)
@@ -204,7 +205,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#000000" :foreground "#FFF" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :foundry "Ubuntu" :family "Ubuntu Mono"))))
+ '(default ((t (:inherit nil :stipple nil :background "#000000" :foreground "#FFF" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :foundry "DAMA" :family "Ubuntu Mono"))))
  '(ac-completion-face ((t (:foreground "#555" :underline "#F0F"))))
  '(button ((t (:underline t))))
  '(cursor ((t (:background "#FF0" :foreground "#F00"))))
@@ -227,7 +228,7 @@
  '(erc-prompt-face ((t (:foreground "red" :weight bold))))
  '(flycheck-color-mode-line-error-face ((t (:inherit flycheck-fringe-error :background "red"))))
  '(flycheck-color-mode-line-running-face ((t (:inherit nil :foreground "yellow"))))
- '(flymake-errline ((t (:background "#600"))))
+ '(flymake-errline ((t (:background "#600"))) t)
  '(font-lock-builtin-face ((t (:foreground "#F0F"))))
  '(font-lock-comment-delimiter-face ((t (:inherit font-lock-comment-face :foreground "#f90"))))
  '(font-lock-comment-face ((t (:foreground "#888"))))

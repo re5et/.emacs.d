@@ -159,8 +159,8 @@
    (define-key dired-mode-map (kbd "w") 'dired-copy-whole-filename-as-kill)
    (define-key dired-mode-map (kbd "e") 'dired-efap)
    (define-key dired-mode-map (kbd "c") 'dired-clean-file-name)
-   (define-key dired-mode-map (kbd "r") 'move-movie)
-   (define-key dired-mode-map (kbd "j") 'move-movie-go-up-and-delete)
+   (define-key dired-mode-map (kbd "j") 'move-movie)
+   (define-key dired-mode-map (kbd "J") 'dired-go-up-and-delete)
    (put 'dired-do-rename 'ido 'find-file)
    ))
 

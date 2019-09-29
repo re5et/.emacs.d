@@ -141,6 +141,23 @@
                                                                command))))
       (set-process-sentinel process 'my-exwm-async-shell-command-sentinel))))
 
+(defun my-exwm-volume-up ()
+  (interactive)
+  (shell-command "amixer -c 0 set Master 4dB+"))
+
+(defun my-exwm-volume-down ()
+  (interactive)
+  (shell-command "amixer -c 0 set Master 4dB-"))
+
+(defun my-exwm-lock-screen ()
+  (interactive)
+  (shell-command "xscreensaver-command -lock"))
+
+(setq exwm-input-global-keys
+      '(([C-up] . my-exwm-volume-up)
+        ([C-down] . my-exwm-volume-down)
+        ([C-M-return] . my-exwm-lock-screen)))
+
 (global-set-key (kbd "C-h") nil)
 
 (global-set-key (kbd "C-h h") 'help)
@@ -219,21 +236,6 @@
 ;; (global-set-key (kbd "C-h C-h") 'my-exwm-switch-to-last-workspace)
 (global-set-key (kbd "C-h C-h") 'switch-to-previous-buffer)
 
-(global-set-key (kbd "C-<up>")
-                (lambda ()
-                  (interactive)
-                  (shell-command "amixer -c 0 set Master 4dB+")))
-
-(global-set-key (kbd "C-<down>")
-                (lambda ()
-                  (interactive)
-                  (shell-command "amixer -c 0 set Master 4dB-")))
-
-(global-set-key (kbd "C-M-<return>")
-                (lambda ()
-                  (interactive)
-                  (shell-command "xscreensaver-command -lock")))
-
 (defun my-exwm-quit ()
   (recentf-save-list)
   (kill-emacs))
@@ -260,7 +262,7 @@
   (exwm-randr-refresh))
 
 (start-process-shell-command
-                   "xrandr" nil "xrandr --output HDMI-1 --mode 1920x1080 --scale 1x1 --pos 0x0 --primary --output DP-2 --mode 1920x1080 --scale 1x1 --pos 1920x0  --output eDP-1 --off")
+ "xrandr" nil "xrandr --output HDMI-1 --mode 1920x1080 --scale 1x1 --pos 0x0 --primary --output DP-2 --mode 1920x1080 --scale 1x1 --pos 1920x0  --output eDP-1 --off")
 
 (require 'exwm-randr)
 (add-hook 'exwm-randr-screen-change-hook

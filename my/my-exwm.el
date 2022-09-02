@@ -1,11 +1,12 @@
 (require 'exwm)
 (require 'exwm-config)
-(require 'exwm-edit)
+;; (require 'exwm-edit)
 
 (defvar my-exwm-workspace-map
   '((0 . "emacs")
     (1 . "applications")
-    (2 . "terminals")))
+    (2 . "terminals")
+    (3 . "media")))
 
 (defvar my-exwm-last-workspace nil)
 
@@ -20,8 +21,13 @@
   (my-exwm-switch-to-workspace (my-exwm-get-workspace-name
                                 my-exwm-last-workspace)))
 
+(exwm-input-set-local-simulation-keys '(([?\C-g] . [f6 escape])))
+
 (defun my-exwm-set-generic-simulation-keys ()
-  (exwm-input-set-local-simulation-keys '(([?\C-b] . [left])
+  (interactive)
+  (exwm-input-set-local-simulation-keys '(
+                                          ;; basic stuff
+                                          ([?\C-b] . [left])
                                           ([?\C-f] . [right])
                                           ([?\C-p] . [up])
                                           ([?\C-n] . [down])
@@ -40,7 +46,25 @@
                                           ([?\C-v] . [next])
                                           ([?\C-g] . [escape])
                                           ([?\C-/] . [C-z])
-                                          ([?\C-k] . [S-end delete]))))
+                                          ([?\C-k] . [S-end delete])
+                                          ;; fancy stuff
+                                          ([?\C-c ? ?a] . [M-1])
+                                          ([?\C-c ? ?s] . [M-2])
+                                          ([?\C-c ? ?d] . [M-3])
+                                          ([?\C-c ? ?f] . [M-4])
+                                          ([?\C-c ? ?g] . [M-5])
+                                          ([?\C-c ? ?z] . [M-6])
+                                          ([?\C-c ? ?x] . [M-7])
+                                          ([?\C-c ? ?c] . [M-8])
+                                          ([?\C-c ? ?v] . [M-9])
+                                          ([?\C-c ? ?b] . [M-9])
+                                          ([?\C-c ? ?l] . [C-tab])
+                                          ([?\C-x ?\C-t] . [C-l * SPC t l m C-i C-m])
+                                          ([?\C-c ? ?h] . [C-S-iso-lefttab])
+                                          ([?\C-c ? ?\C-k] . [M-6 C-S-k])
+                                          ([?\C-c ? ?\C-h] . [C-S-prior])
+                                          ([?\C-c ? ?\C-l] . [C-S-next])
+                                          )))
 
 (defun my-exwm-generic-simulation-hook (class-name)
   (interactive)
@@ -50,13 +74,19 @@
     (my-exwm-set-generic-simulation-keys)))
 
 (add-hook 'exwm-manage-finish-hook (lambda ()
-                                     (my-exwm-generic-simulation-hook "Firefox")))
+                                     (my-exwm-generic-simulation-hook "firefox")))
 
 (add-hook 'exwm-manage-finish-hook (lambda ()
                                      (my-exwm-generic-simulation-hook "Google-chrome")))
 
 (add-hook 'exwm-manage-finish-hook (lambda ()
+                                     (my-exwm-generic-simulation-hook "discord")))
+
+(add-hook 'exwm-manage-finish-hook (lambda ()
                                      (my-exwm-generic-simulation-hook "Kodi")))
+
+(add-hook 'exwm-manage-finish-hook (lambda ()
+                                     (my-exwm-generic-simulation-hook "zoom")))
 
 (defun my-exwm-run-gui-program (command)
   (interactive)
@@ -78,7 +108,7 @@
 
 (defun my-exwm-cycle-application-windows-get-buffer (buffer-name)
   (let ((application-windows (seq-filter (lambda (x)
-                                           (string-match-p buffer-name
+                                           (string-match-p (concat "^" buffer-name "\\(<[0-9]+>\\)?$")
                                                            (buffer-name x)))
                                          (buffer-list))))
     (if (> (length application-windows) 1)
@@ -92,20 +122,26 @@
             (get-buffer buffer-name)))
       (get-buffer buffer-name))))
 
-(defun my-exwm-run-or-raise (buffer command)
+(defun my-exwm-run-or-raise
+    (buffer command &optional workspace)
   (interactive)
-  (my-exwm-switch-to-workspace "applications")
+  (my-exwm-switch-to-workspace (or workspace "applications"))
   (unless (get-buffer buffer)
     (my-exwm-run-gui-program command))
-  (let ((retry-attempts 0))
-    (while (and (not (get-buffer buffer))
-                (< retry-attempts 50))
-      (sleep-for 0 50)
-      (setf retry-attempts (+ retry-attempts 1))))
-  (if (get-buffer buffer)
-      (progn (switch-to-buffer (my-exwm-cycle-application-windows-get-buffer
-                                buffer)))
-    (message (concat "Timed out waiting for " command " to start!"))))
+  ;; (let ((retry-attempts 0))
+  ;;   (while (and (not (get-buffer buffer))
+  ;;               (< retry-attempts 100))
+  ;;     (sleep-for 0 50)
+  ;;     (setf retry-attempts (+ retry-attempts 1))))
+  ;; (if (get-buffer buffer)
+  ;;     (progn (switch-to-buffer (my-exwm-cycle-application-windows-get-buffer
+  ;;                               buffer)))
+  ;;   (message (concat "Timed out waiting for " command " to start!"))))
+  (when (get-buffer buffer)
+    (progn
+      (switch-to-buffer
+       (my-exwm-cycle-application-windows-get-buffer
+        buffer)))))
 
 (defun my-exwm-emacs-primary ()
   (interactive)
@@ -156,7 +192,9 @@
 (setq exwm-input-global-keys
       '(([C-up] . my-exwm-volume-up)
         ([C-down] . my-exwm-volume-down)
-        ([C-M-return] . my-exwm-lock-screen)))
+        ([C-M-return] . my-exwm-lock-screen)
+        ([C-return] . embiggen-toggle)
+        ([C-S-q] . my-exwm-toggle-screen-config)))
 
 (global-set-key (kbd "C-h") nil)
 
@@ -167,22 +205,32 @@
 (global-set-key (kbd "C-h f")
                 (lambda ()
                   (interactive)
-                  (my-exwm-run-or-raise "Firefox" "firefox")))
+                  (my-exwm-run-or-raise "firefox" "firefox")))
+
+(global-set-key (kbd "C-h m")
+                (lambda ()
+                  (interactive)
+                  (my-exwm-run-or-raise "Spotify" "spotify" "media")))
 
 (global-set-key (kbd "C-h z")
                 (lambda ()
                   (interactive)
-                  (my-exwm-run-or-raise "zoom" "zoom")))
+                  (my-exwm-run-or-raise "zoom" "zoom" "media")))
 
 (global-set-key (kbd "C-h c")
                 (lambda ()
                   (interactive)
                   (my-exwm-run-or-raise "Google-chrome" "google-chrome")))
 
+(global-set-key (kbd "C-h d")
+                (lambda ()
+                  (interactive)
+                  (my-exwm-run-or-raise "discord" "discord")))
+
 (global-set-key (kbd "C-h x")
                 (lambda ()
                   (interactive)
-                  (my-exwm-run-or-raise "Kodi" "kodi")))
+                  (my-exwm-run-or-raise "Kodi" "kodi" "media")))
 
 (global-set-key (kbd "C-h t") 'my-exwm-terminals)
 
@@ -200,6 +248,13 @@
                   (interactive)
                   (message (current-time-string))))
 
+(global-set-key (kbd "C-h g") 'my-exwm-screen-config-picker)
+
+(global-set-key (kbd "C-h C-a")
+                (lambda ()
+                  (interactive)
+                  (message (current-time-string nil t))))
+
 (global-set-key (kbd "C-h A d")
                 (lambda ()
                   (interactive)
@@ -215,15 +270,14 @@
                   (interactive)
                   (shell-command "acpi")))
 
-(global-set-key (kbd "C-h m")
+(global-set-key (kbd "C-h s")
                 (lambda ()
                   (interactive)
                   (shell-command "toggle-mute")))
 
-(global-set-key (kbd "C-h s") 'top)
 (global-set-key (kbd "C-h S") 'proced)
 
-(global-set-key (kbd "C-h l") 'exwm-reset)
+(global-set-key (kbd "C-h l") 'my-exwm-lock-screen)
 
 (global-set-key (kbd "C-h T")
                 (lambda ()
@@ -245,7 +299,8 @@
                                       (exwm-workspace-rename-buffer
                                        exwm-class-name)))
   (exwm-enable)
-  (exwm-config-ido))
+  (exwm-config-ido)
+  )
 
 (defun my-exwm-fix-minibuffer ()
   (interactive)
@@ -253,33 +308,76 @@
 
 (defun my-exwm-screen-sharing-screen-config ()
   (interactive)
-  (setq exwm-randr-workspace-output-plist '(0 "DP-2" 1 "DP-2" 2 "DP-2"))
+  (setq
+   exwm-randr-workspace-output-plist '(0 "HDMI-1" 1 "HDMI-1" 2 "HDMI-1" 3 "HDMI-1")
+   my-exwm-screen-config 'my-exwm-screen-sharing-screen-config)
   (exwm-randr-refresh))
 
 (defun my-exwm-normal-screen-config ()
   (interactive)
-  (setq exwm-randr-workspace-output-plist '(0 "DP-2" 1 "HDMI-1" 2 "DP-2"))
+  (setq
+   exwm-randr-workspace-output-plist '(0 "DVI-I-2" 1 "DVI-I-3" 2 "DVI-I-2" 3 "DVI-I-3")
+   my-exwm-screen-config 'my-exwm-normal-screen-config)
   (exwm-randr-refresh))
 
+(defun my-exwm-media-screen-config ()
+  (interactive)
+  (setq
+   exwm-randr-workspace-output-plist '(0 "DVI-I-1" 1 "DVI-I-1" 2 "DVI-I-1" 3 "DVI-I-2")
+   my-exwm-screen-config 'my-exwm-normal-screen-config)
+  (exwm-randr-refresh))
+
+(defun my-exwm-toggle-screen-config ()
+  (interactive)
+  (if (and (boundp 'my-exwm-screen-config)
+           (eq (symbol-value 'my-exwm-screen-config)
+               'my-exwm-normal-screen-config))
+      (my-exwm-screen-sharing-screen-config)
+    (my-exwm-normal-screen-config)))
+
+(defun my-exwm-screen-config-picker ()
+  (interactive)
+  (let ((choice (completing-read "config: " '("normal" "share" "media"))))
+    (cond
+     ((string-equal choice "normal") (my-exwm-normal-screen-config))
+     ((string-equal choice "media") (my-exwm-media-screen-config))
+     ((string-equal choice "share") (my-exwm-screen-sharing-screen-config)))))
+
+(defun my-exwm-move-to-screen ()
+  (interactive)
+  (let ((workspace (completing-read "screen: "
+                                    (mapcar (lambda (x) (cdr x)) my-exwm-workspace-map))))
+    (exwm-workspace-move-window
+     (my-exwm-get-workspace-number
+      workspace
+      (get-buffer-window)))))
+
 (start-process-shell-command
- "xrandr" nil "xrandr --output HDMI-1 --mode 1920x1080 --scale 1x1 --pos 0x0 --primary --output DP-2 --mode 1920x1080 --scale 1x1 --pos 1920x0  --output eDP-1 --off")
+ "xrandr" nil "xrandr --output DVI-I-2 --mode 1920x1080 --scale 1x1 --pos 0x0 --primary --output DVI-I-1 --mode 1920x1080 --scale 1x1 --pos 1920x0")
 
 (require 'exwm-randr)
-(add-hook 'exwm-randr-screen-change-hook
-          (lambda ()
-            (if (eq 0 (shell-command "is-docked"))
-                (progn
-                  (setq exwm-randr-workspace-output-plist '(0 "DP-2" 1 "HDMI-1" 2 "DP-2"))
-                  (start-process-shell-command
-                   "xrandr" nil "xrandr --output HDMI-1 --mode 1920x1080 --scale 1.7x1.7 --pos 0x0 --primary --output DP-2 --mode 1920x1080 --scale 1.7x1.7 --pos 3264x0  --output eDP-1 --off")
-                  )
-              (progn
-                (setq exwm-randr-workspace-output-plist '())
-                (start-process-shell-command
-                 "xrandr" nil "xrandr --output eDP-1 --scale 1.4x1.4")))))
+;; (add-hook 'exwm-randr-screen-change-hook
+;;           (lambda ()
+;;             (if (eq 0 (shell-command "is-docked"))
+;;                 (progn
+;;                   (setq exwm-randr-workspace-output-plist '(0 "DP-2" 1 "HDMI-1" 2 "DP-2"))
+;;                   (start-process-shell-command
+;;                    "xrandr" nil "xrandr --output HDMI-1 --mode 1920x1080 --scale 1.6x1.6 --pos 0x0 --primary --output DP-2 --mode 1920x1080 --scale 1.6x1.6 --pos 3264x0  --output eDP-1 --off")
+;;                   )
+;;               (progn
+;;                 (setq exwm-randr-workspace-output-plist '())
+;;                 (start-process-shell-command
+;;                  "xrandr" nil "xrandr --output eDP-1 --scale 1.25x1.25")))))
 
 (exwm-randr-enable)
 
 (start-process-shell-command "xmodmap" nil "xmodmap ~/.xmodmap")
+
+(setq exwm-manage-configurations
+      '(((and (equal exwm-class-name nil) (equal (buffer-name) "*EXWM*"))
+         floating t
+         floating-mode-line nil
+         width 0.3
+         height 0.3)))
 
 (provide 'my-exwm)
